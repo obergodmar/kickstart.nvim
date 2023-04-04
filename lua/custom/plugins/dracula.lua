@@ -1,7 +1,7 @@
 return {
-	'Mofiqul/dracula.nvim',
+	"Mofiqul/dracula.nvim",
 	priority = 1000,
 	config = function()
-		vim.cmd.colorscheme 'dracula'
+		vim.cmd.colorscheme "dracula"
 	end
 }
