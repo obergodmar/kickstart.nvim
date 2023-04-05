@@ -320,7 +320,6 @@ local servers = {
   -- pyright = {},
   -- rust_analyzer = {},
   tsserver = {
-    root_dir = require("lspconfig").util.root_pattern("package.json"),
   },
   html = {},
   cssls = {},
@@ -352,8 +351,10 @@ mason_lspconfig.setup {
 
 mason_lspconfig.setup_handlers {
   function(server_name)
-    local root_dir = servers[server_name]['root_dir'] -- get root_dir from servers table
-    servers[server_name]['root_dir'] = nil            -- remove root_dir from table
+    local root_dir = nil
+    if server_name == 'tsserver' then
+      root_dir = require("lspconfig").util.root_pattern("package.json")
+    end
     require('lspconfig')[server_name].setup {
       capabilities = capabilities,
       on_attach = on_attach,
