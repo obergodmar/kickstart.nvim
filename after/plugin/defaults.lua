@@ -13,6 +13,11 @@ vim.opt.scrolloff = 10
 
 local has = vim.fn.has
 local is_win = has "win32"
+
+if is_win then
+  vim.opt.ff = "unix"
+end
+
 if not is_win then
   vim.opt.shell = 'zsh'
 end
