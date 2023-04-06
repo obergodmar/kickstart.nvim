@@ -10,7 +10,13 @@ vim.opt.cmdheight = 1
 vim.opt.laststatus = 2
 vim.opt.expandtab = true
 vim.opt.scrolloff = 10
-vim.opt.shell = 'zsh'
+
+local has = vim.fn.has
+local is_win = has "win32"
+if not is_win then
+  vim.opt.shell = 'zsh'
+end
+
 vim.opt.backupskip = { '/tmp/*', '/private/tmp/*' }
 vim.opt.inccommand = 'split'
 vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
