@@ -326,6 +326,7 @@ local servers = {
   html = {},
   cssls = {},
   eslint = {},
+  phpactor = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
