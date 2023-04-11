@@ -96,7 +96,8 @@ require('lazy').setup({
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip', 'hrsh7th/cmp-buffer',
+      'ray-x/cmp-treesitter', 'hrsh7th/cmp-path' },
   },
 
   -- Useful plugin to show you pending keybinds.
@@ -264,6 +265,9 @@ require('nvim-treesitter.configs').setup {
       },
     },
   },
+  autotag = {
+    enable = true,
+  }
 }
 
 -- LSP settings.
@@ -327,6 +331,7 @@ local servers = {
   cssls = {},
   eslint = {},
   phpactor = {},
+  emmet_ls = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -407,8 +412,11 @@ cmp.setup {
     end, { 'i', 's' }),
   },
   sources = {
+    { name = 'buffer' },
+    { name = 'treesitter' },
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'path' },
   },
 }
 
