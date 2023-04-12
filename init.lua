@@ -96,8 +96,7 @@ require('lazy').setup({
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip', 'hrsh7th/cmp-buffer',
-      'ray-x/cmp-treesitter', 'hrsh7th/cmp-path' },
+    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip'  },
   },
 
   -- Useful plugin to show you pending keybinds.
@@ -325,13 +324,11 @@ local servers = {
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  tsserver = {
-  },
+  tsserver = {},
   html = {},
   cssls = {},
   eslint = {},
   phpactor = {},
-  emmet_ls = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -379,11 +376,6 @@ local luasnip = require 'luasnip'
 
 luasnip.config.setup {}
 
-local function deprioritize_snippet(entry1, entry2)
-  if entry1:get_kind() == types.lsp.CompletionItemKind.Snippet then return false end
-  if entry2:get_kind() == types.lsp.CompletionItemKind.Snippet then return true end
-end
-
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -417,29 +409,9 @@ cmp.setup {
       end
     end, { 'i', 's' }),
   },
-  sorting = {
-    priority_weight = 2,
-    comparators = {
-      deprioritize_snippet,
-      -- the rest of the comparators are pretty much the defaults
-      cmp.config.compare.offset,
-      cmp.config.compare.exact,
-      cmp.config.compare.scopes,
-      cmp.config.compare.score,
-      cmp.config.compare.recently_used,
-      cmp.config.compare.locality,
-      cmp.config.compare.kind,
-      cmp.config.compare.sort_text,
-      cmp.config.compare.length,
-      cmp.config.compare.order,
-    },
-  },
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-    { name = 'treesitter' },
-    { name = 'path' },
-    { name = 'buffer' },
   },
 }
 
