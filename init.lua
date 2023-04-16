@@ -373,7 +373,6 @@ mason_lspconfig.setup_handlers {
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
-local types = require 'cmp.types'
 local luasnip = require 'luasnip'
 
 luasnip.config.setup {}
