@@ -1,5 +1,5 @@
 local has = vim.fn.has
-local is_win = has "win32"
+local is_win = has "win32" == 1
 
 if is_win then
   vim.opt.ff = "unix"
