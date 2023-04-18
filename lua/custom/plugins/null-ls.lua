@@ -7,7 +7,9 @@ return {
 		-- local async = event == "BufWritePost"
 
 		null_ls.setup {
-			sources = { null_ls.builtins.formatting.prettier },
+			sources = {
+				null_ls.builtins.formatting.prettier
+			},
 			on_attach = function(client, bufnr)
 				-- Disable autoformat since autoformat is enabled by kickstart
 				--

@@ -17,12 +17,21 @@ return {
 		-- 		vim.opt[option] = value
 		-- 	end
 		-- end
+
+		local function get_shell()
+			if vim.fn.has("win32") == 1 then
+				return vim.fn.executable "pwsh" == 1 and "pwsh" or "powershell"
+			end
+
+			return vim.shell
+		end
+
 		--
 		require('toggleterm').setup {
 			shade_terminals = false,
 			start_in_insert = true,
 			open_mapping = [[<c-\>]],
-			shell = vim.fn.executable "pwsh" == 1 and "pwsh" or "powershell",
+			shell = get_shell(),
 		}
 	end
 }
