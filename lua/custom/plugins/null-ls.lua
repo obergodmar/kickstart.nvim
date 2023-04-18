@@ -8,6 +8,7 @@ return {
 
 		null_ls.setup {
 			sources = {
+				null_ls.builtins.formatting.beautysh,
 				null_ls.builtins.formatting.prettier
 			},
 			on_attach = function(client, bufnr)
