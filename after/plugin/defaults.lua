@@ -1,3 +1,5 @@
+vim.api.nvim_exec('language en_US', true)
+
 local has = vim.fn.has
 local is_win = has "win32" == 1
 
