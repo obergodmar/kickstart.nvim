@@ -1,13 +1,10 @@
-vim.api.nvim_exec('language en_US', true)
-
 local has = vim.fn.has
 local is_win = has "win32" == 1
 
 if is_win then
+  vim.api.nvim_exec('language en_US', true)
   vim.opt.ff = "unix"
-end
-
-if not is_win then
+else
   vim.opt.shell = 'zsh'
 end
 
