@@ -54,4 +54,4 @@ end
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
-vim.api.nvim_set_keymap("n", "<leader>f", ":NvimTreeFindFile<CR>", { desc = "[F]ind opened file in NvimTree" })
+-- vim.api.nvim_set_keymap("n", "<leader>f", ":NvimTreeFindFile<CR>", { desc = "[F]ind opened file in NvimTree" })
