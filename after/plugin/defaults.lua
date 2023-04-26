@@ -19,6 +19,7 @@ vim.opt.wrap = false -- No Wrap lines
 vim.opt.backspace = { 'start', 'eol', 'indent' }
 vim.opt.termguicolors = true
 vim.opt.foldmethod = 'indent'
+vim.opt.cursorline = true
 
 -- Set highlight on search
 vim.o.hlsearch = true
