@@ -22,6 +22,7 @@ return {
 				'windows',
 				mode = 1,
 				use_mode_colors = true,
+				show_modified_status = true
 			} },
 			lualine_b = {},
 			lualine_c = { 'filename', 'filesize' },

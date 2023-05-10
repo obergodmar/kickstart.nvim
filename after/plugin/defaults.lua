@@ -21,6 +21,10 @@ vim.opt.termguicolors = true
 vim.opt.foldmethod = 'indent'
 vim.opt.cursorline = true
 
+vim.opt.title = true
+vim.opt.titlestring = "%F"
+
+
 -- Set highlight on search
 vim.o.hlsearch = true
 
