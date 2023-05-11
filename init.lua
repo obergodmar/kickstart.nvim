@@ -41,8 +41,7 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -182,6 +181,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
   defaults = {
+    find_files = {
+      theme = "dropdown",
+    },
     mappings = {
       i = {
         ['<C-u>'] = false,
@@ -284,12 +286,9 @@ local on_attach = function(_, bufnr)
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
-  nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-  nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-  nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-  nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-  nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+  -- nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+  -- nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+  -- nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')

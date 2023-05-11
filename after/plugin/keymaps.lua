@@ -4,16 +4,33 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>/', require('telescope.builtin').resume, { desc = '[/] Previous picker' })
+local nmap_telescope = function(keys, func, desc, custom)
+  if not custom then
+    func = ":lua require'telescope.builtin'." .. func .. "(require('telescope.themes').get_dropdown({}))<CR>"
+  end
 
-vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sg', ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
-  { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+  vim.keymap.set('n', keys, func, { desc = desc })
+end
+
+nmap_telescope('<leader>?', 'oldfiles', '[?] Find recently opened files')
+nmap_telescope('<leader><space>', 'buffers', '[ ] Find existing buffers')
+nmap_telescope('<leader>/', 'resume', '[/] Previous picker')
+nmap_telescope('<leader>sf', 'find_files', '[S]earch [F]iles')
+nmap_telescope('<leader>sh', 'help_tags', '[S]earch [H]elp')
+nmap_telescope('<leader>sg',
+  ":lua require('telescope').extensions.live_grep_args.live_grep_args(require('telescope.themes').get_dropdown({}))<CR>",
+  '[S]earch by [G]rep', true)
+nmap_telescope('<leader>sd', 'diagnostics', '[S]earch [D]iagnostics')
+nmap_telescope('<leader>sc', 'git_commits', '[S]earch [C]ommits')
+nmap_telescope('<leader>sC', 'git_bcommits', '[S]earch Buffer [C]ommits')
+nmap_telescope('<leader>sb', 'git_branches', '[S]earch [B]ranches')
+nmap_telescope('<leader>ss', 'git_status', '[S]earch Git [S]tatus')
+nmap_telescope('<leader>sS', 'git_stash', '[S]earch Git [S]tash')
+
+nmap_telescope('gr', 'lsp_references', '[G]oto [R]eferences')
+nmap_telescope('gd', 'lsp_definitions', '[G]oto [D]efinitions')
+nmap_telescope('gI', 'lsp_implementations', '[G]oto [I]mplementations')
+nmap_telescope('<leader>D', 'lsp_type_definitions', 'Type [D]efinitions')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })

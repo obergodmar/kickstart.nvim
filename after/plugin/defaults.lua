@@ -8,6 +8,8 @@ else
   vim.opt.shell = 'zsh'
 end
 
+vim.g.netrw_liststyle = 3 -- Tree-style view
+
 vim.opt.backupskip = { '/tmp/*', '/private/tmp/*' }
 vim.opt.inccommand = 'split'
 vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
