@@ -17,9 +17,10 @@ nmap_telescope('<leader><space>', 'buffers', '[ ] Find existing buffers')
 nmap_telescope('<leader>/', 'resume', '[/] Previous picker')
 nmap_telescope('<leader>sf', 'find_files', '[S]earch [F]iles')
 nmap_telescope('<leader>sh', 'help_tags', '[S]earch [H]elp')
-nmap_telescope('<leader>sg',
+nmap_telescope('<leader>sg', 'grep_string', '[S]earch [g]rep')
+nmap_telescope('<leader>sG',
   ":lua require('telescope').extensions.live_grep_args.live_grep_args(require('telescope.themes').get_dropdown({}))<CR>",
-  '[S]earch by [G]rep', true)
+  '[S]earch [G]rep (grep)', true)
 nmap_telescope('<leader>sd', 'diagnostics', '[S]earch [D]iagnostics')
 nmap_telescope('<leader>sc', 'git_commits', '[S]earch [C]ommits')
 nmap_telescope('<leader>sC', 'git_bcommits', '[S]earch Buffer [C]ommits')
