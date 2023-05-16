@@ -315,11 +315,11 @@ local servers = {
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
+  -- phpactor = {},
   tsserver = {},
   html = {},
   cssls = {},
   eslint = {},
-  -- phpactor = {},
   cssmodules_ls = {},
   lua_ls = {
     Lua = {
@@ -353,11 +353,12 @@ mason_lspconfig.setup_handlers {
     if server_name == 'tsserver' then
       root_dir = require("lspconfig").util.root_pattern("package.json")
     end
+
     require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
       settings = servers[server_name], -- settings will not contain root_dir
-      root_dir = root_dir,             -- use root_dir on its own
+      capabilities,
+      on_attach,
+      root_dir,
     }
   end,
 }
