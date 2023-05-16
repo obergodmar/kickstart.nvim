@@ -327,7 +327,7 @@ local servers = {
       telemetry = { enable = false },
     },
   },
-  bashls = {}
+  bashls = {},
 }
 
 -- Setup neovim lua configuration
