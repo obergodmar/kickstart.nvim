@@ -6,7 +6,7 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 
 local nmap_telescope = function(keys, func, desc, custom)
   if not custom then
-    func = ":lua require'telescope.builtin'." .. func .. "(require('telescope.themes').get_dropdown({}))<CR>"
+    func = ":lua require'telescope.builtin'." .. func .. "(require('telescope.themes').get_ivy({}))<CR>"
   end
 
   vim.keymap.set('n', keys, func, { desc = desc })
