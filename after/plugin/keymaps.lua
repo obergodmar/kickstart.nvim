@@ -19,7 +19,7 @@ nmap_telescope('<leader>sf', 'find_files', '[S]earch [F]iles')
 nmap_telescope('<leader>sh', 'help_tags', '[S]earch [H]elp')
 nmap_telescope('<leader>sg', 'grep_string', '[S]earch [g]rep')
 nmap_telescope('<leader>sG',
-  ":lua require('telescope').extensions.live_grep_args.live_grep_args(require('telescope.themes').get_dropdown({}))<CR>",
+  ":lua require('telescope').extensions.live_grep_args.live_grep_args(require('telescope.themes').get_ivy({}))<CR>",
   '[S]earch [G]rep (grep)', true)
 nmap_telescope('<leader>sd', 'diagnostics', '[S]earch [D]iagnostics')
 nmap_telescope('<leader>sc', 'git_commits', '[S]earch [C]ommits')
@@ -32,6 +32,11 @@ nmap_telescope('gr', 'lsp_references', '[G]oto [R]eferences')
 nmap_telescope('gd', 'lsp_definitions', '[G]oto [D]efinitions')
 nmap_telescope('gI', 'lsp_implementations', '[G]oto [I]mplementations')
 nmap_telescope('<leader>D', 'lsp_type_definitions', 'Type [D]efinitions')
+
+-- Lspsaga keymaps
+vim.keymap.set({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "[C]ode [A]ction" })
+vim.keymap.set("n", "rn", "<cmd>Lspsaga rename<CR>", { desc = "[R]e[n]ame" })
+vim.keymap.set("n", "rN", "<cmd>Lspsaga rename ++project<CR>", { desc = "[R]e[n]ame Everywhere" })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
