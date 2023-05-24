@@ -304,6 +304,9 @@ local on_attach = function(_, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 end
 
+local has = vim.fn.has
+local is_win = has "win32" == 1
+
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 --
@@ -314,7 +317,6 @@ local servers = {
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  -- phpactor = {},
   tsserver = {},
   html = {},
   cssls = {},
@@ -328,6 +330,10 @@ local servers = {
   },
   bashls = {},
 }
+
+if not is_win then
+  servers.phpactor = {}
+end
 
 -- Setup neovim lua configuration
 require('neodev').setup()
@@ -353,11 +359,19 @@ mason_lspconfig.setup_handlers {
       root_dir = require("lspconfig").util.root_pattern("package.json")
     end
 
+    if server_name == 'phpactor' then
+      init_options = {
+        ["language_server_phpstan.enabled"] = false,
+        ["language_server_psalm.enabled"] = false,
+      }
+    end
+
     require('lspconfig')[server_name].setup {
       settings = servers[server_name], -- settings will not contain root_dir
       capabilities = capabilities,
       on_attach = on_attach,
       root_dir = root_dir,
+      init_options = init_options
     }
   end,
 }

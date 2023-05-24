@@ -20,8 +20,9 @@ nmap_telescope('<leader>sh', 'help_tags', '[S]earch [H]elp')
 nmap_telescope('<leader>sg', 'grep_string', '[S]earch [g]rep')
 nmap_telescope('<leader>sG',
   ":lua require('telescope').extensions.live_grep_args.live_grep_args(require('telescope.themes').get_ivy({}))<CR>",
-  '[S]earch [G]rep (grep)', true)
+  '[S]earch [G]rep (args)', true)
 nmap_telescope('<leader>sd', 'diagnostics', '[S]earch [D]iagnostics')
+nmap_telescope('<leader>gf', 'git_files', 'Search [G]it [F]iles')
 nmap_telescope('<leader>sc', 'git_commits', '[S]earch [C]ommits')
 nmap_telescope('<leader>sC', 'git_bcommits', '[S]earch Buffer [C]ommits')
 nmap_telescope('<leader>sb', 'git_branches', '[S]earch [B]ranches')
