@@ -12,6 +12,14 @@ local nmap_telescope = function(keys, func, desc, custom)
   vim.keymap.set('n', keys, func, { desc = desc })
 end
 
+local nmap_trouble = function(keys, func, desc, custom)
+  if not custom then
+    func = "<cmd>TroubleToggle " .. func .. "<cr>"
+  end
+
+  vim.keymap.set('n', keys, func, { desc = desc })
+end
+
 nmap_telescope('<leader>?', 'oldfiles', '[?] Find recently opened files')
 nmap_telescope('<leader><space>', 'buffers', '[ ] Find existing buffers')
 nmap_telescope('<leader>/', 'resume', '[/] Previous picker')
@@ -21,18 +29,23 @@ nmap_telescope('<leader>sg', 'grep_string', '[S]earch [g]rep')
 nmap_telescope('<leader>sG',
   ":lua require('telescope').extensions.live_grep_args.live_grep_args(require('telescope.themes').get_ivy({}))<CR>",
   '[S]earch [G]rep (args)', true)
-nmap_telescope('<leader>sd', 'diagnostics', '[S]earch [D]iagnostics')
+
 nmap_telescope('<leader>gf', 'git_files', 'Search [G]it [F]iles')
 nmap_telescope('<leader>sc', 'git_commits', '[S]earch [C]ommits')
 nmap_telescope('<leader>sC', 'git_bcommits', '[S]earch Buffer [C]ommits')
 nmap_telescope('<leader>sb', 'git_branches', '[S]earch [B]ranches')
 nmap_telescope('<leader>ss', 'git_status', '[S]earch Git [S]tatus')
 nmap_telescope('<leader>sS', 'git_stash', '[S]earch Git [S]tash')
-
-nmap_telescope('gr', 'lsp_references', '[G]oto [R]eferences')
-nmap_telescope('gd', 'lsp_definitions', '[G]oto [D]efinitions')
 nmap_telescope('gI', 'lsp_implementations', '[G]oto [I]mplementations')
-nmap_telescope('<leader>D', 'lsp_type_definitions', 'Type [D]efinitions')
+
+nmap_trouble('gr', 'lsp_references', '[G]oto [R]eferences')
+nmap_trouble('gd', 'lsp_definitions', '[G]oto [D]efinitions')
+nmap_trouble('<leader>D', 'lsp_type_definitions', 'Type [D]efinitions')
+
+nmap_trouble('<leader>sd', 'document_diagnostics', '[S]earch [D]iagnostics')
+nmap_trouble('<leader>sD', 'workspace_diagnostics', '[S]earch [D]iagnostics')
+nmap_trouble('<leader>st', "<cmd>TodoTrouble<CR>", '[S]earch [T]ODO', true)
+nmap_trouble('<leader>sq', "quickfix", '[S]how [Q]uick List')
 
 -- Lspsaga keymaps
 vim.keymap.set({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "[C]ode [A]ction" })
