@@ -331,6 +331,13 @@ local servers = {
     },
   },
   bashls = {},
+  gopls = {
+    analyses = {
+      unusedparams = true,
+      shadow = true,
+    },
+    staticcheck = true,
+  },
 }
 
 if not is_win then
@@ -356,9 +363,11 @@ mason_lspconfig.setup {
 
 mason_lspconfig.setup_handlers {
   function(server_name)
+    local lspconfig = require("lspconfig")
+
     local root_dir = nil
     if server_name == 'tsserver' then
-      root_dir = require("lspconfig").util.root_pattern("package.json")
+      root_dir = lspconfig.util.root_pattern("package.json")
     end
 
     if server_name == 'phpactor' then
@@ -366,6 +375,10 @@ mason_lspconfig.setup_handlers {
         ["language_server_phpstan.enabled"] = false,
         ["language_server_psalm.enabled"] = false,
       }
+    end
+
+    if server_name == 'gopls' then
+      root_dir = lspconfig.util.root_pattern('go.work', 'go.mod', '.git')
     end
 
     require('lspconfig')[server_name].setup {
