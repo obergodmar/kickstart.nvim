@@ -366,6 +366,7 @@ mason_lspconfig.setup_handlers {
     local lspconfig = require("lspconfig")
 
     local root_dir = nil
+    local init_options = nil
     if server_name == 'tsserver' then
       root_dir = lspconfig.util.root_pattern("package.json")
     end
@@ -374,6 +375,7 @@ mason_lspconfig.setup_handlers {
       init_options = {
         ["language_server_phpstan.enabled"] = false,
         ["language_server_psalm.enabled"] = false,
+        ["language_server_php_cs_fixer.enabled"] = true,
       }
     end
 
