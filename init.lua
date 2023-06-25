@@ -332,11 +332,13 @@ local servers = {
   },
   bashls = {},
   gopls = {
-    analyses = {
-      unusedparams = true,
-      shadow = true,
-    },
-    staticcheck = true,
+    gopls = {
+      analyses = {
+        unusedparams = true,
+        shadow = true,
+      },
+      staticcheck = true,
+    }
   },
 }
 
@@ -379,6 +381,10 @@ mason_lspconfig.setup_handlers {
         ["language_server_psalm.enabled"] = false,
         ["language_server_php_cs_fixer.enabled"] = true,
       }
+    end
+
+    if server_name == 'lua_ls' then
+      root_dir = lspconfig.util.root_pattern('.git', '*.rockspec')
     end
 
     if server_name == 'gopls' then
