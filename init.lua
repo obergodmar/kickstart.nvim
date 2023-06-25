@@ -342,6 +342,8 @@ local servers = {
 
 if not is_win then
   servers.phpactor = {}
+else
+  servers.intelephense = {}
 end
 
 -- Setup neovim lua configuration
