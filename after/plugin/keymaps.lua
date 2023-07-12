@@ -47,6 +47,21 @@ nmap_trouble('<leader>sD', 'workspace_diagnostics', '[S]earch [D]iagnostics')
 nmap_trouble('<leader>st', "<cmd>TodoTrouble<CR>", '[S]earch [T]ODO', true)
 nmap_trouble('<leader>sq', "quickfix", '[S]how [Q]uick List')
 
+
+vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").open()<CR>', {
+  desc = "Open [S]pectre"
+})
+vim.keymap.set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+  desc = "[S]earch current [W]ord"
+})
+vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+  desc = "[S]earch current [W]ord"
+})
+vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+  desc = "[S]earch on current file"
+})
+
+
 -- Lspsaga keymaps
 vim.keymap.set({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "[C]ode [A]ction" })
 vim.keymap.set("n", "rn", "<cmd>Lspsaga rename<CR>", { desc = "[R]e[n]ame" })
