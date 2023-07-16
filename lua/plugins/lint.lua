@@ -15,8 +15,6 @@ return {
       javascriptreact = { "eslint_d" },
       typescript = { "eslint_d" },
       typescriptreact = { "eslint_d" },
-
-      php = { "phpstan", "phpcs" },
     }
 
     vim.api.nvim_create_autocmd({ "BufRead", "BufWritePost" }, {
