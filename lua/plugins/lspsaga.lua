@@ -12,7 +12,7 @@ return {
     vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", { desc = "Hover documentation" })
 
     require("lspsaga").setup({
-      code_action_prompt = {
+      lightbulb = {
         enable = false,
       },
       ui = {
