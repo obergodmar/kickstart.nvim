@@ -42,7 +42,7 @@ vim.o.completeopt = "menuone,noselect"
 
 vim.o.termguicolors = true
 
-if vim.fn.has("win32") then
+if vim.fn.has("win32") == 1 then
   vim.api.nvim_exec("language en_US", true)
   vim.opt.ff = "unix"
 else

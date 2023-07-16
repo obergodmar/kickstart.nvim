@@ -55,7 +55,7 @@ local servers = {
   },
 }
 
-if not vim.fn.has("win32") then
+if vim.fn.has("win32") ~= 1 then
   servers.phpactor = {}
 else
   servers.intelephense = {}
@@ -68,7 +68,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     {
       "j-hui/fidget.nvim",
-      branch = 'legacy',
+      branch = "legacy",
       config = function()
         require("fidget").setup({})
       end,

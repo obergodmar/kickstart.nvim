@@ -3,7 +3,7 @@ return {
   version = "*",
   config = function()
     local function get_shell()
-      if vim.fn.has("win32") then
+      if vim.fn.has("win32") == 1 then
         return vim.fn.executable("pwsh") and "pwsh" or "powershell"
       end
 
