@@ -101,17 +101,6 @@ return {
 
         local root_dir = nil
         local init_options = nil
-        if server_name == "tsserver" then
-          root_dir = lspconfig.util.root_pattern("package.json")
-        end
-
-        if server_name == "phpactor" then
-          init_options = {
-            ["language_server_phpstan.enabled"] = false,
-            ["language_server_psalm.enabled"] = false,
-            ["language_server_php_cs_fixer.enabled"] = false,
-          }
-        end
 
         if server_name == "lua_ls" then
           root_dir = lspconfig.util.root_pattern(".git", "*.rockspec")

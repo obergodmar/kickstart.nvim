@@ -1,10 +1,9 @@
 return {
   "glepnir/lspsaga.nvim",
   dependencies = {
-    { "nvim-tree/nvim-web-devicons" },
-    { "nvim-treesitter/nvim-treesitter" },
+    "nvim-treesitter/nvim-treesitter",
+    "nvim-tree/nvim-web-devicons",
   },
-  event = "LspAttach",
   config = function()
     vim.keymap.set({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "[C]ode [A]ction" })
     vim.keymap.set("n", "rn", "<cmd>Lspsaga rename<CR>", { desc = "[R]e[n]ame" })

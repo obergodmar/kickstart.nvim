@@ -8,6 +8,6 @@ return {
   },
   config = function()
     vim.g["fern#renderer"] = "nerdfont"
-    vim.api.nvim_set_keymap("n", "<leader>f", ":Fern . -reveal=%<CR>", { desc = "Fern reveal [F]ile" })
+    vim.api.nvim_set_keymap("n", "<leader>F", ":Fern . -reveal=%<CR>", { desc = "Fern reveal [F]ile" })
   end,
 }

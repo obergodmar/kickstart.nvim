@@ -68,16 +68,12 @@ return {
           end,
         },
 
-        -- ["*"] = {
-        --   require("formatter.filetypes.any").remove_trailing_whitespace,
-        -- },
+        ["*"] = {
+          require("formatter.filetypes.any").remove_trailing_whitespace,
+        },
       },
     })
 
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      callback = function()
-        vim.cmd([[FormatWrite]])
-      end,
-    })
+    vim.keymap.set("n", "<leader>f", ":FormatWrite<CR>", { desc = "[F]ormat file" })
   end,
 }

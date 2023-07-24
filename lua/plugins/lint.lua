@@ -17,10 +17,6 @@ return {
       typescriptreact = { "eslint_d" },
     }
 
-    vim.api.nvim_create_autocmd({ "BufRead", "BufWritePost" }, {
-      callback = function()
-        lint.try_lint()
-      end,
-    })
+    vim.keymap.set("n", "<leader>l", lint.try_lint, { desc = "[L]int file" })
   end,
 }
