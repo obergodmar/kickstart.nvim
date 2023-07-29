@@ -1,22 +1,21 @@
 return {
-  "mfussenegger/nvim-lint",
+  'mfussenegger/nvim-lint',
   config = function()
-    local lint = require("lint")
+    local lint = require 'lint'
 
     lint.linters_by_ft = {
-      text = { "vale" },
-      json = { "jsonlint" },
-      markdown = { "vale" },
-      dockerfile = { "hadolint" },
+      lua = { 'luacheck' },
 
-      lua = { "luacheck" },
+      -- There is ESlint lsp for that
+      -- javascript = { 'eslint' },
+      -- javascriptreact = { 'eslint' },
+      -- typescript = { 'eslint' },
+      -- typescriptreact = { 'eslint' },
 
-      javascript = { "eslint_d" },
-      javascriptreact = { "eslint_d" },
-      typescript = { "eslint_d" },
-      typescriptreact = { "eslint_d" },
+      -- Stylelint lsp
+      -- css = { 'stylelint' },
     }
 
-    vim.keymap.set("n", "<leader>l", lint.try_lint, { desc = "[L]int file" })
+    vim.keymap.set('n', '<leader>l', lint.try_lint, { desc = '[L]int file' })
   end,
 }

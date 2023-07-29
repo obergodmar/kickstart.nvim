@@ -1,13 +1,13 @@
 return {
-  "lambdalisue/fern.vim",
+  'lambdalisue/fern.vim',
   dependencies = {
-    "lambdalisue/fern-hijack.vim",
-    "lambdalisue/fern-git-status.vim",
-    "lambdalisue/fern-renderer-nerdfont.vim",
-    "lambdalisue/nerdfont.vim",
+    'lambdalisue/fern-hijack.vim',
+    'lambdalisue/fern-git-status.vim',
+    'lambdalisue/fern-renderer-nerdfont.vim',
+    'lambdalisue/nerdfont.vim',
   },
   config = function()
-    vim.g["fern#renderer"] = "nerdfont"
-    vim.api.nvim_set_keymap("n", "<leader>F", ":Fern . -reveal=%<CR>", { desc = "Fern reveal [F]ile" })
+    vim.g['fern#renderer'] = 'nerdfont'
+    vim.api.nvim_set_keymap('n', '<leader>F', ':Fern . -reveal=%<CR>', { desc = 'Fern reveal [F]ile' })
   end,
 }

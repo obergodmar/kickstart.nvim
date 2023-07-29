@@ -1,5 +1,5 @@
 return {
-  "tpope/vim-fugitive",
+  'tpope/vim-fugitive',
 }
 
 -- Do not need right now

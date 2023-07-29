@@ -1,25 +1,23 @@
 return {
-  "mhartington/formatter.nvim",
+  'mhartington/formatter.nvim',
   config = function()
-    local util = require("formatter.util")
+    local util = require 'formatter.util'
 
     local formatters = {
       lua = {
-        require("formatter.filetypes.lua").stylua,
+        require('formatter.filetypes.lua').stylua,
 
         function()
-          if util.get_current_buffer_file_name() == "special.lua" then
-            return nil
-          end
-
           return {
-            exe = "stylua",
+            exe = 'stylua',
             args = {
-              "--search-parent-directories",
-              "--stdin-filepath",
+              '--config-path',
+              '.stylua.toml',
+              '--search-parent-directories',
+              '--stdin-filepath',
               util.escape_path(util.get_current_buffer_file_path()),
-              "--",
-              "-",
+              '--',
+              '-',
             },
             stdin = true,
           }
@@ -27,35 +25,35 @@ return {
       },
 
       json = {
-        require("formatter.filetypes.json").prettierd,
+        require('formatter.filetypes.json').prettierd,
       },
       css = {
-        require("formatter.filetypes.css").prettierd,
+        require('formatter.filetypes.css').prettierd,
       },
       html = {
-        require("formatter.filetypes.html").prettierd,
+        require('formatter.filetypes.html').prettier,
       },
       javascript = {
-        require("formatter.filetypes.javascript").eslint_d,
-        require("formatter.filetypes.javascript").prettierd,
+        require('formatter.filetypes.javascript').eslint_d,
+        require('formatter.filetypes.javascript').prettier,
       },
       javascriptreact = {
-        require("formatter.filetypes.javascriptreact").eslint_d,
-        require("formatter.filetypes.javascriptreact").prettierd,
+        require('formatter.filetypes.javascriptreact').eslint_d,
+        require('formatter.filetypes.javascriptreact').prettier,
       },
       typescript = {
-        require("formatter.filetypes.typescript").eslint_d,
-        require("formatter.filetypes.typescript").prettierd,
+        require('formatter.filetypes.typescript').eslint_d,
+        require('formatter.filetypes.typescript').prettier,
       },
       typescriptreact = {
-        require("formatter.filetypes.typescriptreact").eslint_d,
-        require("formatter.filetypes.typescriptreact").prettierd,
+        require('formatter.filetypes.typescriptreact').eslint_d,
+        require('formatter.filetypes.typescriptreact').prettier,
       },
 
       php = {
         function()
           return {
-            exe = "phpcbf",
+            exe = 'phpcbf',
             args = {
               util.escape_path(util.get_current_buffer_file_path()),
             },
@@ -66,18 +64,18 @@ return {
       },
     }
 
-    if vim.fn.has("win32") ~= 1 then
-      formatters["*"] = {
-        require("formatter.filetypes.any").remove_trailing_whitespace,
+    if vim.fn.has 'win32' ~= 1 then
+      formatters['*'] = {
+        require('formatter.filetypes.any').remove_trailing_whitespace,
       }
     end
 
-    require("formatter").setup({
+    require('formatter').setup {
       logging = true,
       log_level = vim.log.levels.WARN,
       filetype = formatters,
-    })
+    }
 
-    vim.keymap.set("n", "<leader>f", ":FormatWrite<CR>", { desc = "[F]ormat file" })
+    vim.keymap.set('n', '<leader>f', ':FormatWrite<CR>', { desc = '[F]ormat file' })
   end,
 }

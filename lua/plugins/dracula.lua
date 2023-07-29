@@ -1,17 +1,17 @@
 return {
-  "Mofiqul/dracula.nvim",
+  'Mofiqul/dracula.nvim',
   priority = 1000,
   config = function()
-    local dracula = require("dracula")
+    local dracula = require 'dracula'
     local colors = dracula.colors()
 
-    vim.cmd.colorscheme("dracula")
-    vim.api.nvim_set_hl(0, "Comment", { italic = true, fg = colors.comment })
+    vim.cmd.colorscheme 'dracula'
+    vim.api.nvim_set_hl(0, 'Comment', { italic = true, fg = colors.comment })
 
-    dracula.setup({
+    dracula.setup {
       show_end_of_buffer = true,
       italic_comment = true,
-      lualine_bg_color = "#44475a",
-    })
+      lualine_bg_color = '#44475a',
+    }
   end,
 }
