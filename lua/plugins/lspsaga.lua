@@ -1,25 +1,52 @@
-return {
+---@type LazyPluginSpec
+local P = {
   'glepnir/lspsaga.nvim',
+  event = 'VeryLazy',
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
     'nvim-tree/nvim-web-devicons',
   },
-  config = function()
-    vim.keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>Lspsaga code_action<CR>', { desc = '[C]ode [A]ction' })
-    vim.keymap.set('n', 'rn', '<cmd>Lspsaga rename<CR>', { desc = '[R]e[n]ame' })
-    vim.keymap.set('n', 'rN', '<cmd>Lspsaga rename ++project<CR>', { desc = '[R]e[n]ame Everywhere' })
-    vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<CR>', { desc = 'Hover documentation' })
-
-    require('lspsaga').setup {
-      lightbulb = {
-        enable = false,
-      },
-      ui = {
-        devicon = true,
-      },
-      symbol_in_winbar = {
-        respect_root = true,
-      },
-    }
-  end,
+  opts = {
+    lightbulb = {
+      enable = false,
+    },
+    ui = {
+      devicon = true,
+    },
+    symbol_in_winbar = {
+      respect_root = true,
+    },
+  },
+  keys = {
+    {
+      '<leader>ca',
+      '<cmd>Lspsaga code_action<CR>',
+      id = 'lspsaga_code_action',
+      desc = '[C]ode [A]ction',
+      mode = { 'n', 'v' },
+    },
+    {
+      'rn',
+      '<cmd>Lspsaga rename<CR>',
+      id = 'lspsaga_rename',
+      desc = '[R]e[n]ame',
+      mode = 'n',
+    },
+    {
+      'rN',
+      '<cmd>Lspsaga rename ++project<CR>',
+      id = 'lspsaga_rename_all',
+      desc = '[R]e[n]ame Everywhere',
+      mode = 'n',
+    },
+    {
+      'K',
+      '<cmd>Lspsaga hover_doc<CR>',
+      id = 'lspsaga_hover_doc',
+      desc = 'Hover documentation',
+      mode = 'n',
+    },
+  },
 }
+
+return P

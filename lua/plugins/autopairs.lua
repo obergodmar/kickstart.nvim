@@ -1,6 +1,8 @@
-return {
-  'windwp/nvim-autopairs',
-  config = function()
-    require('nvim-autopairs').setup {}
-  end,
+---@type LazyPluginSpec
+local P = {
+  'echasnovski/mini.pairs',
+  event = 'VeryLazy',
+  opts = {},
 }
+
+return P

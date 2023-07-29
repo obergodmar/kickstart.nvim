@@ -1,6 +1,8 @@
-return {
+---@type LazyPluginSpec
+local P = {
   'chentoast/marks.nvim',
-  config = function()
-    require('marks').setup {}
-  end,
+  event = 'VeryLazy',
+  opts = {},
 }
+
+return P

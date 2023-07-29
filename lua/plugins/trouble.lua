@@ -1,45 +1,85 @@
-return {
+local function get_trouble_cmd(fn_name)
+  return '<cmd>TroubleToggle ' .. fn_name .. '<cr>'
+end
+
+---@type LazyPluginSpec
+local P = {
   'folke/trouble.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
-  config = function()
-    local nmap = function(keys, func, desc, custom)
-      if not custom then
-        func = '<cmd>TroubleToggle ' .. func .. '<cr>'
-      end
-
-      vim.keymap.set('n', keys, func, { desc = desc })
-    end
-
-    require('trouble').setup {
-      padding = false,
-      action_keys = {
-        close = 'q',
-        cancel = '<esc>',
-        refresh = 'r',
-        jump_close = { '<cr>', '<tab>' },
-        open_split = { '<c-x>' },
-        open_vsplit = { '<c-v>' },
-        open_tab = { '<c-t>' },
-        jump = { 'o' },
-        toggle_mode = 'm',
-        switch_severity = 's',
-        toggle_preview = 'P',
-        hover = 'K',
-        preview = 'p',
-        close_folds = { 'zM', 'zm' },
-        open_folds = { 'zR', 'zr' },
-        toggle_fold = { 'zA', 'za' },
-        previous = 'k',
-        next = 'j',
-      },
-    }
-
-    nmap('gr', 'lsp_references', '[G]oto [R]eferences')
-    nmap('gd', 'lsp_definitions', '[G]oto [D]efinitions')
-    nmap('<leader>D', 'lsp_type_definitions', 'Type [D]efinitions')
-    nmap('<leader>sd', 'document_diagnostics', '[S]earch [D]iagnostics')
-    nmap('<leader>sD', 'workspace_diagnostics', '[S]earch [D]iagnostics')
-    nmap('<leader>st', '<cmd>TodoTrouble<CR>', '[S]earch [T]ODO', true)
-    nmap('<leader>sq', 'quickfix', '[S]how [Q]uick List')
-  end,
+  opts = {
+    padding = false,
+    action_keys = {
+      close = 'q',
+      cancel = '<esc>',
+      refresh = 'r',
+      jump_close = { '<cr>', '<tab>' },
+      open_split = { '<c-x>' },
+      open_vsplit = { '<c-v>' },
+      open_tab = { '<c-t>' },
+      jump = { 'o' },
+      toggle_mode = 'm',
+      switch_severity = 's',
+      toggle_preview = 'P',
+      hover = 'K',
+      preview = 'p',
+      close_folds = { 'zM', 'zm' },
+      open_folds = { 'zR', 'zr' },
+      toggle_fold = { 'zA', 'za' },
+      previous = 'k',
+      next = 'j',
+    },
+  },
+  keys = {
+    {
+      'gr',
+      get_trouble_cmd 'lsp_references',
+      id = 'trouble_refs',
+      desc = '[G]oto [R]eferences',
+      mode = 'n',
+    },
+    {
+      'gd',
+      get_trouble_cmd 'lsp_definitions',
+      id = 'trouble_defs',
+      desc = '[G]oto [D]efinitions',
+      mode = 'n',
+    },
+    {
+      '<leader>D',
+      get_trouble_cmd 'lsp_type_definitions',
+      id = 'trouble_type_defs',
+      desc = 'Type [D]efinitions',
+      mode = 'n',
+    },
+    {
+      '<leader>sd',
+      get_trouble_cmd 'document_diagnostics',
+      id = 'trouble_file_diagnostics',
+      desc = '[S]earch [D]iagnostics',
+      mode = 'n',
+    },
+    {
+      '<leader>sD',
+      get_trouble_cmd 'workspace_diagnostics',
+      id = 'trouble_workspace_diagnostics',
+      desc = '[S]earch [D]iagnostics',
+      mode = 'n',
+    },
+    {
+      '<leader>st',
+      '<cmd>TodoTrouble<CR>',
+      id = 'trouble_todo',
+      desc = '[S]earch [T]ODO',
+      mode = 'n',
+    },
+    {
+      '<leader>sq',
+      get_trouble_cmd 'quickfix',
+      id = 'trouble_quickfix',
+      desc = '[S]how [Q]uick List',
+      mode = 'n',
+    },
+  },
 }
+
+return P

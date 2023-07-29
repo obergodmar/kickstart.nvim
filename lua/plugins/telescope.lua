@@ -1,7 +1,11 @@
--- Fuzzy Finder (files, lsp, etc)
-return {
+---@return string
+local get_ts_cmd = function(fn_name)
+  return "<cmd>lua require'telescope.builtin'." .. fn_name .. "(require('telescope.themes').get_ivy({}))<cr>"
+end
+
+---@type LazyPluginSpec
+local P = {
   'nvim-telescope/telescope.nvim',
-  version = '*',
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope-live-grep-args.nvim',
@@ -15,50 +19,109 @@ return {
       end,
     },
   },
-  config = function()
-    local nmap = function(keys, func, desc, custom)
-      if not custom then
-        func = ":lua require'telescope.builtin'." .. func .. "(require('telescope.themes').get_ivy({}))<CR>"
-      end
-
-      vim.keymap.set('n', keys, func, { desc = desc })
-    end
-
+  config = function(_, opts)
     local telescope = require 'telescope'
-    telescope.setup {
-      defaults = {
-        mappings = {
-          i = {
-            ['<C-u>'] = require('telescope.actions').cycle_history_next,
-            ['<C-d>'] = require('telescope.actions').cycle_history_prev,
-            ['<C-s>'] = require('telescope.actions').cycle_previewers_next,
-            ['<C-a>'] = require('telescope.actions').cycle_previewers_prev,
-          },
-        },
-      },
-    }
 
+    telescope.setup(opts)
     telescope.load_extension 'live_grep_args'
     pcall(telescope.load_extension, 'fzf')
+  end,
+  keys = function()
+    return {
+      {
+        '<leader>?',
+        get_ts_cmd 'oldfiles',
+        id = 'ts_oldfiles',
+        desc = '[?] Find recently opened files',
+        mode = 'n',
+      },
+      {
+        '<leader><space>',
+        get_ts_cmd 'buffers',
+        id = 'ts_buffers',
+        desc = '[ ] Find existing buffers',
+        mode = 'n',
+      },
+      {
+        '<leader>/',
+        get_ts_cmd 'resume',
+        id = 'ts_resume_search',
+        desc = '[/] Previous picker',
+        mode = 'n',
+      },
+      {
+        id = 'ts_files',
+        '<leader>sf',
+        get_ts_cmd 'find_files',
+        desc = '[S]earch [F]iles',
+        mode = 'n',
+      },
+      {
 
-    nmap('<leader>?', 'oldfiles', '[?] Find recently opened files')
-    nmap('<leader><space>', 'buffers', '[ ] Find existing buffers')
-    nmap('<leader>/', 'resume', '[/] Previous picker')
-    nmap('<leader>sf', 'find_files', '[S]earch [F]iles')
-    nmap('<leader>sh', 'help_tags', '[S]earch [H]elp')
-    nmap('<leader>sg', 'grep_string', '[S]earch [g]rep')
-    nmap(
-      '<leader>sG',
-      ":lua require('telescope').extensions.live_grep_args.live_grep_args(require('telescope.themes').get_ivy({}))<CR>",
-      '[S]earch [G]rep (args)',
-      true
-    )
-    nmap('<leader>gf', 'git_files', 'Search [G]it [F]iles')
-    nmap('<leader>sc', 'git_commits', '[S]earch [C]ommits')
-    nmap('<leader>sC', 'git_bcommits', '[S]earch Buffer [C]ommits')
-    nmap('<leader>sb', 'git_branches', '[S]earch [B]ranches')
-    nmap('<leader>ss', 'git_status', '[S]earch Git [S]tatus')
-    nmap('<leader>sS', 'git_stash', '[S]earch Git [S]tash')
-    nmap('gI', 'lsp_implementations', '[G]oto [I]mplementations')
+        '<leader>sg',
+        'grep_string',
+        id = 'ts_grep_string',
+        desc = '[S]earch [g]rep',
+        mode = 'n',
+      },
+      {
+        '<leader>sG',
+        "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args(require('telescope.themes').get_ivy {})<cr>",
+        id = 'ts_grep_string_args',
+        desc = '[S]earch [G]rep (args)',
+        mode = 'n',
+      },
+      {
+        '<leader>gf',
+        get_ts_cmd 'git_files',
+        id = 'ts_git_files',
+        desc = 'Search [G]it [F]iles',
+        mode = 'n',
+      },
+      {
+        '<leader>sc',
+        get_ts_cmd 'git_commits',
+        id = 'ts_git_commits',
+        desc = '[S]earch [C]ommits',
+        mode = 'n',
+      },
+      {
+        '<leader>sC',
+        get_ts_cmd 'git_bcommits',
+        id = 'ts_git_buffer_commits',
+        desc = '[S]earch Buffer [C]ommits',
+        mode = 'n',
+      },
+      {
+        '<leader>sb',
+        get_ts_cmd 'git_branches',
+        id = 'ts_git_branches',
+        desc = '[S]earch [B]ranches',
+        mode = 'n',
+      },
+      {
+        '<leader>ss',
+        get_ts_cmd 'git_status',
+        id = 'ts_git_status',
+        desc = '[S]earch Git [S]tatus',
+        mode = 'n',
+      },
+      {
+        '<leader>sS',
+        get_ts_cmd 'git_stash',
+        id = 'ts_git_stash',
+        desc = '[S]earch Git [S]tash',
+        mode = 'n',
+      },
+      {
+        'gI',
+        get_ts_cmd 'lsp_implementations',
+        id = 'ts_impl',
+        desc = '[G]oto [I]mplementations',
+        mode = 'n',
+      },
+    }
   end,
 }
+
+return P

@@ -1,7 +1,9 @@
-return {
+---@type LazyPluginSpec
+local P = {
   'folke/todo-comments.nvim',
+  event = 'VeryLazy',
   dependencies = { 'nvim-lua/plenary.nvim' },
-  config = function()
-    require('todo-comments').setup {}
-  end,
+  opts = {},
 }
+
+return P

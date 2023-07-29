@@ -1,7 +1,9 @@
 -- Useful plugin to show you pending keybinds.
-return {
+---@type LazyPluginSpec
+local P = {
   'folke/which-key.nvim',
-  config = function()
-    require('which-key').setup {}
-  end,
+  event = 'VeryLazy',
+  opts = {},
 }
+
+return P

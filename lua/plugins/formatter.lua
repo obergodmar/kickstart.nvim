@@ -1,5 +1,21 @@
-return {
+---@type LazyPluginSpec
+local P = {
   'mhartington/formatter.nvim',
+  event = 'VeryLazy',
+  opts = {
+    logging = true,
+    log_level = vim.log.levels.WARN,
+    filetype = formatters,
+  },
+  keys = {
+    {
+      '<leader>f',
+      ':FormatWrite<CR>',
+      id = 'format_file',
+      desc = '[F]ormat file',
+      mode = 'n',
+    },
+  },
   config = function()
     local util = require 'formatter.util'
 
@@ -75,7 +91,7 @@ return {
       log_level = vim.log.levels.WARN,
       filetype = formatters,
     }
-
-    vim.keymap.set('n', '<leader>f', ':FormatWrite<CR>', { desc = '[F]ormat file' })
   end,
 }
+
+return P

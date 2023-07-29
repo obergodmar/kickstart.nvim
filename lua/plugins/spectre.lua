@@ -1,22 +1,41 @@
-return {
+---@type LazyPluginSpec
+local P = {
   'nvim-pack/nvim-spectre',
+  event = 'VeryLazy',
   dependencies = {
     'nvim-lua/plenary.nvim',
   },
-  config = function()
-    require('spectre').setup {}
-
-    local nmap = function(keys, func, desc, mode)
-      if desc then
-        desc = 'Spectre: ' .. desc
-      end
-
-      vim.keymap.set(mode or 'n', keys, func, { desc = desc })
-    end
-
-    nmap('<leader>S', '<cmd>lua require("spectre").open()<CR>', 'Open')
-    nmap('<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', '[S]earch current [W]ord')
-    nmap('<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', '[S]earch current [W]ord', 'v')
-    nmap('<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', '[S]earch on current file')
-  end,
+  opts = {},
+  keys = {
+    {
+      '<leader>S',
+      '<cmd>lua require("spectre").open()<CR>',
+      id = 'spectre_open',
+      desc = 'Open',
+      mode = 'n',
+    },
+    {
+      '<leader>sw',
+      '<cmd>lua require("spectre").open_visual({select_word=true})<CR>',
+      id = 'spectre_search_current',
+      desc = '[S]earch current [W]ord',
+      mode = 'n',
+    },
+    {
+      '<leader>sw',
+      '<esc><cmd>lua require("spectre").open_visual()<CR>',
+      id = 'spectre_search_current_visual',
+      desc = '[S]earch current [W]ord',
+      mode = 'v',
+    },
+    {
+      '<leader>sp',
+      '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>',
+      id = 'spectre_search_in_current_file',
+      desc = '[S]earch in current file',
+      mode = 'n',
+    },
+  },
 }
+
+return P

@@ -1,8 +1,8 @@
-return {
+---@type LazyPluginSpec
+local P = {
   'kylechui/nvim-surround',
-  version = '*',
   event = 'VeryLazy',
-  config = function()
-    require('nvim-surround').setup {}
-  end,
+  opts = {},
 }
+
+return P

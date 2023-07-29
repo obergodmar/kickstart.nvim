@@ -1,6 +1,8 @@
-return {
+---@type LazyPluginSpec
+local P = {
   'xiyaowong/transparent.nvim',
-  config = function()
-    require('transparent').setup {}
-  end,
+  enabled = false,
+  opts = {},
 }
+
+return P

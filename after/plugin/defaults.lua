@@ -1,50 +1,49 @@
-vim.g.netrw_liststyle = 3 -- Tree-style view
-vim.opt.backupskip = { '/tmp/*', '/private/tmp/*' }
-vim.opt.inccommand = 'split'
-vim.opt.smarttab = true
-vim.opt.breakindent = true
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
-vim.opt.wrap = false
-vim.opt.backspace = { 'start', 'eol', 'indent' }
+local opt = vim.opt
 
-vim.opt.title = true
-vim.opt.titlestring = '%F'
+opt.inccommand = 'split'
+opt.smarttab = true
+opt.backspace = { 'start', 'eol', 'indent' }
+opt.title = true
+opt.titlestring = '%F'
+opt.cursorline = true
+opt.expandtab = true -- Use spaces instead of tabs
+opt.pumblend = 10 -- Popup blend
+opt.mouse = 'a' -- Enable mouse mode
+opt.clipboard = 'unnamedplus'
+opt.breakindent = true -- Enable break indent
+opt.shiftround = true -- Round indent
+opt.shiftwidth = 2 -- Size of an indent
+opt.undofile = true -- Save undo history
+opt.ignorecase = true
+opt.showmode = false -- Dont show mode since we have a statusline
+opt.sidescrolloff = 8 -- Columns of context
+opt.signcolumn = 'yes' -- Always show the signcolumn, otherwise it would shift the text each time
+opt.smartcase = true -- Don't ignore case with capitals
+opt.smartindent = true -- Insert indents automatically
+opt.spelllang = { 'en' }
+opt.splitbelow = true -- Put new windows below current
+opt.splitright = true -- Put new windows right of current
+opt.tabstop = 2 -- Number of spaces tabs count for
+opt.termguicolors = true -- True color support
+opt.updatetime = 250
+opt.timeout = true
+opt.timeoutlen = 300
+opt.completeopt = 'menuone,noselect'
+opt.wildmode = 'longest:full,full' -- Command-line completion mode
+opt.winminwidth = 5 -- Minimum window width
+opt.wrap = false -- Disable line wrap
 
-vim.o.hlsearch = true
-
--- Enable mouse mode
-vim.o.mouse = 'a'
-
--- Sync clipboard between OS and Neovim.
-vim.o.clipboard = 'unnamedplus'
-
--- Enable break indent
-vim.o.breakindent = true
-
--- Save undo history
-vim.o.undofile = true
-
--- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
--- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
-
--- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeout = true
-vim.o.timeoutlen = 300
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
-
-vim.o.termguicolors = true
+if vim.fn.has 'nvim-0.9.0' == 1 then
+  opt.splitkeep = 'screen'
+  opt.shortmess:append { C = true }
+end
 
 if vim.fn.has 'win32' == 1 then
   vim.api.nvim_exec('language en_US', true)
-  vim.opt.ff = 'unix'
+  opt.ff = 'unix'
 else
-  vim.opt.shell = 'zsh'
+  opt.shell = 'zsh'
 end
+
+-- Fix markdown indentation settings
+vim.g.markdown_recommended_style = 0

@@ -1,6 +1,8 @@
-return {
+---@type LazyPluginSpec
+local P = {
   'numToStr/Comment.nvim',
-  config = function()
-    require('Comment').setup {}
-  end,
+  event = 'VeryLazy',
+  opts = {},
 }
+
+return P
