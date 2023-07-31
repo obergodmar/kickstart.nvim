@@ -2,11 +2,6 @@
 local P = {
   'mhartington/formatter.nvim',
   event = 'VeryLazy',
-  opts = {
-    logging = true,
-    log_level = vim.log.levels.WARN,
-    filetype = formatters,
-  },
   keys = {
     {
       '<leader>f',
@@ -47,23 +42,23 @@ local P = {
         require('formatter.filetypes.css').prettierd,
       },
       html = {
-        require('formatter.filetypes.html').prettier,
+        require('formatter.filetypes.html').prettierd,
       },
       javascript = {
         require('formatter.filetypes.javascript').eslint_d,
-        require('formatter.filetypes.javascript').prettier,
+        require('formatter.filetypes.javascript').prettierd,
       },
       javascriptreact = {
         require('formatter.filetypes.javascriptreact').eslint_d,
-        require('formatter.filetypes.javascriptreact').prettier,
+        require('formatter.filetypes.javascriptreact').prettierd,
       },
       typescript = {
         require('formatter.filetypes.typescript').eslint_d,
-        require('formatter.filetypes.typescript').prettier,
+        require('formatter.filetypes.typescript').prettierd,
       },
       typescriptreact = {
         require('formatter.filetypes.typescriptreact').eslint_d,
-        require('formatter.filetypes.typescriptreact').prettier,
+        require('formatter.filetypes.typescriptreact').prettierd,
       },
 
       php = {

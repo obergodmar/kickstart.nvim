@@ -13,13 +13,14 @@ local P = {
     vim.api.nvim_set_hl(0, 'CmpGhostText', { link = 'Comment', default = true })
     local cmp = require 'cmp'
     local defaults = require 'cmp.config.default'()
+    local luasnip = require('luasnip')
     return {
       completion = {
         completeopt = 'menu,menuone,noinsert',
       },
       snippet = {
         expand = function(args)
-          require('luasnip').lsp_expand(args.body)
+          luasnip.lsp_expand(args.body)
         end,
       },
       mapping = cmp.mapping.preset.insert {
