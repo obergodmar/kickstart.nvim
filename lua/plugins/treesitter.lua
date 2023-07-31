@@ -32,6 +32,8 @@ return {
         'json',
         'json5',
         'markdown',
+        'markdown_inline',
+        'regex',
       },
       auto_install = false,
       highlight = { enable = true },
