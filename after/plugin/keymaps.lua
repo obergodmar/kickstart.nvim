@@ -13,10 +13,10 @@ map('n', '<C-Up>', '<C-w>k', { desc = 'Go to upper window', remap = true })
 map('n', '<C-Right>', '<C-w>l', { desc = 'Go to right window', remap = true })
 
 -- Resize window using <ctrl> arrow keys
-map('n', '<C-w>Up', '<cmd>resize +2<cr>', { desc = 'Increase window height' })
-map('n', '<C-w>Down', '<cmd>resize -2<cr>', { desc = 'Decrease window height' })
-map('n', '<C-w>Left', '<cmd>vertical resize -2<cr>', { desc = 'Decrease window width' })
-map('n', '<C-w>Right', '<cmd>vertical resize +2<cr>', { desc = 'Increase window width' })
+map('n', '<M-Up>', '<cmd>resize +2<cr>', { desc = 'Increase window height', remap = true })
+map('n', '<M-Down>', '<cmd>resize -2<cr>', { desc = 'Decrease window height', remap = true })
+map('n', '<M-Left>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease window width', remap = true })
+map('n', '<M-Right>', '<cmd>vertical resize +2<cr>', { desc = 'Increase window width', remap = true })
 
 -- Diagnostic keymaps
 map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
