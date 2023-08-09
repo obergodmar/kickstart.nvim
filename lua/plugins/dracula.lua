@@ -1,6 +1,7 @@
 ---@type LazyPluginSpec
 local P = {
   'Mofiqul/dracula.nvim',
+  enabled = false,
   opts = {
     show_end_of_buffer = true,
     italic_comment = true,
