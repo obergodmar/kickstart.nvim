@@ -18,12 +18,29 @@ local P = {
         return vim.fn.executable 'cmake' == 1
       end,
     },
+    {
+      'aaronhallaert/advanced-git-search.nvim',
+    },
   },
-  config = function(_, opts)
+  config = function()
     local telescope = require 'telescope'
 
-    telescope.setup(opts)
+    telescope.setup {
+      defaults = {
+        mappings = {
+          i = {
+            ['<C-u>'] = require('telescope.actions').cycle_history_next,
+            ['<C-d>'] = require('telescope.actions').cycle_history_prev,
+            ['<C-s>'] = require('telescope.actions').cycle_previewers_next,
+            ['<C-a>'] = require('telescope.actions').cycle_previewers_prev,
+          },
+        },
+      },
+      extensions = {},
+    }
+
     telescope.load_extension 'live_grep_args'
+    telescope.load_extension 'advanced_git_search'
     pcall(telescope.load_extension, 'fzf')
   end,
   keys = function()

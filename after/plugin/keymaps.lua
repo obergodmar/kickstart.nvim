@@ -58,3 +58,13 @@ map('n', '<leader>fn', '<cmd>enew<cr>', { desc = 'New File' })
 
 -- quit
 map('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit all' })
+
+-- copy file path
+--relative path
+map('n', '<leader>cr', '<cmd>let @+ = expand("%")<cr>', { desc = '[C]opy [R]elative path' })
+
+--full path
+map('n', '<leader>cf', '<cmd>let @+ = expand("%:p")<cr>', { desc = '[C]opy [F]ull path' })
+
+--just filename
+map('n', '<leader>cn', '<cmd>:let @+ = expand("%:t")<cr>', { desc = '[C]opy file [N]ame' })
