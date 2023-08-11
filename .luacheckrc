@@ -1,5 +1,5 @@
 return {
-globals = {
-		"vim"
-	}
+  globals = {
+    'vim',
+  },
 }
