@@ -3,7 +3,7 @@ local P = {
   'rebelot/kanagawa.nvim',
   opts = {
     theme = 'wave',
-    keywordStyle = { italic = false },
+    keywordStyle = { italic = true },
     commentStyle = { italic = true },
   },
   init = function()
