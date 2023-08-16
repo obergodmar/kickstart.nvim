@@ -2,7 +2,11 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 if vim.g.neovide then
-  vim.o.guifont = 'Iosevka Nerd Font:b:h15'
+  if vim.fn.has 'win32' == 1 then
+    vim.o.guifont = 'Iosevka Nerd Font:b:h12'
+  else
+    vim.o.guifont = 'Iosevka Nerd Font:b:h15'
+  end
   vim.g.neovide_scroll_animation_length = 0.3
   vim.g.neovide_refresh_rate = 60
   vim.g.neovide_cursor_antialiasing = true
