@@ -34,6 +34,7 @@ return {
         'markdown',
         'markdown_inline',
         'regex',
+        'tsx'
       },
       auto_install = false,
       highlight = { enable = true },
