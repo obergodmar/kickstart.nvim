@@ -11,8 +11,8 @@ local P = {
   },
   opts = function()
     vim.api.nvim_set_hl(0, 'CmpGhostText', { link = 'Comment', default = true })
-    local cmp = require 'cmp'
-    local defaults = require 'cmp.config.default'()
+    local cmp = require('cmp')
+    local defaults = require('cmp.config.default')()
     local luasnip = require('luasnip')
     return {
       completion = {
@@ -23,16 +23,16 @@ local P = {
           luasnip.lsp_expand(args.body)
         end,
       },
-      mapping = cmp.mapping.preset.insert {
+      mapping = cmp.mapping.preset.insert({
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-z>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm { select = true }, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-        ['<S-CR>'] = cmp.mapping.confirm {
+        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ['<S-CR>'] = cmp.mapping.confirm({
           behavior = cmp.ConfirmBehavior.Replace,
           select = true,
-        }, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         ['<Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
@@ -51,13 +51,13 @@ local P = {
             fallback()
           end
         end, { 'i', 's' }),
-      },
-      sources = cmp.config.sources {
+      }),
+      sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'buffer' },
         { name = 'path' },
-      },
+      }),
       formatting = {},
       experimental = {
         ghost_text = {

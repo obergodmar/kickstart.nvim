@@ -5,9 +5,9 @@ return {
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
   config = function()
-    pcall(require('nvim-treesitter.install').update { with_sync = true })
+    pcall(require('nvim-treesitter.install').update({ with_sync = true }))
 
-    require('nvim-treesitter.configs').setup {
+    require('nvim-treesitter.configs').setup({
       ensure_installed = {
         'c',
         'cpp',
@@ -34,7 +34,7 @@ return {
         'markdown',
         'markdown_inline',
         'regex',
-        'tsx'
+        'tsx',
       },
       auto_install = false,
       highlight = { enable = true },
@@ -95,6 +95,6 @@ return {
       autotag = {
         enable = true,
       },
-    }
+    })
   end,
 }

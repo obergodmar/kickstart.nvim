@@ -30,10 +30,20 @@ vim.api.nvim_set_keymap('n', '<leader>to', ':tabonly<CR>', { noremap = true, des
 vim.api.nvim_set_keymap('n', '<leader>tn', ':tabn<CR>', { noremap = true, desc = '[T]ab [N]ext' })
 vim.api.nvim_set_keymap('n', '<leader>tp', ':tabp<CR>', { noremap = true, desc = '[Tab] [P]revious' })
 -- move current tab to previous position
-vim.api.nvim_set_keymap('n', '<leader>tmp', ':-tabmove<CR>', { noremap = true, desc = '[T]ab [M]ove to [P]revious position' })
+vim.api.nvim_set_keymap(
+  'n',
+  '<leader>tmp',
+  ':-tabmove<CR>',
+  { noremap = true, desc = '[T]ab [M]ove to [P]revious position' }
+)
 --
 -- move current tab to next position
-vim.api.nvim_set_keymap('n', '<leader>tmn', ':+tabmove<CR>', { noremap = true, desc = '[Tab] [M]ove to [N]ext position ' })
+vim.api.nvim_set_keymap(
+  'n',
+  '<leader>tmn',
+  ':+tabmove<CR>',
+  { noremap = true, desc = '[Tab] [M]ove to [N]ext position ' }
+)
 
 -- Clear search with <esc>
 map({ 'i', 'n' }, '<esc>', '<cmd>noh<cr><esc>', { desc = 'Escape and clear hlsearch' })
@@ -52,9 +62,6 @@ map('o', 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev search result
 -- better indenting
 map('v', '<', '<gv')
 map('v', '>', '>gv')
-
--- new file
-map('n', '<leader>fn', '<cmd>enew<cr>', { desc = 'New File' })
 
 -- quit
 map('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit all' })

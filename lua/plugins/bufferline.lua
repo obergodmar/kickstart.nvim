@@ -7,7 +7,7 @@ local P = {
     { '<leader>bP', '<Cmd>BufferLineGroupClose ungrouped<CR>', desc = 'Delete non-pinned buffers' },
   },
   opts = {
-  ---@type bufferline.Options
+    ---@type bufferline.Options
     options = {
       mode = 'tabs',
       numbers = 'both',
