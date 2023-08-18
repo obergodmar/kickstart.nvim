@@ -2,6 +2,7 @@
 local P = {
   'pmizio/typescript-tools.nvim',
   dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+  enabled = false,
   opts = {
     settings = {
       -- spawn additional tsserver instance to calculate diagnostics on it

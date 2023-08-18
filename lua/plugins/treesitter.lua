@@ -8,6 +8,9 @@ return {
     pcall(require('nvim-treesitter.install').update({ with_sync = true }))
 
     require('nvim-treesitter.configs').setup({
+      modules = {},
+      ignore_install = {},
+      sync_install = true,
       ensure_installed = {
         'c',
         'cpp',
@@ -36,7 +39,7 @@ return {
         'regex',
         'tsx',
       },
-      auto_install = false,
+      auto_install = true,
       highlight = { enable = true },
       indent = { enable = true, disable = { 'python' } },
       incremental_selection = {

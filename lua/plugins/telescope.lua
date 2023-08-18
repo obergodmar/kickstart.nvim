@@ -27,6 +27,9 @@ local P = {
 
     telescope.setup({
       defaults = {
+        preview = {
+          treesitter = false,
+        },
         mappings = {
           i = {
             ['<C-u>'] = require('telescope.actions').cycle_history_next,
@@ -43,6 +46,8 @@ local P = {
     telescope.load_extension('advanced_git_search')
     pcall(telescope.load_extension, 'fzf')
   end,
+
+  ---@diagnostic disable-next-line: assign-type-mismatch
   keys = function()
     return {
       {
