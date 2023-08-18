@@ -17,22 +17,6 @@ local P = {
     local formatters = {
       lua = {
         require('formatter.filetypes.lua').stylua,
-
-        function()
-          return {
-            exe = 'stylua',
-            args = {
-              '--config-path',
-              '.stylua.toml',
-              '--search-parent-directories',
-              '--stdin-filepath',
-              util.escape_path(util.get_current_buffer_file_path()),
-              '--',
-              '-',
-            },
-            stdin = true,
-          }
-        end,
       },
 
       json = {
