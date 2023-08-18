@@ -1,6 +1,6 @@
 local function get_shell()
-  if vim.fn.has 'win32' == 1 then
-    return vim.fn.executable 'pwsh' and 'pwsh' or 'powershell'
+  if vim.fn.has('win32') == 1 then
+    return vim.fn.executable('pwsh') and 'pwsh' or 'powershell'
   end
 
   return vim.shell
@@ -30,7 +30,7 @@ local P = {
   config = function(_, opts)
     require('toggleterm').setup(opts)
 
-    vim.cmd 'autocmd! TermOpen term://* lua set_terminal_keymaps()'
+    vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
   end,
 }
 

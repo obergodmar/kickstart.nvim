@@ -82,16 +82,16 @@ return {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-    require('mason').setup {}
+    require('mason').setup({})
 
-    local mason_lspconfig = require 'mason-lspconfig'
-    mason_lspconfig.setup {
+    local mason_lspconfig = require('mason-lspconfig')
+    mason_lspconfig.setup({
       ensure_installed = vim.tbl_keys(servers),
-    }
+    })
 
-    mason_lspconfig.setup_handlers {
+    mason_lspconfig.setup_handlers({
       function(server_name)
-        local lspconfig = require 'lspconfig'
+        local lspconfig = require('lspconfig')
 
         local root_dir = nil
         local init_options = nil
@@ -119,15 +119,15 @@ return {
           }
         end
 
-        require('lspconfig')[server_name].setup {
+        require('lspconfig')[server_name].setup({
           settings = servers[server_name],
           capabilities = capabilities,
           on_attach = on_attach,
           root_dir = root_dir,
           init_options = init_options,
           filetypes = filetypes,
-        }
+        })
       end,
-    }
+    })
   end,
 }

@@ -12,7 +12,7 @@ local P = {
     },
   },
   config = function()
-    local util = require 'formatter.util'
+    local util = require('formatter.util')
 
     local formatters = {
       lua = {
@@ -75,17 +75,17 @@ local P = {
       },
     }
 
-    if vim.fn.has 'win32' ~= 1 then
+    if vim.fn.has('win32') ~= 1 then
       formatters['*'] = {
         require('formatter.filetypes.any').remove_trailing_whitespace,
       }
     end
 
-    require('formatter').setup {
+    require('formatter').setup({
       logging = true,
       log_level = vim.log.levels.WARN,
       filetype = formatters,
-    }
+    })
   end,
 }
 

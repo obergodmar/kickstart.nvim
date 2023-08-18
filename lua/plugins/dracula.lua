@@ -8,7 +8,7 @@ local P = {
     lualine_bg_color = '#44475a',
   },
   init = function()
-    vim.cmd.colorscheme 'dracula'
+    vim.cmd.colorscheme('dracula')
   end,
 }
 

@@ -35,8 +35,8 @@ local P = {
       inc_rename = true,
     },
     cmdline = {
-      view = 'cmdline'
-    }
+      view = 'cmdline',
+    },
   },
   -- stylua: ignore
   keys = {
