@@ -33,7 +33,7 @@ opt.wildmode = 'longest:full,full' -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 
-if vim.fn.has('win32') == 1 then
+if vim.fn.has 'win32' == 1 then
   vim.api.nvim_exec('language en_US', true)
   opt.ff = 'unix'
 else

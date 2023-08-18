@@ -2,7 +2,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 if vim.g.neovide then
-  if vim.fn.has('win32') == 1 then
+  if vim.fn.has 'win32' == 1 then
     vim.o.guifont = 'Iosevka Nerd Font:b:h12'
   else
     vim.o.guifont = 'Iosevka Nerd Font:b:h15'
@@ -13,22 +13,20 @@ if vim.g.neovide then
   vim.g.neovide_cursor_animate_in_insert_mode = true
   vim.g.neovide_cursor_animate_command_line = true
   vim.g.neovide_underline_automatic_scaling = false
-  vim.g.neovide_confirm_quit = true
 end
 
-local vim_data_path = vim.fn.stdpath('data')
+local vim_data_path = vim.fn.stdpath 'data'
 local lazypath = vim_data_path .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
+  vim.fn.system {
     'git',
     'clone',
     '--filter=blob:none',
     'https://github.com/folke/lazy.nvim.git',
     '--branch=stable',
     lazypath,
-  })
+  }
 end
-
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
