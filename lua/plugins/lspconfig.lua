@@ -1,3 +1,13 @@
+local function organize_imports()
+  local params = {
+    command = '_typescript.organizeImports',
+    arguments = { vim.api.nvim_buf_get_name(0) },
+    title = '',
+  }
+
+  vim.lsp.buf.execute_command(params)
+end
+
 local on_attach = function(_, bufnr)
   local nmap = function(keys, func, desc)
     if desc then
@@ -88,6 +98,7 @@ return {
         local root_dir = nil
         local init_options = nil
         local filetypes = nil
+        local commands = nil
 
         if server_name == 'lua_ls' then
           root_dir = lspconfig.util.root_pattern('.git', '*.rockspec')
@@ -111,6 +122,15 @@ return {
           }
         end
 
+        if server_name == 'tsserver' then
+          commands = {
+            OrganizeImports = {
+              organize_imports,
+              description = 'Organize Imports',
+            },
+          }
+        end
+
         require('lspconfig')[server_name].setup({
           settings = servers[server_name],
           capabilities = capabilities,
@@ -118,6 +138,7 @@ return {
           root_dir = root_dir,
           init_options = init_options,
           filetypes = filetypes,
+          commands = commands,
         })
       end,
     })
