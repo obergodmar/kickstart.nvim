@@ -18,31 +18,26 @@ local P = {
       lua = {
         require('formatter.filetypes.lua').stylua,
       },
-
       json = {
-        require('formatter.filetypes.json').prettierd,
+        require('formatter.filetypes.json').prettier,
       },
       css = {
-        require('formatter.filetypes.css').prettierd,
+        require('formatter.filetypes.css').prettier,
       },
       html = {
-        require('formatter.filetypes.html').prettierd,
+        require('formatter.filetypes.html').prettier,
       },
       javascript = {
-        require('formatter.filetypes.javascript').eslint_d,
-        require('formatter.filetypes.javascript').prettierd,
+        require('formatter.filetypes.javascript').prettier,
       },
       javascriptreact = {
-        require('formatter.filetypes.javascriptreact').eslint_d,
-        require('formatter.filetypes.javascriptreact').prettierd,
+        require('formatter.filetypes.javascriptreact').prettier,
       },
       typescript = {
-        require('formatter.filetypes.typescript').eslint_d,
-        require('formatter.filetypes.typescript').prettierd,
+        require('formatter.filetypes.typescript').prettier,
       },
       typescriptreact = {
-        require('formatter.filetypes.typescriptreact').eslint_d,
-        require('formatter.filetypes.typescriptreact').prettierd,
+        require('formatter.filetypes.typescriptreact').prettier,
       },
 
       php = {

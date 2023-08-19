@@ -42,3 +42,28 @@ end
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
+
+if vim.g.neovide then
+  if vim.fn.has('win32') == 1 then
+    vim.o.guifont = 'Iosevka Nerd Font:b:h12'
+  else
+    vim.o.guifont = 'Iosevka Nerd Font:b:h15'
+  end
+  vim.g.neovide_scroll_animation_length = 0.3
+  vim.g.neovide_refresh_rate = 60
+  vim.g.neovide_cursor_antialiasing = true
+  vim.g.neovide_cursor_animate_in_insert_mode = true
+  vim.g.neovide_cursor_animate_command_line = true
+  vim.g.neovide_underline_automatic_scaling = false
+
+  vim.cmd([[
+  " system clipboard
+  nmap <c-c> "+y
+  vmap <c-c> "+y
+  nmap <c-v> "+p
+  inoremap <c-v> <c-r>+
+  cnoremap <c-v> <c-r>+
+  " use <c-r> to insert original character without triggering things like auto-pairs
+  inoremap <c-r> <c-v>
+]])
+end
