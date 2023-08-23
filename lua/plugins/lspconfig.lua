@@ -129,6 +129,18 @@ return {
               description = 'Organize Imports',
             },
           }
+          init_options = {
+            hostInfo = 'neovim',
+            plugins = {},
+            preferences = {
+              includeCompletionsForModuleExports = true,
+              includeCompletionsForImportStatements = true,
+            },
+            tsserver = {
+              useSyntaxServer = 'auto',
+            },
+            maxTsServerMemory = 8192,
+          }
         end
 
         require('lspconfig')[server_name].setup({
