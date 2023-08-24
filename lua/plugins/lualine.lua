@@ -1,4 +1,19 @@
 ---@type LazyPluginSpec
+
+local function win_num()
+  return vim.fn.winnr()
+end
+
+local function git_head()
+  local buf_name = vim.fn.bufname()
+
+  if string.match(buf_name, 'fugitive') then
+    return vim.fn.FugitiveStatusline()
+  end
+
+  return nil
+end
+
 local P = {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
@@ -18,15 +33,8 @@ local P = {
       lualine_z = { 'location' },
     },
     inactive_sections = {
-      lualine_a = {
-        {
-          'windows',
-          mode = 1,
-          use_mode_colors = true,
-          show_modified_status = true,
-        },
-      },
-      lualine_b = {},
+      lualine_a = { win_num },
+      lualine_b = { git_head },
       lualine_c = { 'filename', 'filesize' },
       lualine_x = { 'location' },
       lualine_y = {},
