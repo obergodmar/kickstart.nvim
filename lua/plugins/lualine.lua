@@ -11,7 +11,7 @@ local function git_head()
     return vim.fn.FugitiveStatusline()
   end
 
-  return nil
+  return ''
 end
 
 local P = {
