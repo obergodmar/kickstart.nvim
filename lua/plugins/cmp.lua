@@ -1,21 +1,28 @@
+---@diagnostic disable: missing-fields
+
 ---@type LazyPluginSpec
 local P = {
   'hrsh7th/nvim-cmp',
-  version = false, -- last release is way too old
+  version = false, --last release is way too old
   event = 'InsertEnter',
   dependencies = {
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
     'saadparwaiz1/cmp_luasnip',
+    'onsails/lspkind.nvim',
   },
   opts = function()
     vim.api.nvim_set_hl(0, 'CmpGhostText', { link = 'Comment', default = true })
     local cmp = require('cmp')
     local defaults = require('cmp.config.default')()
     local luasnip = require('luasnip')
-    return {
+    local lspkind = require('lspkind')
+
+    ---@type cmp.ConfigSchema
+    local config = {
       completion = {
+        keyword_length = 1,
         completeopt = 'menu,menuone,noinsert',
       },
       snippet = {
@@ -55,10 +62,20 @@ local P = {
       sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
-        { name = 'buffer' },
+        { name = 'buffer', keyword_length = 4 },
         { name = 'path' },
       }),
-      formatting = {},
+      formatting = {
+        format = lspkind.cmp_format({
+          mode = 'symbol_text',
+          menu = {
+            nvim_lsp = '[LSP]',
+            nvim_lua = '[Lua]',
+            path = '[Path]',
+            buffer = '[Buffer]',
+          },
+        }),
+      },
       experimental = {
         ghost_text = {
           hl_group = 'CmpGhostText',
@@ -66,6 +83,8 @@ local P = {
       },
       sorting = defaults.sorting,
     }
+
+    return config
   end,
 }
 
