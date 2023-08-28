@@ -8,6 +8,22 @@ local function organize_imports()
   vim.lsp.buf.execute_command(params)
 end
 
+local function apply_lsp_action(action)
+  local params = vim.lsp.util.make_range_params()
+  params.context = { only = { action } }
+
+  local result = vim.lsp.buf_request_sync(0, 'textDocument/codeAction', params)
+  for _, res in pairs(result or {}) do
+    for _, r in pairs(res.result or {}) do
+      if r.edit then
+        vim.lsp.util.apply_workspace_edit(r.edit, 'utf-16')
+      else
+        vim.lsp.buf.execute_command(r.command)
+      end
+    end
+  end
+end
+
 local on_attach = function(_, bufnr)
   local nmap = function(keys, func, desc)
     if desc then
@@ -128,10 +144,24 @@ return {
               organize_imports,
               description = 'Organize Imports',
             },
+            AddMissingImports = {
+              function()
+                apply_lsp_action('source.addMissingImports')
+              end,
+              description = 'Add Missing Imports',
+            },
+            RemoveUnusedImports = {
+              function()
+                apply_lsp_action('source.removeUnusedImports')
+              end,
+              description = 'Remove Unused Imports',
+            },
           }
           init_options = {
             hostInfo = 'neovim',
-            plugins = {},
+            plugins = {
+              -- 'typescript-styled-plugin',
+            },
             preferences = {
               includeCompletionsForModuleExports = true,
               includeCompletionsForImportStatements = true,
