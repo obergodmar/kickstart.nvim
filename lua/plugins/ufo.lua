@@ -58,14 +58,14 @@ local P = {
   keys = {
     {
       'zR',
-      "<cmd>require('ufo').openAllFolds()<cr>",
+      "<cmd>lua require('ufo').openAllFolds()<cr>",
       id = 'ufo_open_all_folds',
       desc = 'Open All Folds',
       mode = 'n',
     },
     {
       'zM',
-      "<cmd>require('ufo').closeAllfolds()<cr>",
+      "<cmd>lua require('ufo').closeAllFolds()<cr>",
       id = 'ufo_close_all_folds',
       desc = 'Close All Folds',
       mode = 'n',
