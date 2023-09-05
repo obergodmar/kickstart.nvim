@@ -30,12 +30,6 @@ local P = {
     vim.opt.listchars:append('eol:↴')
     vim.opt.listchars:append('trail:~')
     vim.opt.listchars:append('nbsp:⍽')
-
-    vim.opt.foldmethod = 'indent'
-    vim.opt.foldnestmax = 10
-    vim.opt.foldenable = false
-    vim.opt.foldlevel = 2
-    vim.opt.cursorline = true
   end,
 }
 

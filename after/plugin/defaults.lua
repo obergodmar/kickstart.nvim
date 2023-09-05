@@ -33,6 +33,15 @@ opt.wildmode = 'longest:full,full' -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 
+opt.foldmethod = 'indent'
+opt.foldcolumn = '1' -- '0' is not bad
+opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+opt.foldlevelstart = 99
+opt.foldenable = true
+opt.foldnestmax = 10
+opt.cursorline = true
+opt.foldcolumn = 'auto:9'
+
 if vim.fn.has('win32') == 1 then
   vim.api.nvim_exec('language en_US', true)
   opt.ff = 'unix'
