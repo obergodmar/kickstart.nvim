@@ -1,41 +1,65 @@
-return {
-	"mfussenegger/nvim-dap",
-	dependencies = {
-		"rcarriga/nvim-dap-ui",
-		"theHamsta/nvim-dap-virtual-text",
-		"nvim-telescope/telescope-dap.nvim"
-	},
-	config = function()
-		local dap = require('dap')
-		local dapui = require('dapui')
-		local dap_virtual_text = require("nvim-dap-virtual-text")
+---@type LazyPluginSpec
+local P = {
+  'mfussenegger/nvim-dap',
+  dependencies = {
+    {
+      'theHamsta/nvim-dap-virtual-text',
+      opts = {
+        all_references = true,
+        virt_text_pos = 'eol',
+      },
+    },
+    {
+      'rcarriga/nvim-dap-ui',
+      opts = {},
+    },
 
-		dapui.setup()
-		dap_virtual_text.setup({
-			all_references = true,
-			virt_text_pos = 'eol'
-		})
+    'nvim-telescope/telescope-dap.nvim',
+  },
+  keys = {
+    {
+      '<leader>db',
+      '<cmd>DapToggleBreakpoint<CR>',
+      id = 'dap_toggle_breakpoint',
+      desc = '[D]ap Toggle Breakpoint',
+      mode = 'n',
+    },
+    {
+      '<leader>dc',
+      '<cmd>DapContinue<CR>',
+      id = 'dap_continue',
+      desc = '[D]ap [C]ontinue',
+      mode = 'n',
+    },
+    {
+      '<leader>de',
+      ":lua require('dapui').eval()<CR>",
+      id = 'dapui_eval',
+      desc = '[D]ap [E]val',
+      mode = 'n',
+    },
+  },
+  config = function()
+    local dap = require('dap')
 
-		dap.adapters.php = {
-			type = 'executable',
-			command = 'node',
-			args = { '/Users/v.kogogin/.cache/vscode-php-debug/out/phpDebug.js' }
-		}
+    dap.adapters.php = {
+      type = 'executable',
+      command = 'node',
+      args = { '' },
+    }
 
-		dap.configurations.php = {
-			{
-				type = 'php',
-				request = 'launch',
-				name = 'Listen for Xdebug',
-				hostName = "127.0.0.1",
-				port = 9000,
-				serverSourceRoot = '/var/kphp/vkogogin/data/',
-				localSourceRoot = '/Users/v.kogogin/Code/vkcom/',
-			}
-		}
-
-		vim.api.nvim_set_keymap("n", "<leader>db", ":DapToggleBreakpoint<CR>", { desc = '[D]ap Toggle Breakpoint' })
-		vim.api.nvim_set_keymap("n", "<leader>dc", ":DapContinue<CR>", { desc = '[D]ap [C]ontinue' })
-		vim.api.nvim_set_keymap("n", "<leader>de", ":lua require('dapui').eval()<CR>", { desc = '[D]ap [E]val' })
-	end
+    dap.configurations.php = {
+      {
+        type = 'php',
+        request = 'launch',
+        name = 'Listen for Xdebug',
+        hostName = '127.0.0.1',
+        port = 9000,
+        serverSourceRoot = '',
+        localSourceRoot = '',
+      },
+    }
+  end,
 }
+
+return P
