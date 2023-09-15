@@ -5,7 +5,7 @@ local P = {
     autosave = {
       enabled = true,
       interval = 60,
-      notify = true,
+      notify = false,
     },
   },
   keys = {
