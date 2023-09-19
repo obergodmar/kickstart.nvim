@@ -1,6 +1,6 @@
 ---@type LazyPluginSpec
 local P = {
-  'mhartington/formatter.nvim',
+  'obergodmar/formatter.nvim',
   event = 'VeryLazy',
   keys = {
     {
@@ -12,8 +12,6 @@ local P = {
     },
   },
   config = function()
-    local util = require('formatter.util')
-
     local formatters = {
       lua = {
         require('formatter.filetypes.lua').stylua,
@@ -39,18 +37,11 @@ local P = {
       typescriptreact = {
         require('formatter.filetypes.typescriptreact').prettier,
       },
-
+      svelte = {
+        require('formatter.filetypes.svelte').prettier,
+      },
       php = {
-        function()
-          return {
-            exe = 'phpcbf',
-            args = {
-              util.escape_path(util.get_current_buffer_file_path()),
-            },
-            stdin = false,
-            ignore_exitcode = true,
-          }
-        end,
+        require('formatter.filetypes.php').php_cs_fixer,
       },
     }
 
