@@ -5,7 +5,7 @@ local P = {
     config_files = { '.nvim.lua' },
     -- Where the plugin keeps files data
     hashfile = vim.fn.stdpath('data') .. '/config-local',
-    autocommands_create = false, -- Create autocommands (VimEnter, DirectoryChanged)
+    autocommands_create = true, -- Create autocommands (VimEnter, DirectoryChanged)
     commands_create = true, -- Create commands (ConfigLocalSource, ConfigLocalEdit, ConfigLocalTrust, ConfigLocalIgnore)
     silent = false, -- Disable plugin messages (Config loaded/ignored)
     lookup_parents = false,
