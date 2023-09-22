@@ -23,23 +23,79 @@ local P = {
     },
   },
   config = function()
+    local telescope_config = require('telescope.config')
+    local vimgrep_arguments = { unpack(telescope_config.values.vimgrep_arguments) }
+
+    table.insert(vimgrep_arguments, '--hidden')
+    table.insert(vimgrep_arguments, '--glob')
+    table.insert(vimgrep_arguments, '!**/.git/*')
+    table.insert(vimgrep_arguments, '--trim')
+
+    local actions = require('telescope.actions')
+    local action_layout = require('telescope.actions.layout')
+    local previewers = require('telescope.previewers')
+
+    local previewers_utils = require('telescope.previewers.utils')
+
+    local new_maker = function(filepath, bufnr, opts)
+      opts = opts or {}
+
+      filepath = vim.fn.expand(filepath)
+      vim.loop.fs_stat(filepath, function(_, stat)
+        if not stat then
+          return
+        end
+        if stat.size > 100000 then
+          return
+        else
+          previewers.buffer_previewer_maker(filepath, bufnr, opts)
+        end
+      end)
+    end
+
     local telescope = require('telescope')
 
     telescope.setup({
       defaults = {
+        vimgrep_arguments = vimgrep_arguments,
+        buffer_previewer_maker = new_maker,
         preview = {
           treesitter = false,
+          mime_hook = function(_, bufnr, opts)
+            previewers_utils.set_preview_message(bufnr, opts.winid, 'Binary cannot be previewed')
+          end,
         },
         mappings = {
+          n = {
+            ['<M-p>'] = action_layout.toggle_preview,
+          },
           i = {
-            ['<C-u>'] = require('telescope.actions').cycle_history_next,
-            ['<C-d>'] = require('telescope.actions').cycle_history_prev,
-            ['<C-s>'] = require('telescope.actions').cycle_previewers_next,
-            ['<C-a>'] = require('telescope.actions').cycle_previewers_prev,
+            ['<C-u>'] = actions.cycle_history_next,
+            ['<C-d>'] = actions.cycle_history_prev,
+            ['<C-s>'] = actions.cycle_previewers_next,
+            ['<C-a>'] = actions.cycle_previewers_prev,
+            ['<M-p>'] = action_layout.toggle_preview,
           },
         },
       },
-      extensions = {},
+      extensions = {
+        fzf = {
+          fuzzy = true,
+          override_generic_sorter = true,
+          override_file_sorter = true,
+          case_mode = 'smart_case',
+        },
+        extensions = {
+          live_grep_args = {
+            auto_quoting = true,
+          },
+        },
+      },
+      pickers = {
+        find_files = {
+          find_command = { 'rg', '--files', '--hidden', '--glob', '!**/.git/*' },
+        },
+      },
     })
 
     telescope.load_extension('live_grep_args')
@@ -69,25 +125,31 @@ local P = {
       mode = 'n',
     },
     {
-      id = 'ts_files',
       '<leader>sf',
       get_ts_cmd('find_files'),
+      id = 'ts_files',
       desc = '[S]earch [F]iles',
       mode = 'n',
     },
     {
-
       '<leader>sg',
-      'grep_string',
+      get_ts_cmd('grep_string'),
       id = 'ts_grep_string',
       desc = '[S]earch [g]rep',
       mode = 'n',
     },
     {
       '<leader>sG',
+      get_ts_cmd('live_grep'),
+      id = 'ts_live_grep',
+      desc = '[S]earch Live [G]rep',
+      mode = 'n',
+    },
+    {
+      '<leader>sa',
       "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args(require('telescope.themes').get_ivy {})<cr>",
-      id = 'ts_grep_string_args',
-      desc = '[S]earch [G]rep (args)',
+      id = 'ts_live_grep_args',
+      desc = '[S]earch Live Grep ([A]rgs)',
       mode = 'n',
     },
     {
