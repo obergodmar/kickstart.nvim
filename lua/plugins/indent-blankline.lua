@@ -1,6 +1,7 @@
 ---@type LazyPluginSpec
 local P = {
   'lukas-reineke/indent-blankline.nvim',
+  tag = 'v2.20.8',
   opts = {
     space_char_blankline = ' ',
     show_current_context = true,
