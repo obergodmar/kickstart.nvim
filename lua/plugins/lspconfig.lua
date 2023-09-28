@@ -47,10 +47,6 @@ local on_attach = function(_, bufnr)
 end
 
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
   html = {},
   cssls = {},
   -- cssmodules_ls = {},
@@ -69,15 +65,15 @@ local servers = {
     },
   },
   bashls = {},
-  gopls = {
-    gopls = {
-      analyses = {
-        unusedparams = true,
-        shadow = true,
-      },
-      staticcheck = true,
-    },
-  },
+  -- gopls = {
+  --   gopls = {
+  --     analyses = {
+  --       unusedparams = true,
+  --       shadow = true,
+  --     },
+  --     staticcheck = true,
+  --   },
+  -- },
   intelephense = {},
 }
 
@@ -119,6 +115,7 @@ return {
         local init_options = nil
         local filetypes = nil
         local commands = nil
+        local autostart = true
 
         if server_name == 'lua_ls' then
           root_dir = lspconfig.util.root_pattern('.git', '*.rockspec')
@@ -177,6 +174,10 @@ return {
           }
         end
 
+        if server_name == 'intelephense' or server_name == 'phpactor' then
+          autostart = false
+        end
+
         require('lspconfig')[server_name].setup({
           settings = servers[server_name],
           capabilities = capabilities,
@@ -185,6 +186,7 @@ return {
           init_options = init_options,
           filetypes = filetypes,
           commands = commands,
+          autostart,
         })
       end,
     })
