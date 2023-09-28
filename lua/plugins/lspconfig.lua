@@ -24,7 +24,7 @@ local function apply_lsp_action(action)
   end
 end
 
-local on_attach = function(_, bufnr)
+LSP_ON_ATTACH = function(_, bufnr)
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
@@ -181,12 +181,12 @@ return {
         require('lspconfig')[server_name].setup({
           settings = servers[server_name],
           capabilities = capabilities,
-          on_attach = on_attach,
+          on_attach = LSP_ON_ATTACH,
           root_dir = root_dir,
           init_options = init_options,
           filetypes = filetypes,
           commands = commands,
-          autostart,
+          autostart = autostart,
         })
       end,
     })
