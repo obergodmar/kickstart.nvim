@@ -5,8 +5,14 @@ local P = {
     {
       '<leader>Y',
       '<cmd>lua require("yanklines").yank_lines()<cr>',
-      mode = { 'n', 'v' },
+      mode = { 'n' },
       id = 'yanklines',
+    },
+    {
+      '<leader>Y',
+      '<cmd>lua require("yanklines").yank_lines(true)<cr>',
+      mode = { 'v' },
+      id = 'yanklines_v_block',
     },
   },
 }
