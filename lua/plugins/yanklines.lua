@@ -1,12 +1,14 @@
 ---@type LazyPluginSpec
 local P = {
   'obergodmar/yanklines.nvim',
-  init = function()
-    vim.keymap.set({ 'n', 'v' }, '<leader>T', function()
-      print('invoked')
-      require('yanklines').yank_lines()
-    end, { desc = 'Test' })
-  end,
+  keys = {
+    {
+      '<leader>Y',
+      '<cmd>lua require("yanklines").yank_lines()<cr>',
+      mode = { 'n', 'v' },
+      id = 'yanklines',
+    },
+  },
 }
 
 return P
