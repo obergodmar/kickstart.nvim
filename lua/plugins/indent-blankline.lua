@@ -1,31 +1,14 @@
 ---@type LazyPluginSpec
 local P = {
   'lukas-reineke/indent-blankline.nvim',
-  tag = 'v2.20.8',
+  main = 'ibl',
+  ---@type ibl.config
   opts = {
-    space_char_blankline = ' ',
-    show_current_context = true,
-    show_current_context_start = true,
-    show_end_of_line = true,
-    filetype_exclude = {
-      'help',
-      'alpha',
-      'dashboard',
-      'neo-tree',
-      'Trouble',
-      'lazy',
-      'mason',
-      'notify',
-      'toggleterm',
-      'lazyterm',
-    },
   },
   config = function(_, opts)
-    require('indent_blankline').setup(opts)
+    require('ibl').setup(opts)
 
     vim.opt.list = true
-    vim.cmd([[highlight IndentBlanklineIndent1 guibg=#1f1f1f gui=nocombine]])
-    vim.cmd([[highlight IndentBlanklineIndent2 guibg=#1a1a1a gui=nocombine]])
     vim.opt.listchars:append('space:⋅')
     vim.opt.listchars:append('eol:↴')
     vim.opt.listchars:append('trail:~')

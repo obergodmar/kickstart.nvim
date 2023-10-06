@@ -2,12 +2,9 @@
 local P = {
   'akinsho/bufferline.nvim',
   event = 'VeryLazy',
-  keys = {
-    { '<leader>bp', '<Cmd>BufferLineTogglePin<CR>', desc = 'Toggle pin' },
-    { '<leader>bP', '<Cmd>BufferLineGroupClose ungrouped<CR>', desc = 'Delete non-pinned buffers' },
-  },
   opts = {
     ---@type bufferline.Options
+    ---@diagnostic disable-next-line: missing-fields
     options = {
       mode = 'tabs',
       numbers = 'both',

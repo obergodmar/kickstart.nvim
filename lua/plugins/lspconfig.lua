@@ -1,51 +1,3 @@
-local function organize_imports()
-  local params = {
-    command = '_typescript.organizeImports',
-    arguments = { vim.api.nvim_buf_get_name(0) },
-    title = '',
-  }
-
-  vim.lsp.buf.execute_command(params)
-end
-
-local function apply_lsp_action(action)
-  local params = vim.lsp.util.make_range_params()
-  params.context = { only = { action } }
-
-  local result = vim.lsp.buf_request_sync(0, 'textDocument/codeAction', params)
-  for _, res in pairs(result or {}) do
-    for _, r in pairs(res.result or {}) do
-      if r.edit then
-        vim.lsp.util.apply_workspace_edit(r.edit, 'utf-16')
-      else
-        vim.lsp.buf.execute_command(r.command)
-      end
-    end
-  end
-end
-
-LSP_ON_ATTACH = function(_, bufnr)
-  local nmap = function(keys, func, desc)
-    if desc then
-      desc = 'LSP: ' .. desc
-    end
-
-    vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-  end
-
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-  nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-  nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-  nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-  nmap('<leader>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, '[W]orkspace [L]ist Folders')
-
-  vim.api.nvim_buf_create_user_command(bufnr, 'LspFormat', function(_)
-    vim.lsp.buf.format()
-  end, { desc = 'Format current buffer with LSP' })
-end
-
 local servers = {
   html = {},
   cssls = {},
@@ -140,38 +92,8 @@ return {
         end
 
         if server_name == 'tsserver' then
-          commands = {
-            OrganizeImports = {
-              organize_imports,
-              description = 'Organize Imports',
-            },
-            AddMissingImports = {
-              function()
-                apply_lsp_action('source.addMissingImports')
-              end,
-              description = 'Add Missing Imports',
-            },
-            RemoveUnusedImports = {
-              function()
-                apply_lsp_action('source.removeUnusedImports')
-              end,
-              description = 'Remove Unused Imports',
-            },
-          }
-          init_options = {
-            hostInfo = 'neovim',
-            plugins = {
-              -- 'typescript-styled-plugin',
-            },
-            preferences = {
-              includeCompletionsForModuleExports = true,
-              includeCompletionsForImportStatements = true,
-            },
-            tsserver = {
-              useSyntaxServer = 'auto',
-            },
-            maxTsServerMemory = 8192,
-          }
+          commands = require('lsp.typescript').commands
+          init_options = require('lsp.typescript').init_options
         end
 
         if server_name == 'intelephense' or server_name == 'phpactor' then
@@ -181,7 +103,7 @@ return {
         require('lspconfig')[server_name].setup({
           settings = servers[server_name],
           capabilities = capabilities,
-          on_attach = LSP_ON_ATTACH,
+          on_attach = require('lsp.common').on_attach,
           root_dir = root_dir,
           init_options = init_options,
           filetypes = filetypes,

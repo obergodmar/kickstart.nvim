@@ -45,7 +45,8 @@ local P = {
       },
     }
 
-    if vim.fn.has('win32') ~= 1 then
+    -- sed on windows works differently and this formatter throws an error
+    if not require('utils').is_win() then
       formatters['*'] = {
         require('formatter.filetypes.any').remove_trailing_whitespace,
       }

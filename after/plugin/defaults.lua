@@ -35,7 +35,7 @@ opt.wrap = false -- Disable line wrap
 
 opt.cursorline = true
 
-if vim.fn.has('win32') == 1 then
+if require('utils').is_win() then
   vim.api.nvim_exec('language en_US', true)
   opt.ff = 'unix'
 else
@@ -46,7 +46,7 @@ end
 vim.g.markdown_recommended_style = 0
 
 if vim.g.neovide then
-  if vim.fn.has('win32') == 1 then
+  if require('utils').is_win() then
     vim.o.guifont = 'Iosevka Nerd Font:b:h12'
   else
     vim.o.guifont = 'Iosevka Nerd Font:b:h15'

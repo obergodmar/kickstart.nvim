@@ -8,9 +8,11 @@ local P = {
         require('notify').dismiss({ silent = true, pending = true })
       end,
       desc = 'Dismiss all Notifications',
+      id = 'dismiss_all_notifications',
     },
   },
   ---@type notify.Config
+  ---@diagnostic disable-next-line: missing-fields
   opts = {
     fps = 60,
     render = 'compact',
