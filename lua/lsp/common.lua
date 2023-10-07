@@ -1,3 +1,4 @@
+---@return nil
 local function apply_action(action)
   local params = vim.lsp.util.make_range_params()
   params.context = { only = { action } }
@@ -14,6 +15,7 @@ local function apply_action(action)
   end
 end
 
+---@return nil
 local on_attach = function(_, bufnr)
   local nmap = function(keys, func, desc)
     if desc then
