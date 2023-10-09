@@ -43,6 +43,9 @@ local P = {
       php = {
         require('formatter.filetypes.php').php_cs_fixer,
       },
+      go = {
+        require('formatter.filetypes.go').gofmt,
+      },
     }
 
     -- sed on windows works differently and this formatter throws an error

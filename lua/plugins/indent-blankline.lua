@@ -8,7 +8,7 @@ local P = {
   config = function(_, opts)
     require('ibl').setup(opts)
 
-    vim.opt.list = true
+    -- vim.opt.list = true
     vim.opt.listchars:append('space:⋅')
     vim.opt.listchars:append('eol:↴')
     vim.opt.listchars:append('trail:~')
