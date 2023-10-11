@@ -77,3 +77,6 @@ map('n', '<leader>cf', '<cmd>let @+ = expand("%:p")<cr>', { desc = '[C]opy [F]ul
 
 --just filename
 map('n', '<leader>cn', '<cmd>:let @+ = expand("%:t")<cr>', { desc = '[C]opy file [N]ame' })
+
+map('n', '<PageUp>', '', { silent = true })
+map('n', '<PageDown>', '', { silent = true })
