@@ -56,7 +56,9 @@ if vim.g.neovide then
   vim.g.neovide_cursor_antialiasing = true
   vim.g.neovide_cursor_animate_in_insert_mode = true
   vim.g.neovide_cursor_animate_command_line = true
-  vim.g.neovide_underline_automatic_scaling = false
+  vim.g.neovide_underline_automatic_scaling = true
+  vim.g.neovide_confirm_quit = true
+  vim.g.neovide_remember_window_size = true
 
   vim.cmd([[
   " system clipboard
