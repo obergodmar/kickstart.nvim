@@ -82,6 +82,12 @@ local P = {
         },
       },
       sorting = defaults.sorting,
+      performance = {
+        debounce = 300,
+        throttle = 60,
+        fetching_timeout = 200,
+        max_view_entries = 50,
+      },
     }
 
     return config

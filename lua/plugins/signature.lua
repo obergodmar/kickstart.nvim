@@ -4,7 +4,9 @@ local P = {
   event = 'VeryLazy',
   opts = {
     bind = false,
-    floating_window = false,
+    noice = true,
+    floating_window = true,
+    hint_prefix = '',
   },
   config = function(_, opts)
     require('lsp_signature').setup(opts)
