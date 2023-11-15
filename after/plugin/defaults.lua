@@ -48,11 +48,7 @@ end
 vim.g.markdown_recommended_style = 0
 
 if vim.g.neovide then
-  if require('utils').is_win() then
-    vim.o.guifont = 'Iosevka Nerd Font:b:h12'
-  else
-    vim.o.guifont = 'Iosevka Nerd Font:b:h15'
-  end
+  vim.o.guifont = 'Iosevka Nerd Font:b:h12'
   vim.g.neovide_scroll_animation_length = 0.3
   vim.g.neovide_refresh_rate = 60
   vim.g.neovide_cursor_antialiasing = true
