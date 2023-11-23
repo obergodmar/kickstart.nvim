@@ -9,8 +9,10 @@ end
 
 ---@return string
 local function get_shell()
+  local pwsh = 'pwsh.exe -nologo -WorkingDirectory ' .. vim.loop.cwd()
+
   if is_win() then
-    return vim.fn.executable('pwsh') and 'pwsh' or 'powershell'
+    return vim.fn.executable('pwsh') and pwsh or 'powershell.exe'
   end
 
   return vim.shell

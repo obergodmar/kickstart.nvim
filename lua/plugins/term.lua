@@ -13,6 +13,8 @@ end
 local P = {
   'akinsho/toggleterm.nvim',
   event = 'VeryLazy',
+  ---@type ToggleTermConfig
+  ---@diagnostic disable-next-line: missing-fields
   opts = {
     shade_terminals = false,
     start_in_insert = true,
