@@ -1,6 +1,7 @@
 ---@type LazyPluginSpec
 local P = {
   'ray-x/lsp_signature.nvim',
+  commit = '9ed85616b772a07f8db56c26e8fff2d962f1f211',
   event = 'VeryLazy',
   opts = {
     bind = false,

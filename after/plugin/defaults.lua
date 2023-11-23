@@ -27,7 +27,7 @@ opt.tabstop = 2 -- Number of spaces tabs count for
 opt.termguicolors = true -- True color support
 opt.updatetime = 250
 opt.timeout = true
-opt.timeoutlen = 300
+opt.timeoutlen = 3000
 opt.completeopt = 'menuone,noselect'
 opt.wildmode = 'longest:full,full' -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
@@ -36,6 +36,7 @@ opt.wrap = false -- Disable line wrap
 opt.cursorline = true
 
 opt.lazyredraw = false
+opt.showcmdloc = 'statusline'
 
 if require('utils').is_win() then
   vim.api.nvim_exec('language en_US', true)
