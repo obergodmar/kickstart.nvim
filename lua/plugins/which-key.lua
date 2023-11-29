@@ -3,7 +3,6 @@
 local P = {
   'folke/which-key.nvim',
   event = 'VeryLazy',
-  enabled = false,
   opts = {
     plugins = {
       marks = false,
