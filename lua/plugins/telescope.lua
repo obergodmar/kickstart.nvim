@@ -97,12 +97,26 @@ local P = {
         extensions = {
           live_grep_args = {
             auto_quoting = true,
+            theme = 'ivy',
           },
         },
       },
       pickers = {
+        oldfiles = {
+          theme = 'ivy',
+        },
         find_files = {
+          theme = 'ivy',
           find_command = { 'rg', '--files', '--hidden', '--glob', '!**/.git/*' },
+        },
+        grep_string = {
+          theme = 'ivy',
+        },
+        live_grep = {
+          theme = 'ivy',
+        },
+        git_files = {
+          theme = 'ivy',
         },
       },
     })
@@ -114,7 +128,9 @@ local P = {
   keys = {
     {
       '<leader>?',
-      get_ts_cmd('oldfiles'),
+      function()
+        require('telescope.custom-pickers').custom_files_picker({ picker = 'oldfiles' })
+      end,
       id = 'ts_oldfiles',
       desc = '[?] Find recently opened files',
       mode = 'n',
@@ -135,13 +151,18 @@ local P = {
     },
     {
       '<leader>sf',
-      get_ts_cmd('find_files'),
+      function()
+        require('telescope.custom-pickers').custom_files_picker({ picker = 'find_files' })
+      end,
       id = 'ts_files',
       desc = '[S]earch [F]iles',
       mode = 'n',
     },
     {
       '<leader>sg',
+      function()
+        require('telescope.custom-pickers').custom_grep_picker({ picker = 'grep_string' })
+      end,
       get_ts_cmd('grep_string'),
       id = 'ts_grep_string',
       desc = '[S]earch [g]rep',
@@ -149,21 +170,28 @@ local P = {
     },
     {
       '<leader>sG',
-      get_ts_cmd('live_grep'),
+      function()
+        require('telescope.custom-pickers').custom_grep_picker({ picker = 'live_grep' })
+      end,
       id = 'ts_live_grep',
       desc = '[S]earch Live [G]rep',
       mode = 'n',
     },
     {
       '<leader>sa',
-      "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args(require('telescope.themes').get_ivy {})<cr>",
+      function()
+        require('telescope.custom-pickers').custom_grep_picker({ picker = 'live_grep_args' })
+      end,
+      -- "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args(require('telescope.themes').get_ivy {})<cr>",
       id = 'ts_live_grep_args',
       desc = '[S]earch Live Grep ([A]rgs)',
       mode = 'n',
     },
     {
       '<leader>gf',
-      get_ts_cmd('git_files'),
+      function()
+        require('telescope.custom-pickers').custom_files_picker({ picker = 'git_files' })
+      end,
       id = 'ts_git_files',
       desc = 'Search [G]it [F]iles',
       mode = 'n',

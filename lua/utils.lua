@@ -1,10 +1,11 @@
 ---@return boolean
 local function is_win()
-  if vim.fn.has('win32') ~= 1 then
-    return false
-  else
-    return true
-  end
+  return vim.fn.has('win32') == 1
+end
+
+---@return boolean
+local function is_mac()
+  return jit.os == 'OSX'
 end
 
 ---@return string
@@ -19,6 +20,7 @@ local function get_shell()
 end
 
 return {
+  is_mac = is_mac,
   is_win = is_win,
   get_shell = get_shell,
 }

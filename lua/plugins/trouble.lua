@@ -46,10 +46,10 @@ local P = {
       mode = 'n',
     },
     {
-      '<leader>D',
-      get_trouble_cmd('lsp_type_definitions'),
-      id = 'trouble_type_defs',
-      desc = 'Type [D]efinitions',
+      'gI',
+      get_trouble_cmd('lsp_implementations'),
+      id = 'trouble_impls',
+      desc = '[G]ot [I]mplementations',
       mode = 'n',
     },
     {
