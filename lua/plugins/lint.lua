@@ -1,4 +1,6 @@
-return {
+---@type LazyPluginSpec
+local P = {
+  -- An asynchronous linter plugin for Neovim (>= 0.6.0) complementary to the built-in Language Server Protocol support.
   'mfussenegger/nvim-lint',
   config = function()
     local lint = require('lint')
@@ -19,3 +21,5 @@ return {
     vim.keymap.set('n', '<leader>l', lint.try_lint, { desc = '[L]int file' })
   end,
 }
+
+return P

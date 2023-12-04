@@ -29,19 +29,30 @@ local servers = {
   intelephense = {},
 }
 
-return {
+---@type LazyPluginSpec
+local P = {
+  -- Quickstart configs for Nvim LSP
   'neovim/nvim-lspconfig',
   dependencies = {
+    -- Portable package manager for Neovim that runs everywhere Neovim runs.
+    -- Easily install and manage LSP servers, DAP servers, linters, and formatters.
     'williamboman/mason.nvim',
+    -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim.
     'williamboman/mason-lspconfig.nvim',
     {
+      -- Extensible UI for Neovim notifications and LSP progress messages.
       'j-hui/fidget.nvim',
-      branch = 'legacy',
-      opts = {},
-    },
-    {
-      'folke/neodev.nvim',
-      opts = {},
+      opts = {
+        progress = {
+          ignore_empty_message = false,
+        },
+      },
+      {
+        -- eovim setup for init.lua and plugin development with full signature help, docs
+        -- and completion for the nvim lua API.
+        'folke/neodev.nvim',
+        opts = {},
+      },
     },
   },
   config = function()
@@ -114,3 +125,5 @@ return {
     })
   end,
 }
+
+return P

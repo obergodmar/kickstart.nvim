@@ -1,5 +1,3 @@
----@type LazyPluginSpec
-
 local function win_num()
   return vim.fn.winnr()
 end
@@ -7,14 +5,16 @@ end
 local function git_head()
   local buf_name = vim.fn.bufname()
 
-  if string.match(buf_name, 'fugitive') then
+  if buf_name and string.match(buf_name, 'fugitive') then
     return vim.fn.FugitiveStatusline()
   end
 
   return ''
 end
 
+---@type LazyPluginSpec
 local P = {
+  -- A blazing fast and easy to configure neovim statusline plugin written in pure lua.
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
   opts = {

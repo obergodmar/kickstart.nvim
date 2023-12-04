@@ -1,8 +1,10 @@
 ---@type LazyPluginSpec
 local P = {
+  -- A search panel for neovim.
   'nvim-pack/nvim-spectre',
   event = 'VeryLazy',
   dependencies = {
+    -- All the lua functions I don't want to write twice.
     'nvim-lua/plenary.nvim',
   },
   opts = {},

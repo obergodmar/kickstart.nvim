@@ -1,10 +1,7 @@
 ---@type LazyPluginSpec
 local P = {
+  -- Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu.
   'folke/noice.nvim',
-  dependencies = {
-    'MunifTanjim/nui.nvim',
-    'rcarriga/nvim-notify',
-  },
   event = 'VeryLazy',
   ---@type NoiceConfig
   opts = {
@@ -42,7 +39,10 @@ local P = {
     {
       '<S-Enter>',
       function()
-        require('noice').redirect(vim.fn.getcmdline())
+        local cmdline = vim.fn.getcmdline()
+        if cmdline then
+          require('noice').redirect(cmdline)
+        end
       end,
       mode = 'c',
       desc = 'Redirect Cmdline',

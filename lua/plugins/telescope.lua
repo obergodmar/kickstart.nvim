@@ -5,9 +5,14 @@ end
 
 ---@type LazyPluginSpec
 local P = {
+  -- telescope.nvim is a highly extendable fuzzy finder over lists.
+  -- Built on the latest awesome features from neovim core.
+  -- Telescope is centered around modularity, allowing for easy customization.
   'nvim-telescope/telescope.nvim',
   dependencies = {
+    -- All the lua functions I don't want to write twice.
     'nvim-lua/plenary.nvim',
+    -- Live grep with args
     'nvim-telescope/telescope-live-grep-args.nvim',
     {
       -- Fuzzy Finder Algorithm which requires local dependencies to be built.
@@ -19,6 +24,7 @@ local P = {
       end,
     },
     {
+      -- Search your git history by commit message, content and author in Neovim
       'aaronhallaert/advanced-git-search.nvim',
     },
   },
@@ -41,6 +47,7 @@ local P = {
       opts = opts or {}
 
       filepath = vim.fn.expand(filepath)
+      ---@diagnostic disable-next-line: param-type-mismatch
       vim.loop.fs_stat(filepath, function(_, stat)
         if not stat then
           return
@@ -54,6 +61,7 @@ local P = {
     end
 
     local telescope = require('telescope')
+    local trouble = require('trouble.providers.telescope')
 
     telescope.setup({
       defaults = {
@@ -68,13 +76,14 @@ local P = {
         mappings = {
           n = {
             ['<M-p>'] = action_layout.toggle_preview,
+            ['<c-t>'] = trouble.open_with_trouble,
           },
           i = {
             ['<C-u>'] = actions.cycle_history_next,
             ['<C-d>'] = actions.cycle_history_prev,
             ['<C-s>'] = actions.cycle_previewers_next,
             ['<C-a>'] = actions.cycle_previewers_prev,
-            ['<M-p>'] = action_layout.toggle_preview,
+            ['<c-t>'] = trouble.open_with_trouble,
           },
         },
       },
@@ -192,13 +201,6 @@ local P = {
       get_ts_cmd('git_stash'),
       id = 'ts_git_stash',
       desc = '[S]earch Git [S]tash',
-      mode = 'n',
-    },
-    {
-      'gI',
-      get_ts_cmd('lsp_implementations'),
-      id = 'ts_impl',
-      desc = '[G]oto [I]mplementations',
       mode = 'n',
     },
   },

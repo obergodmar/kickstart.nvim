@@ -1,8 +1,12 @@
 ---@type LazyPluginSpec
 local P = {
+  -- Highlight, list and search todo comments in your projects
   'folke/todo-comments.nvim',
   event = 'VeryLazy',
-  dependencies = { 'nvim-lua/plenary.nvim' },
+  dependencies = {
+    -- All the lua functions I don't want to write twice.
+    'nvim-lua/plenary.nvim',
+  },
   opts = {},
 }
 

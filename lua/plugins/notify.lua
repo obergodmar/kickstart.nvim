@@ -1,5 +1,6 @@
 ---@type LazyPluginSpec
 local P = {
+  -- A fancy, configurable, notification manager for NeoVim
   'rcarriga/nvim-notify',
   keys = {
     {

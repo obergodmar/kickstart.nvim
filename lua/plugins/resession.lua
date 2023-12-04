@@ -1,5 +1,6 @@
 ---@type LazyPluginSpec
 local P = {
+  -- A replacement for mksession with a better API
   'stevearc/resession.nvim',
   opts = {
     autosave = {

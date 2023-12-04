@@ -1,5 +1,6 @@
 ---@type LazyPluginSpec
 local P = {
+  -- Secure load local config files.
   'klen/nvim-config-local',
   opts = {
     config_files = { '.nvim.lua' },

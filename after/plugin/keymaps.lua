@@ -18,11 +18,6 @@ map('n', '<M-Down>', '<cmd>resize -2<cr>', { desc = 'Decrease window height', re
 map('n', '<M-Left>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease window width', remap = true })
 map('n', '<M-Right>', '<cmd>vertical resize +2<cr>', { desc = 'Increase window width', remap = true })
 
--- Diagnostic keymaps
-map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-map('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-map('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-
 vim.api.nvim_set_keymap('n', '<leader>ta', ':$tabnew<CR>', { noremap = true, desc = '[T]ab [A]dd' })
 vim.api.nvim_set_keymap('n', '<leader>tc', ':tabclose<CR>', { noremap = true, desc = '[T]ab [C]lose' })
 vim.api.nvim_set_keymap('n', '<leader>to', ':tabonly<CR>', { noremap = true, desc = '[T]ab [O]nly (Close other tabs)' })
@@ -70,7 +65,7 @@ map('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit all' })
 
 -- copy file path
 --relative path
-map('n', '<leader>cr', '<cmd>let @+ = expand("%")<cr>', { desc = '[C]opy [R]elative path' })
+map('n', '<leader>cp', '<cmd>let @+ = expand("%")<cr>', { desc = '[C]opy relative [P]ath' })
 
 --full path
 map('n', '<leader>cf', '<cmd>let @+ = expand("%:p")<cr>', { desc = '[C]opy [F]ull path' })

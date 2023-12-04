@@ -1,5 +1,6 @@
 ---@type LazyPluginSpec
 local P = {
+  -- A format runner for Neovim.
   'obergodmar/formatter.nvim',
   event = 'VeryLazy',
   keys = {

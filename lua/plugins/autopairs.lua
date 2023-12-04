@@ -1,7 +1,8 @@
 ---@type LazyPluginSpec
 local P = {
-  'echasnovski/mini.pairs',
-  event = 'VeryLazy',
+  -- A super powerful autopair plugin for Neovim that supports multiple characters.
+  'obergodmar/nvim-autopairs',
+  event = 'InsertEnter',
   opts = {},
 }
 

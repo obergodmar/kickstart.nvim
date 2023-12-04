@@ -1,5 +1,6 @@
 ---@type LazyPluginSpec
 local P = {
+  -- Status column plugin that provides a configurable 'statuscolumn' and click handlers. Requires Neovim >= 0.9.
   'luukvbaal/statuscol.nvim',
   event = 'VeryLazy',
   config = function()

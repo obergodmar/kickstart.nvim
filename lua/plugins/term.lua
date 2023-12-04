@@ -11,6 +11,7 @@ end
 
 ---@type LazyPluginSpec
 local P = {
+  -- A neovim lua plugin to help easily manage multiple terminal windows
   'akinsho/toggleterm.nvim',
   event = 'VeryLazy',
   ---@type ToggleTermConfig

@@ -1,6 +1,23 @@
+local function mapBufferlineKeys(goToIndex)
+  return {
+    '<leader>' .. goToIndex,
+    '<cmd>lua require("bufferline").go_to(' .. goToIndex .. ', true)<cr>',
+    id = 'bufferline_go_to_' .. goToIndex,
+    desc = 'Go to ' .. goToIndex .. ' tab',
+    mode = 'n',
+  }
+end
+
+local keys = {}
+
+for i = 1, 9, 1 do
+  table.insert(keys, mapBufferlineKeys(i))
+end
+
 ---@type LazyPluginSpec
 local P = {
-  'akinsho/bufferline.nvim',
+  -- Tabs replacer
+  'obergodmar/bufferline.nvim',
   event = 'VeryLazy',
   opts = {
     ---@type bufferline.Options
@@ -8,11 +25,17 @@ local P = {
     options = {
       mode = 'tabs',
       numbers = 'both',
+      indicator = { style = 'underline' },
       diagnostics = 'nvim_lsp',
+      color_icons = true,
       always_show_bufferline = false,
+      show_buffer_close_icons = false,
+      show_duplicate_prefix = false,
       show_close_icon = false,
+      separator_style = 'thin',
     },
   },
+  keys = keys,
 }
 
 return P

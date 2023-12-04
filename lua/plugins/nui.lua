@@ -1,4 +1,8 @@
 ---@type LazyPluginSpec
-local P = { 'MunifTanjim/nui.nvim', lazy = true }
+local P = {
+  -- UI Component Library for Neovim.
+  'MunifTanjim/nui.nvim',
+  lazy = true,
+}
 
 return P

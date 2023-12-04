@@ -1,7 +1,9 @@
 ---@type LazyPluginSpec
 local P = {
+  -- Nvim Treesitter configurations and abstraction layer
   'nvim-treesitter/nvim-treesitter',
   dependencies = {
+    -- Syntax aware text-objects, select, move, swap, and peek support.
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
   config = function()

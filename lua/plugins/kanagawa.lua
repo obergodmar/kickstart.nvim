@@ -1,5 +1,6 @@
 ---@type LazyPluginSpec
 local P = {
+  -- NeoVim dark colorscheme inspired by the colors of the famous painting by Katsushika Hokusai.
   'rebelot/kanagawa.nvim',
   opts = {
     theme = 'wave',
