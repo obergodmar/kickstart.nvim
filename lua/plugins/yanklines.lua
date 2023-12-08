@@ -4,14 +4,16 @@ local P = {
   'obergodmar/yanklines.nvim',
   keys = {
     {
-      '<leader>Y',
+      '<leader>sy',
       '<cmd>lua require("yanklines").yank_lines()<cr>',
+      desc = '[Y]ank matched text',
       mode = { 'n' },
       id = 'yanklines',
     },
     {
-      '<leader>Y',
+      '<leader>sy',
       '<cmd>lua require("yanklines").yank_lines(true)<cr>',
+      desc = '[Y]ank matched text',
       mode = { 'v' },
       id = 'yanklines_v_block',
     },

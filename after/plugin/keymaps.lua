@@ -85,3 +85,12 @@ map({ 'v', 'i' }, '<S-Up>', '<Up>', { silent = true })
 map({ 'v', 'i' }, '<S-Right>', '<Right>', { silent = true })
 map({ 'v', 'i' }, '<S-Down>', '<Down>', { silent = true })
 map({ 'v', 'i' }, '<S-Left>', '<Left>', { silent = true })
+
+map({ 'n', 'v' }, '<leader>y', '"+y', { silent = true })
+map({ 'n', 'v' }, '<leader>Y', '"+yg_', { silent = true })
+
+map({ 'n', 'v' }, '<leader>p', '"+p', { silent = true })
+map({ 'n', 'v' }, '<leader>P', '"+P', { silent = true })
+
+map({ 'n', 'v' }, '<M-p>', '"0p', { silent = true })
+map({ 'n', 'v' }, '<M-P>', '"0P', { silent = true })
