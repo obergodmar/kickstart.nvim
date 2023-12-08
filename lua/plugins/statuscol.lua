@@ -6,11 +6,22 @@ local P = {
   config = function()
     local builtin = require('statuscol.builtin')
     require('statuscol').setup({
-      relculright = true,
       segments = {
-        { text = { '%s' }, click = 'v:lua.ScSa' },
-        { text = { builtin.lnumfunc }, click = 'v:lua.ScLa' },
-        { text = { ' ', builtin.foldfunc, ' ' }, click = 'v:lua.ScFa' },
+        {
+          text = { '%s', builtin.lnumfunc, ' ' },
+        },
+        {
+          text = {
+            '%{foldlevel(v:lnum) > 0 ? (foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "" : "") : " ") : " " }',
+            ' ',
+          },
+          hl = 'FoldColumn',
+          sign = {
+            name = { '.*' },
+            fillchar = ' ',
+            fillcharhl = nil,
+          },
+        },
       },
     })
   end,
