@@ -2,7 +2,7 @@
 local P = {
   -- Status column plugin that provides a configurable 'statuscolumn' and click handlers. Requires Neovim >= 0.9.
   'luukvbaal/statuscol.nvim',
-  branch = vim.fn.has('nvim-0.10') and '0.10' or 'main',
+  branch = vim.fn.has('nvim-0.10') == 1 and '0.10' or 'main',
   event = 'VeryLazy',
   config = function()
     local builtin = require('statuscol.builtin')
