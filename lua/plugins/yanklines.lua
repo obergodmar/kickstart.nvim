@@ -5,14 +5,18 @@ local P = {
   keys = {
     {
       '<leader>sy',
-      '<cmd>lua require("yanklines").yank_lines()<cr>',
+      function()
+        require('yanklines').yank_lines()
+      end,
       desc = '[Y]ank matched text',
       mode = { 'n' },
       id = 'yanklines',
     },
     {
       '<leader>sy',
-      '<cmd>lua require("yanklines").yank_lines(true)<cr>',
+      function()
+        require('yanklines').yank_lines({ v_mode = true })
+      end,
       desc = '[Y]ank matched text',
       mode = { 'v' },
       id = 'yanklines_v_block',
