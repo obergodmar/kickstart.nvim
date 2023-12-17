@@ -34,9 +34,9 @@ local ftMap = {
   vim = 'indent',
 
   lua = { 'lsp', 'indent' },
-  css = { 'lsp', 'indent' },
   html = { 'lsp', 'indent' },
 
+  css = { 'treesitter', 'indent' },
   php = { 'treesitter', 'indent' },
   json = { 'treesitter', 'indent' },
 
