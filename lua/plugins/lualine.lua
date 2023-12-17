@@ -1,3 +1,9 @@
+local function relative_path_with_path()
+  local row = unpack(vim.api.nvim_win_get_cursor(0))
+
+  return vim.fn.expand('%:~:.') .. ':' .. row
+end
+
 local function win_num()
   return vim.fn.winnr()
 end
@@ -27,7 +33,10 @@ local P = {
     sections = {
       lualine_a = { 'mode' },
       lualine_b = { 'branch', 'diff', 'diagnostics' },
-      lualine_c = { 'filename', 'filesize' },
+      lualine_c = {
+        relative_path_with_path,
+        'filesize',
+      },
       lualine_x = { '%S', 'encoding', 'fileformat', 'filetype' },
       lualine_y = { 'selectioncount', 'searchcount', 'progress' },
       lualine_z = { 'location' },
