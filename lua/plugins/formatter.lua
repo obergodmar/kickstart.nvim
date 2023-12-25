@@ -20,6 +20,9 @@ local P = {
       json = {
         require('formatter.filetypes.json').prettier,
       },
+      markdown = {
+        require('formatter.filetypes.markdown').prettier,
+      },
       css = {
         require('formatter.filetypes.css').prettier,
       },

@@ -1,4 +1,5 @@
 local servers = {
+  marksman = {},
   html = {},
   cssls = {},
   -- cssmodules_ls = {},
