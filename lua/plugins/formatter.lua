@@ -23,6 +23,9 @@ local P = {
       xml = {
         require('formatter.filetypes.xml').xmllint,
       },
+      jsonc = {
+        require('formatter.filetypes.json').prettier,
+      },
       markdown = {
         require('formatter.filetypes.markdown').prettier,
       },
