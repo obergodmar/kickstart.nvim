@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 local P = {
   -- improve neovim lsp experience
-  'glepnir/lspsaga.nvim',
+  'obergodmar/lspsaga.nvim',
   event = 'VeryLazy',
   opts = {
     lightbulb = {

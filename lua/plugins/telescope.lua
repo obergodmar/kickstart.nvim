@@ -8,16 +8,16 @@ local P = {
   -- telescope.nvim is a highly extendable fuzzy finder over lists.
   -- Built on the latest awesome features from neovim core.
   -- Telescope is centered around modularity, allowing for easy customization.
-  'nvim-telescope/telescope.nvim',
+  'obergodmar/telescope.nvim',
   dependencies = {
     -- All the lua functions I don't want to write twice.
-    'nvim-lua/plenary.nvim',
+    'obergodmar/plenary.nvim',
     -- Live grep with args
-    'nvim-telescope/telescope-live-grep-args.nvim',
+    'obergodmar/telescope-live-grep-args.nvim',
     {
       -- Fuzzy Finder Algorithm which requires local dependencies to be built.
       -- Only load if `make` is available.
-      'nvim-telescope/telescope-fzf-native.nvim',
+      'obergodmar/telescope-fzf-native.nvim',
       build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
       cond = function()
         return vim.fn.executable('cmake') == 1
@@ -25,7 +25,7 @@ local P = {
     },
     {
       -- Search your git history by commit message, content and author in Neovim
-      'aaronhallaert/advanced-git-search.nvim',
+      'obergodmar/advanced-git-search.nvim',
     },
   },
   config = function()

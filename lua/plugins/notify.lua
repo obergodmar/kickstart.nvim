@@ -1,17 +1,7 @@
 ---@type LazyPluginSpec
 local P = {
   -- A fancy, configurable, notification manager for NeoVim
-  'rcarriga/nvim-notify',
-  keys = {
-    {
-      '<leader>un',
-      function()
-        require('notify').dismiss({ silent = true, pending = true })
-      end,
-      desc = 'Dismiss all Notifications',
-      id = 'dismiss_all_notifications',
-    },
-  },
+  'obergodmar/nvim-notify',
   ---@type notify.Config
   ---@diagnostic disable-next-line: missing-fields
   opts = {

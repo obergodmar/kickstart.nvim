@@ -1,15 +1,11 @@
 ---@type LazyPluginSpec
 local P = {
   -- Snippet Engine for Neovim written in Lua.
-  'L3MON4D3/LuaSnip',
-  version = 'v2.*',
-  build = (not jit.os:find('Windows'))
-      and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp"
-    or nil,
+  'obergodmar/LuaSnip',
+  build = (not jit.os:find('Windows')) and 'make install_jsregexp' or nil,
   dependencies = {
     -- Snippets collection for a set of different programming languages.
-    'rafamadriz/friendly-snippets',
-    enabled = false,
+    'obergodmar/friendly-snippets',
     config = function()
       require('luasnip.loaders.from_vscode').lazy_load()
     end,

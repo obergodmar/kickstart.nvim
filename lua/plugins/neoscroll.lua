@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 local P = {
   -- Smooth scrolling neovim plugin written in lua
-  'karb94/neoscroll.nvim',
+  'obergodmar/neoscroll.nvim',
   enabled = function()
     return not vim.g.neovide
   end,

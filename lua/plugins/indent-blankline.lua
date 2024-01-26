@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 local P = {
   -- This plugin adds indentation guides to Neovim. It uses Neovim's virtual text feature and no conceal
-  'lukas-reineke/indent-blankline.nvim',
+  'obergodmar/indent-blankline.nvim',
   main = 'ibl',
   ---@type ibl.config
   opts = {},

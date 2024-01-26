@@ -1,10 +1,10 @@
 ---@type LazyPluginSpec
 local P = {
   -- Nvim Treesitter configurations and abstraction layer
-  'nvim-treesitter/nvim-treesitter',
+  'obergodmar/nvim-treesitter',
   dependencies = {
     -- Syntax aware text-objects, select, move, swap, and peek support.
-    'nvim-treesitter/nvim-treesitter-textobjects',
+    'obergodmar/nvim-treesitter-textobjects',
   },
   config = function()
     pcall(require('nvim-treesitter.install').update({ with_sync = true }))
@@ -17,6 +17,7 @@ local P = {
         'markdown',
         'markdown_inline',
         'regex',
+        'lua'
       },
       auto_install = true,
       highlight = { enable = true },

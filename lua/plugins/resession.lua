@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 local P = {
   -- A replacement for mksession with a better API
-  'stevearc/resession.nvim',
+  'obergodmar/resession.nvim',
   opts = {
     autosave = {
       enabled = true,
@@ -12,19 +12,25 @@ local P = {
   keys = {
     {
       '<leader>as',
-      "<cmd>lua require('resession').save()<cr>",
+      function()
+        require('resession').save()
+      end,
       desc = '[S]ave session',
       id = 'resession_save',
     },
     {
       '<leader>al',
-      "<cmd>lua require('resession').load()<cr>",
+      function()
+        require('resession').load()
+      end,
       desc = '[L]oad session',
       id = 'resession_load',
     },
     {
       '<leader>ad',
-      "<cmd>lua require('resession').delete()<cr>",
+      function()
+        require('resession').delete()
+      end,
       desc = '[D]elete session',
       id = 'resession_delete',
     },

@@ -12,7 +12,7 @@ end
 ---@type LazyPluginSpec
 local P = {
   -- A neovim lua plugin to help easily manage multiple terminal windows
-  'akinsho/toggleterm.nvim',
+  'obergodmar/toggleterm.nvim',
   event = 'VeryLazy',
   ---@type ToggleTermConfig
   ---@diagnostic disable-next-line: missing-fields

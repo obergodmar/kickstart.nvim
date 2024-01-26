@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 local P = {
   -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
+  'obergodmar/vim-sleuth',
   event = 'VeryLazy',
 }
 

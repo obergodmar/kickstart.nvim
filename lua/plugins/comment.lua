@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 local P = {
   -- Smart and Powerful commenting plugin for neovim
-  'numToStr/Comment.nvim',
+  'obergodmar/Comment.nvim',
   event = 'VeryLazy',
   opts = {},
 }

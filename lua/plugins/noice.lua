@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 local P = {
   -- Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu.
-  'folke/noice.nvim',
+  'obergodmar/noice.nvim',
   event = 'VeryLazy',
   ---@type NoiceConfig
   opts = {

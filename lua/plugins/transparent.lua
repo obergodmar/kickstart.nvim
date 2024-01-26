@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 local P = {
   -- Remove all background colors to make nvim transparent
-  'xiyaowong/transparent.nvim',
+  'obergodmar/transparent.nvim',
   enabled = false,
   opts = {},
 }

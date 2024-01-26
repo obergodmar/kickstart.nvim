@@ -51,23 +51,27 @@ local ftMap = {
 ---@type LazyPluginSpec
 local P = {
   -- The goal of nvim-ufo is to make Neovim's fold look modern and keep high performance.
-  'kevinhwang91/nvim-ufo',
+  'obergodmar/nvim-ufo',
   dependencies = {
     -- The goal of promise-async is to port Promise & Async from JavaScript to Lua.
-    'kevinhwang91/promise-async',
+    'obergodmar/promise-async',
   },
   event = 'VeryLazy',
   keys = {
     {
       'zR',
-      "<cmd>lua require('ufo').openAllFolds()<cr>",
+      function()
+        require('ufo').openAllFolds()
+      end,
       id = 'ufo_open_all_folds',
       desc = 'Open All Folds',
       mode = 'n',
     },
     {
       'zM',
-      "<cmd>lua require('ufo').closeAllFolds()<cr>",
+      function()
+        require('ufo').closeAllFolds()
+      end,
       id = 'ufo_close_all_folds',
       desc = 'Close All Folds',
       mode = 'n',

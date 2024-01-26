@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 local P = {
   -- Git integration for buffers
-  'lewis6991/gitsigns.nvim',
+  'obergodmar/gitsigns.nvim',
   event = 'VeryLazy',
   opts = {
     signs = {
