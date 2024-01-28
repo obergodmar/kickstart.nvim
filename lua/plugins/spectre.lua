@@ -5,7 +5,7 @@ local P = {
   event = 'VeryLazy',
   dependencies = {
     -- All the lua functions I don't want to write twice.
-    'nvim-lua/plenary.nvim',
+    'obergodmar/plenary.nvim',
   },
   opts = {},
   keys = {
