@@ -17,7 +17,9 @@ local P = {
         'markdown',
         'markdown_inline',
         'regex',
-        'lua'
+        'lua',
+        'vim',
+        'bash',
       },
       auto_install = true,
       highlight = { enable = true },
