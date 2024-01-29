@@ -1,3 +1,4 @@
+local keys = require('search.keys')
 local function get_trouble_cmd(fn_name)
   return '<cmd>TroubleToggle ' .. fn_name .. '<cr>'
 end
@@ -8,6 +9,7 @@ local P = {
   -- quickfix and location list to help you solve all
   -- the trouble your code is causing.
   'obergodmar/trouble.nvim',
+  enabled = false,
   opts = {
     height = 20,
     padding = false,
@@ -33,41 +35,26 @@ local P = {
     },
   },
   keys = {
-    {
-      'gr',
-      get_trouble_cmd('lsp_references'),
-      id = 'trouble_refs',
-      desc = '[G]oto [R]eferences',
-      mode = 'n',
-    },
-    {
-      'gd',
-      get_trouble_cmd('lsp_definitions'),
-      id = 'trouble_defs',
-      desc = '[G]oto [D]efinitions',
-      mode = 'n',
-    },
-    {
-      'gI',
-      get_trouble_cmd('lsp_implementations'),
-      id = 'trouble_impls',
-      desc = '[G]ot [I]mplementations',
-      mode = 'n',
-    },
-    {
-      '<leader>sd',
-      get_trouble_cmd('document_diagnostics'),
-      id = 'trouble_file_diagnostics',
-      desc = '[S]earch [D]iagnostics',
-      mode = 'n',
-    },
-    {
-      '<leader>sD',
-      get_trouble_cmd('workspace_diagnostics'),
-      id = 'trouble_workspace_diagnostics',
-      desc = '[S]earch [D]iagnostics',
-      mode = 'n',
-    },
+    keys.lsp_references(function()
+      get_trouble_cmd('lsp_references')
+    end, 'trouble'),
+
+    keys.lsp_definitions(function()
+      get_trouble_cmd('lsp_definitions')
+    end, 'trouble'),
+
+    keys.lsp_implemetations(function()
+      get_trouble_cmd('lsp_implementations')
+    end, 'trouble'),
+
+    keys.file_diagnostics(function()
+      get_trouble_cmd('document_diagnostics')
+    end, 'trouble'),
+
+    keys.project_diagnostics(function()
+      get_trouble_cmd('workspace_diagnostics')
+    end, 'trouble'),
+
     {
       '<leader>st',
       '<cmd>TodoTrouble<CR>',
@@ -75,13 +62,10 @@ local P = {
       desc = '[S]earch [T]ODO',
       mode = 'n',
     },
-    {
-      '<leader>sq',
-      get_trouble_cmd('quickfix'),
-      id = 'trouble_quickfix',
-      desc = '[S]how [Q]uick List',
-      mode = 'n',
-    },
+
+    keys.quicklist(function()
+      get_trouble_cmd('quickfix')
+    end, 'trouble'),
   },
 }
 
