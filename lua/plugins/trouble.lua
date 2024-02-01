@@ -43,7 +43,7 @@ local P = {
       get_trouble_cmd('lsp_definitions')
     end, 'trouble'),
 
-    keys.lsp_implemetations(function()
+    keys.lsp_implementations(function()
       get_trouble_cmd('lsp_implementations')
     end, 'trouble'),
 

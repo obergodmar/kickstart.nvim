@@ -31,11 +31,11 @@ local P = {
     end, 'fzf'),
 
     keys.grep_string(function()
-      require('fzf-lua').grep()
+      require('fzf-lua').live_grep_glob()
     end, 'fzf'),
 
     keys.live_grep(function()
-      require('fzf-lua').live_grep()
+      require('fzf-lua').live_grep_glob()
     end, 'fzf'),
 
     keys.live_grep_args(function()
@@ -74,8 +74,8 @@ local P = {
       require('fzf-lua').lsp_definitions()
     end, 'fzf'),
 
-    keys.lsp_implemetations(function()
-      require('fzf-lua').lsp_implemetations()
+    keys.lsp_implementations(function()
+      require('fzf-lua').lsp_implementations()
     end, 'fzf'),
 
     keys.file_diagnostics(function()
@@ -88,6 +88,10 @@ local P = {
 
     keys.quicklist(function()
       require('fzf-lua').quicklist()
+    end, 'fzf'),
+
+    keys.reglist(function()
+      require('fzf-lua').registers()
     end, 'fzf'),
   },
 }

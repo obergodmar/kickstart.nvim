@@ -135,7 +135,7 @@ local keys = {
       mode = 'n',
     }
   end,
-  lsp_implemetations = function(fn, name)
+  lsp_implementations = function(fn, name)
     return {
       'gI',
       fn,
@@ -168,6 +168,15 @@ local keys = {
       fn,
       id = name .. '_quickfix',
       desc = '[S]how [Q]uick List',
+      mode = 'n',
+    }
+  end,
+  reglist = function(fn, name)
+    return {
+      '<leader>sr',
+      fn,
+      id = name .. '_reglist',
+      desc = '[S]how [R]eg List',
       mode = 'n',
     }
   end,
