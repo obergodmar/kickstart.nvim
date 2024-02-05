@@ -17,9 +17,29 @@ local P = {
       -- Stylelint lsp
       -- css = { 'stylelint' },
     }
-
-    vim.keymap.set('n', '<leader>l', lint.try_lint, { desc = '[L]int file' })
   end,
+  keys = {
+    {
+      '<leader>l',
+      function()
+        local lint = require('lint')
+        lint.try_lint()
+        lint.try_lint('cspell')
+      end,
+      id = 'lint_file',
+      desc = '[L]int file',
+      mode = { 'n', 'v' },
+    },
+    {
+      '<leader>L',
+      function()
+        vim.diagnostic.reset(nil, 0)
+      end,
+      id = 'reset_diagnostic',
+      desc = '[L]int Reset',
+      mode = { 'n', 'v' },
+    },
+  },
 }
 
 return P
