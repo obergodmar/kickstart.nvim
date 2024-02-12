@@ -12,19 +12,6 @@ local P = {
         ['cmp.entry.get_documentation'] = true,
       },
     },
-    routes = {
-      {
-        filter = {
-          event = 'msg_show',
-          any = {
-            { find = '%d+L, %d+B' },
-            { find = '; after #%d+' },
-            { find = '; before #%d+' },
-          },
-        },
-        view = 'mini',
-      },
-    },
     presets = {
       bottom_search = true,
       command_palette = true,
@@ -36,18 +23,6 @@ local P = {
     },
   },
   keys = {
-    {
-      '<S-Enter>',
-      function()
-        local cmdline = vim.fn.getcmdline()
-        if cmdline then
-          require('noice').redirect(cmdline)
-        end
-      end,
-      mode = 'c',
-      desc = 'Redirect Cmdline',
-      id = 'redirect_cmdline',
-    },
     {
       '<leader>snl',
       function()
