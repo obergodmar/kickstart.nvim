@@ -2,9 +2,7 @@
 local P = {
   -- Smooth scrolling neovim plugin written in lua
   'obergodmar/neoscroll.nvim',
-  enabled = function()
-    return not vim.g.neovide
-  end,
+  enabled = false,
   opts = {
     hide_cursor = false,
     easing_function = [[sine]],

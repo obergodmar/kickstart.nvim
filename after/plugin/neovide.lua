@@ -1,4 +1,4 @@
-if vim.g.neovide then
+if require('utils').is_neovide() then
   if require('utils').is_mac() then
     vim.o.guifont = 'Iosevka Nerd Font:b:h15'
   else
