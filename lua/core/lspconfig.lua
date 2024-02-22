@@ -104,8 +104,8 @@ local P = {
         end
 
         if server_name == 'tsserver' then
-          commands = require('lsp.typescript').commands
-          init_options = require('lsp.typescript').init_options
+          commands = require('helpers.lsp.typescript').commands
+          init_options = require('helpers.lsp.typescript').init_options
         end
 
         if server_name == 'intelephense' or server_name == 'phpactor' then
@@ -115,7 +115,7 @@ local P = {
         require('lspconfig')[server_name].setup({
           settings = servers[server_name],
           capabilities = capabilities,
-          on_attach = require('lsp.common').on_attach,
+          on_attach = require('helpers.lsp.common').on_attach,
           root_dir = root_dir,
           init_options = init_options,
           filetypes = filetypes,

@@ -1,4 +1,4 @@
-local keys = require('search.keys')
+local keys = require('helpers.search.keys')
 
 ---@return string
 local get_ts_cmd = function(fn_name)
@@ -130,7 +130,7 @@ local P = {
   end,
   keys = {
     keys.oldfiles(function()
-      require('telescope.custom-pickers').custom_files_picker({ picker = 'oldfiles' })
+      require('helpers.telescope.custom-pickers').custom_files_picker({ picker = 'oldfiles' })
     end, 'ts'),
 
     keys.buffers(function()
@@ -142,23 +142,23 @@ local P = {
     end, 'ts'),
 
     keys.find_files(function()
-      require('telescope.custom-pickers').custom_files_picker({ picker = 'find_files' })
+      require('helpers.telescope.custom-pickers').custom_files_picker({ picker = 'find_files' })
     end, 'ts'),
 
     keys.grep_string(function()
-      require('telescope.custom-pickers').custom_grep_picker({ picker = 'grep_string' })
+      require('helpers.telescope.custom-pickers').custom_grep_picker({ picker = 'grep_string' })
     end, 'ts'),
 
     keys.live_grep(function()
-      require('telescope.custom-pickers').custom_grep_picker({ picker = 'live_grep' })
+      require('helpers.telescope.custom-pickers').custom_grep_picker({ picker = 'live_grep' })
     end, 'ts'),
 
     keys.live_grep_args(function()
-      require('telescope.custom-pickers').custom_grep_picker({ picker = 'live_grep_args' })
+      require('helpers.telescope.custom-pickers').custom_grep_picker({ picker = 'live_grep_args' })
     end, 'ts'),
 
     keys.git_files(function()
-      require('telescope.custom-pickers').custom_files_picker({ picker = 'git_files' })
+      require('helpers.telescope.custom-pickers').custom_files_picker({ picker = 'git_files' })
     end, 'ts'),
 
     keys.git_commits(function()

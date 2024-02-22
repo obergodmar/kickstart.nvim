@@ -1,4 +1,4 @@
-local keys = require('search.keys')
+local keys = require('helpers.search.keys')
 
 ---@type LazyPluginSpec
 local P = {

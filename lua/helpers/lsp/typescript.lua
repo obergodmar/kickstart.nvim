@@ -16,13 +16,13 @@ return {
     },
     AddMissingImports = {
       function()
-        require('lsp.common').apply_action('source.addMissingImports')
+        require('helpers.lsp.common').apply_action('source.addMissingImports')
       end,
       description = 'Add Missing Imports',
     },
     RemoveUnusedImports = {
       function()
-        require('lsp.common').apply_action('source.removeUnusedImports')
+        require('helpers.lsp.common').apply_action('source.removeUnusedImports')
       end,
       description = 'Remove Unused Imports',
     },

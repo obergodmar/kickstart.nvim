@@ -1,4 +1,4 @@
-local keys = require('search.keys')
+local keys = require('helpers.search.keys')
 local function get_trouble_cmd(fn_name)
   return '<cmd>TroubleToggle ' .. fn_name .. '<cr>'
 end
