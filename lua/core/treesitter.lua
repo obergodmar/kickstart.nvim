@@ -10,6 +10,7 @@ local P = {
     pcall(require('nvim-treesitter.install').update({ with_sync = true }))
 
     require('nvim-treesitter.configs').setup({
+      additional_vim_regex_highlighting = false,
       modules = {},
       ignore_install = {},
       sync_install = true,
@@ -23,9 +24,9 @@ local P = {
       },
       auto_install = true,
       highlight = { enable = true },
-      indent = { enable = true, disable = { 'python' } },
+      indent = { enable = true },
       incremental_selection = {
-        enable = true,
+        enable = false,
         keymaps = {
           init_selection = '<c-space>',
           node_incremental = '<c-space>',
@@ -35,7 +36,7 @@ local P = {
       },
       textobjects = {
         select = {
-          enable = true,
+          enable = false,
           lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
           keymaps = {
             -- Capture groups defined in textobjects.scm
@@ -48,7 +49,7 @@ local P = {
           },
         },
         move = {
-          enable = true,
+          enable = false,
           set_jumps = true, -- whether to set jumps in the jumplist
           goto_next_start = {
             [']m'] = '@function.outer',
@@ -68,7 +69,7 @@ local P = {
           },
         },
         swap = {
-          enable = true,
+          enable = false,
           swap_next = {
             ['<leader>a'] = '@parameter.inner',
           },
@@ -76,9 +77,6 @@ local P = {
             ['<leader>A'] = '@parameter.inner',
           },
         },
-      },
-      autotag = {
-        enable = true,
       },
     })
   end,
