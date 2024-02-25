@@ -1,5 +1,7 @@
-if require('utils').is_neovide() then
-  if require('utils').is_mac() then
+local utils = require('utils')
+
+if utils.is_neovide() then
+  if utils.is_mac() then
     vim.o.guifont = 'Iosevka Nerd Font:b:h15'
   else
     vim.o.guifont = 'Iosevka Nerd Font:b:h12'
@@ -20,7 +22,14 @@ if require('utils').is_neovide() then
   vim.keymap.set('c', '<D-v>', '<C-R>+') -- Paste command mode
   vim.keymap.set('i', '<D-v>', '<ESC>l"+Pli') -- Paste insert mode
 
-  vim.g.neovide_scale_factor = 1.0
+  if utils.is_mac() or utils.is_win() then
+    vim.g.neovide_scale_factor = 1.0
+  else
+    -- 0.65 because linux x11 fractonal scaling is enabled and
+    -- global scale is 175%
+    vim.g.neovide_scale_factor = 0.65
+  end
+
   local change_scale_factor = function(delta)
     vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
   end
