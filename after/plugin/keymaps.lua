@@ -18,40 +18,18 @@ map('n', '<M-Down>', '<cmd>resize -2<cr>', { desc = 'Decrease window height', re
 map('n', '<M-Left>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease window width', remap = true })
 map('n', '<M-Right>', '<cmd>vertical resize +2<cr>', { desc = 'Increase window width', remap = true })
 
-vim.api.nvim_set_keymap('n', '<leader>ta', ':$tabnew<CR>', { noremap = true, desc = '[T]ab [A]dd' })
-vim.api.nvim_set_keymap('n', '<leader>tc', ':tabclose<CR>', { noremap = true, desc = '[T]ab [C]lose' })
-vim.api.nvim_set_keymap('n', '<leader>to', ':tabonly<CR>', { noremap = true, desc = '[T]ab [O]nly (Close other tabs)' })
-vim.api.nvim_set_keymap('n', '<leader>tn', ':tabn<CR>', { noremap = true, desc = '[T]ab [N]ext' })
-vim.api.nvim_set_keymap('n', '<leader>tp', ':tabp<CR>', { noremap = true, desc = '[Tab] [P]revious' })
+map('n', '<leader>ta', ':$tabnew<CR>', { noremap = true, desc = '[T]ab [A]dd' })
+map('n', '<leader>tc', ':tabclose<CR>', { noremap = true, desc = '[T]ab [C]lose' })
+map('n', '<leader>to', ':tabonly<CR>', { noremap = true, desc = '[T]ab [O]nly (Close other tabs)' })
+map('n', '<leader>tn', ':tabn<CR>', { noremap = true, desc = '[T]ab [N]ext' })
+map('n', '<leader>tp', ':tabp<CR>', { noremap = true, desc = '[Tab] [P]revious' })
 -- move current tab to previous position
-vim.api.nvim_set_keymap(
-  'n',
-  '<leader>tmp',
-  ':-tabmove<CR>',
-  { noremap = true, desc = '[T]ab [M]ove to [P]revious position' }
-)
---
+map('n', '<leader>tmp', ':-tabmove<CR>', { noremap = true, desc = '[T]ab [M]ove to [P]revious position' })
 -- move current tab to next position
-vim.api.nvim_set_keymap(
-  'n',
-  '<leader>tmn',
-  ':+tabmove<CR>',
-  { noremap = true, desc = '[Tab] [M]ove to [N]ext position ' }
-)
-
--- Clear search with <esc>
-map({ 'i', 'n' }, '<esc>', '<cmd>noh<cr><esc>', { desc = 'Escape and clear hlsearch' })
-
--- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
-map('n', 'n', "'Nn'[v:searchforward]", { expr = true, desc = 'Next search result' })
-map('x', 'n', "'Nn'[v:searchforward]", { expr = true, desc = 'Next search result' })
-map('o', 'n', "'Nn'[v:searchforward]", { expr = true, desc = 'Next search result' })
-map('n', 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev search result' })
-map('x', 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev search result' })
+map('n', '<leader>tmn', ':+tabmove<CR>', { noremap = true, desc = '[Tab] [M]ove to [N]ext position ' })
 
 -- save file
 map({ 'i', 'v', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save file' })
-map('o', 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev search result' })
 
 -- better indenting
 map('v', '<', '<gv')
@@ -94,3 +72,41 @@ map({ 'n', 'v' }, '<leader>P', '"+P', { silent = true })
 
 map({ 'n', 'v' }, '<M-p>', '"0p', { silent = true })
 map({ 'n', 'v' }, '<M-P>', '"0P', { silent = true })
+
+---@return string|string[]|nil
+local function get_last_search()
+  local last_search = vim.fn.getreg('/')
+  if not last_search then
+    print('There is no last search')
+
+    return nil
+  end
+
+  return last_search
+end
+
+local function toggle_highlighting()
+  local current_word = vim.fn.expand('<cword>')
+  local last_search = get_last_search()
+
+  local new_hls = not (vim.v.hlsearch == 1 and current_word == last_search)
+
+  pcall(vim.fn.setreg, '/', current_word)
+
+  vim.opt.hls = new_hls
+end
+
+local map = vim.keymap.set
+
+map('n', '<cr>', toggle_highlighting, { remap = true, desc = 'Highlight word under cursor' })
+
+-- Clear search with <esc>
+map({ 'i', 'n' }, '<esc>', '<cmd>noh<cr><esc>', { desc = 'Escape and clear hlsearch' })
+
+-- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
+map('n', 'n', "'Nn'[v:searchforward]", { expr = true, desc = 'Next search result' })
+map('x', 'n', "'Nn'[v:searchforward]", { expr = true, desc = 'Next search result' })
+map('o', 'n', "'Nn'[v:searchforward]", { expr = true, desc = 'Next search result' })
+map('n', 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev search result' })
+map('x', 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev search result' })
+map('o', 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev search result' })
