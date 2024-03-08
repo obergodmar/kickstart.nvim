@@ -56,6 +56,9 @@ local P = {
       go = {
         require('formatter.filetypes.go').gofmt,
       },
+      rust = {
+        require('formatter.filetypes.rust').rustfmt,
+      }
     }
 
     -- sed on windows works differently and this formatter throws an error
