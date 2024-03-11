@@ -20,7 +20,7 @@ local P = {
     shade_terminals = false,
     start_in_insert = true,
     open_mapping = [[<c-\>]],
-    shell = require('utils').get_shell(),
+    shell = require('helpers.utils').get_shell(),
   },
   config = function(_, opts)
     require('toggleterm').setup(opts)

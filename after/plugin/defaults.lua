@@ -1,4 +1,4 @@
-local utils = require('utils')
+local utils = require('helpers.utils')
 
 local opt = vim.opt
 

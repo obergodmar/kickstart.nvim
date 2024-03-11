@@ -112,7 +112,7 @@ local P = {
           autostart = false
         end
 
-        require('lspconfig')[server_name].setup({
+        lspconfig[server_name].setup({
           settings = servers[server_name],
           capabilities = capabilities,
           on_attach = require('helpers.lsp.common').on_attach,

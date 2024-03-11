@@ -1,4 +1,4 @@
-local utils = require('utils')
+local utils = require('helpers.utils')
 
 if utils.is_neovide() then
   if utils.is_mac() then
