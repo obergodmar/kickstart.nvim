@@ -1,3 +1,5 @@
+local utils = require('utils')
+
 local opt = vim.opt
 
 opt.inccommand = 'split'
@@ -33,14 +35,16 @@ opt.wildmode = 'longest:full,full' -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 
-opt.rtp:append('/opt/homebrew/opt/fzf')
+if utils.is_mac() then
+  opt.rtp:append('/opt/homebrew/opt/fzf')
+end
 
 opt.cursorline = true
 
 opt.lazyredraw = false
 opt.showcmdloc = 'statusline'
 
-if require('utils').is_win() then
+if utils.is_win() then
   vim.api.nvim_exec('language en_US', true)
   opt.ff = 'unix'
 else

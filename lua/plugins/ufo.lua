@@ -58,6 +58,15 @@ local P = {
       desc = 'Close All Folds',
       mode = 'n',
     },
+    {
+      'zU',
+      function()
+        require('ufo').enableFold()
+      end,
+      id = 'ufo_enable_fold',
+      desc = 'Enable Fold for buffer',
+      mode = 'n',
+    },
   },
   opts = {
     open_fold_hl_timeout = 400,

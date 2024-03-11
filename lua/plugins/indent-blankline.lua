@@ -2,7 +2,7 @@
 local P = {
   -- This plugin adds indentation guides to Neovim. It uses Neovim's virtual text feature and no conceal
   'obergodmar/indent-blankline.nvim',
-  main = 'ibl',
+  enabled = false,
   ---@type ibl.config
   opts = {},
   config = function(_, opts)
