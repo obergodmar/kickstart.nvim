@@ -32,11 +32,11 @@ local P = {
     end, 'fzf'),
 
     keys.grep_string(function()
-      require('fzf-lua').live_grep_glob()
+      require('fzf-lua').grep_cword()
     end, 'fzf'),
 
     keys.live_grep(function()
-      require('fzf-lua').live_grep_glob()
+      require('fzf-lua').live_grep_native()
     end, 'fzf'),
 
     keys.live_grep_args(function()
