@@ -10,6 +10,15 @@ return {
       xml = {
         require('formatter.filetypes.xml').xmllint,
       },
+      sh = {
+        require('formatter.filetypes.sh').shfmt,
+      },
+      bash = {
+        require('formatter.filetypes.sh').shfmt,
+      },
+      zsh = {
+        require('formatter.filetypes.sh').shfmt,
+      },
       jsonc = {
         require('formatter.filetypes.json').prettier,
       },
