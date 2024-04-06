@@ -46,6 +46,9 @@ return {
       svelte = {
         require('formatter.filetypes.svelte').prettier,
       },
+      vue = {
+        require('formatter.filetypes.vue').prettier,
+      },
       php = {
         require('formatter.filetypes.php').php_cs_fixer,
       },
