@@ -18,6 +18,9 @@ local P = {
       long_message_to_split = true,
       inc_rename = true,
     },
+    messages = {
+      enabled = false,
+    },
     cmdline = {
       view = 'cmdline',
     },
