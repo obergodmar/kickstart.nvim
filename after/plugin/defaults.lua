@@ -35,6 +35,12 @@ opt.wildmode = 'longest:full,full' -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 
+opt.fillchars = { fold = ' ' }
+opt.foldmethod = 'indent'
+opt.foldenable = false
+opt.foldlevel = 99
+vim.g.markdown_folding = 1
+
 if utils.is_mac() then
   opt.rtp:append('/opt/homebrew/opt/fzf')
 end

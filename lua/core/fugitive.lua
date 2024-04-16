@@ -6,5 +6,3 @@ local P = {
 }
 
 return P
--- Do not need right now
--- 'tpope/vim-rhubarb',
