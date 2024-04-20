@@ -17,7 +17,7 @@ local P = {
   keys = {
     keys.oldfiles(function()
       vim.cmd('rshada!')
-      require('fzf-lua').oldfiles({ file_ignore_patterns = { "^~" } })
+      require('fzf-lua').oldfiles({ file_ignore_patterns = { "^~", "^/" } })
     end, 'fzf'),
 
     keys.buffers(function()
