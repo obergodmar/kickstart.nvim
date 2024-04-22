@@ -40,23 +40,11 @@ local P = {
     'obergodmar/mason.nvim',
     -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim.
     'obergodmar/mason-lspconfig.nvim',
-    {
-      -- Extensible UI for Neovim notifications and LSP progress messages.
-      'obergodmar/fidget.nvim',
-      opts = {
-        progress = {
-          ignore_empty_message = false,
-        },
-      },
-      {
-        -- eovim setup for init.lua and plugin development with full signature help, docs
-        -- and completion for the nvim lua API.
-        'obergodmar/neodev.nvim',
-        opts = {},
-      },
-    },
+    'obergodmar/neodev.nvim',
   },
   config = function()
+    require('neodev').setup({})
+
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
     capabilities.textDocument.foldingRange = {
