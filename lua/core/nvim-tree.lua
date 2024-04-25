@@ -10,10 +10,12 @@ local P = {
         dotfiles = false,
         git_ignored = false,
       },
-      icons = {
-        web_devicons = {
-          folder = {
-            enable = true,
+      renderer = {
+        icons = {
+          web_devicons = {
+            folder = {
+              enable = true,
+            },
           },
         },
       },
