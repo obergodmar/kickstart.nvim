@@ -8,7 +8,21 @@ local P = {
     'obergodmar/nvim-web-devicons',
   },
   opts = {
-    winopts = { preview = { default = 'bat' } },
+    files = {
+      fzf_opts = {
+        ['--history'] = vim.fn.stdpath('data') .. '/fzf-lua-files-history',
+      },
+    },
+    grep = {
+      fzf_opts = {
+        ['--history'] = vim.fn.stdpath('data') .. '/fzf-lua-grep-history',
+      },
+    },
+    winopts = {
+      preview = {
+        default = 'bat',
+      },
+    },
     manpages = { previewer = 'man_native' },
     helptags = { previewer = 'help_native' },
     tags = { previewer = 'bat' },
@@ -17,7 +31,7 @@ local P = {
   keys = {
     keys.oldfiles(function()
       vim.cmd('rshada!')
-      require('fzf-lua').oldfiles({ file_ignore_patterns = { "^~", "^/" } })
+      require('fzf-lua').oldfiles({ cwd_only = true })
     end, 'fzf'),
 
     keys.buffers(function()
@@ -37,11 +51,11 @@ local P = {
     end, 'fzf'),
 
     keys.live_grep(function()
-      require('fzf-lua').live_grep_native()
+      require('fzf-lua').live_grep_native({ resume = true })
     end, 'fzf'),
 
     keys.live_grep_args(function()
-      require('fzf-lua').live_grep_glob()
+      require('fzf-lua').live_grep_glob({ resume = true })
     end, 'fzf'),
 
     keys.git_files(function()

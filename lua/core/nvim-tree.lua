@@ -17,6 +17,17 @@ local P = {
               enable = true,
             },
           },
+          glyphs = {
+            git = {
+              unstaged = '-',
+              staged = '+',
+              unmerged = '',
+              renamed = '➜',
+              untracked = '?',
+              deleted = '',
+              ignored = '!!',
+            },
+          },
         },
       },
       diagnostics = {
