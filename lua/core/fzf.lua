@@ -51,11 +51,11 @@ local P = {
     end, 'fzf'),
 
     keys.live_grep(function()
-      require('fzf-lua').live_grep_native({ resume = true })
+      require('fzf-lua').live_grep_native()
     end, 'fzf'),
 
     keys.live_grep_args(function()
-      require('fzf-lua').live_grep_glob({ resume = true })
+      require('fzf-lua').live_grep_glob()
     end, 'fzf'),
 
     keys.git_files(function()
