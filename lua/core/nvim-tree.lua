@@ -50,8 +50,7 @@ local P = {
         cmd = 'trash-put',
       },
       filesystem_watchers = {
-        enable = true,
-        debounce_delay = 50,
+        enable = false,
         ignore_dirs = {
           'node_modules',
         },
