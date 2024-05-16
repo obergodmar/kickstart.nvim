@@ -15,18 +15,19 @@ local servers = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
+      hint = { enable = true },
     },
   },
   bashls = {},
-  -- gopls = {
-  --   gopls = {
-  --     analyses = {
-  --       unusedparams = true,
-  --       shadow = true,
-  --     },
-  --     staticcheck = true,
-  --   },
-  -- },
+  gopls = {
+    gopls = {
+      ['ui.inlayhint.hints'] = {
+        compositeLiteralFields = true,
+        constantValues = true,
+        parameterNames = true,
+      },
+    },
+  },
   intelephense = {},
 }
 

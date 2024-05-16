@@ -2,6 +2,7 @@
 local P = {
   -- Nvim Treesitter configurations and abstraction layer
   'obergodmar/nvim-treesitter',
+  branch = 'master',
   dependencies = {
     -- Syntax aware text-objects, select, move, swap, and peek support.
     'obergodmar/nvim-treesitter-textobjects',

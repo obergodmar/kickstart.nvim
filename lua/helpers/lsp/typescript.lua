@@ -35,6 +35,14 @@ return {
     preferences = {
       includeCompletionsForModuleExports = true,
       includeCompletionsForImportStatements = true,
+      includeInlayParameterNameHints = 'all',
+      includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+      includeInlayFunctionParameterTypeHints = true,
+      includeInlayVariableTypeHints = true,
+      includeInlayPropertyDeclarationTypeHints = true,
+      includeInlayFunctionLikeReturnTypeHints = true,
+      includeInlayEnumMemberValueHints = true,
+      importModuleSpecifierPreference = 'non-relative',
     },
     tsserver = {
       useSyntaxServer = 'auto',
