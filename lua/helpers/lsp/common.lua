@@ -21,7 +21,9 @@ local on_attach = function(client, bufnr)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
 
-  vim.lsp.inlay_hint.enable(true, { bufnr })
+  vim.api.nvim_buf_create_user_command(bufnr, 'InlayHints', function()
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr }), { bufnr })
+  end, { desc = 'Toggle Inlay Hints' })
 end
 
 return {
