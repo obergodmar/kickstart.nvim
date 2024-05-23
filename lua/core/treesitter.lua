@@ -22,6 +22,7 @@ local P = {
         'lua',
         'vim',
         'bash',
+        'comment'
       },
       auto_install = true,
       highlight = { enable = true },

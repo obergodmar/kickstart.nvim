@@ -39,8 +39,6 @@ if utils.is_mac() then
   opt.rtp:append('/opt/homebrew/opt/fzf')
 end
 
-opt.cursorline = true
-
 opt.lazyredraw = false
 opt.showcmdloc = 'statusline'
 
@@ -50,6 +48,11 @@ if utils.is_win() then
 else
   opt.shell = 'zsh'
 end
+
+opt.foldcolumn = '0'
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldenable = true
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
