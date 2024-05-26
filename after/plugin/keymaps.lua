@@ -54,6 +54,11 @@ map('n', '<leader>cn', '<cmd>:let @+ = expand("%:t")<cr>', { desc = '[C]opy file
 map('n', '<PageUp>', '', { silent = true })
 map('n', '<PageDown>', '', { silent = true })
 
+map('n', 'v<Up>', 'vk', { silent = true })
+map('n', 'v<Right>', 'vl', { silent = true })
+map('n', 'v<Down>', 'vj', { silent = true })
+map('n', 'v<Left>', 'vk', { silent = true })
+
 map('n', '<S-Up>', 'v<Up>', { silent = true })
 map('n', '<S-Right>', 'v<Right>', { silent = true })
 map('n', '<S-Down>', 'v<Down>', { silent = true })
