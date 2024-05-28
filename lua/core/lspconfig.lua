@@ -10,7 +10,38 @@ local servers = {
     },
   },
   eslint = {},
-  tsserver = {},
+  -- tsserver = {},
+  vtsls = {
+    typescript = {
+      updateImportsOnFileMove = 'always',
+      preferences = { importModuleSpecifier = 'non-relative' },
+      inlayHints = {
+        parameterNames = { enabled = 'literals' },
+        parameterTypes = { enabled = true },
+        variableTypes = { enabled = true },
+        propertyDeclarationTypes = { enabled = true },
+        functionLikeReturnTypes = { enabled = true },
+        enumMemberValues = { enabled = true },
+      },
+      tsserver = {
+        maxTsServerMemory = 8192,
+        experimental = {
+          enableProjectDiagnostics = true,
+        },
+      },
+    },
+    javascript = {
+      updateImportsOnFileMove = 'always',
+    },
+    vtsls = {
+      enableMoveToFileCodeAction = true,
+      experimental = {
+        completion = {
+          enableServerSideFuzzyMatch = true,
+        },
+      },
+    },
+  },
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -42,6 +73,7 @@ local P = {
     -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim.
     'obergodmar/mason-lspconfig.nvim',
     'obergodmar/neodev.nvim',
+    'yioneko/nvim-vtsls',
   },
   config = function()
     require('neodev').setup({})
@@ -95,6 +127,10 @@ local P = {
         if server_name == 'tsserver' then
           commands = require('helpers.lsp.typescript').commands
           init_options = require('helpers.lsp.typescript').init_options
+        end
+
+        if server_name == 'vtsls' then
+          require('lspconfig.configs').vtsls = require('vtsls').lspconfig
         end
 
         if server_name == 'intelephense' or server_name == 'phpactor' then
