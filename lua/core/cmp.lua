@@ -16,15 +16,15 @@ local P = {
     -- This tiny plugin adds vscode-like pictograms to neovim built-in lsp.
     'obergodmar/lspkind.nvim',
   },
-  opts = function()
+  keys = {},
+  config = function()
     vim.api.nvim_set_hl(0, 'CmpGhostText', { link = 'Comment', default = true })
     local cmp = require('cmp')
     local defaults = require('cmp.config.default')()
     local luasnip = require('luasnip')
     local lspkind = require('lspkind')
 
-    ---@type cmp.ConfigSchema
-    local config = {
+    cmp.setup({
       completion = {
         keyword_length = 1,
         completeopt = 'menu,menuone,noinsert',
@@ -52,7 +52,7 @@ local P = {
           else
             fallback()
           end
-        end, { 'i', 's' }),
+        end, { 'c', 'i', 's' }),
         ['<S-Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
@@ -61,7 +61,7 @@ local P = {
           else
             fallback()
           end
-        end, { 'i', 's' }),
+        end, { 'c', 'i', 's' }),
       }),
       sources = cmp.config.sources({
         { name = 'nvim_lsp' },
@@ -92,9 +92,24 @@ local P = {
         fetching_timeout = 200,
         max_view_entries = 50,
       },
-    }
+    })
 
-    return config
+    cmp.setup.cmdline({ '/', '?' }, {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = 'buffer' },
+      },
+    })
+
+    cmp.setup.cmdline(':', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = 'path' },
+      }, {
+        { name = 'cmdline' },
+      }),
+      matching = { disallow_symbol_nonprefix_matching = false },
+    })
   end,
 }
 
