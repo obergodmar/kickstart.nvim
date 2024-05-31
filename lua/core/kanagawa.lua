@@ -9,6 +9,14 @@ local P = {
   },
   init = function()
     vim.cmd.colorscheme('kanagawa')
+
+    vim.api.nvim_create_user_command('KanagawaDark', function()
+      vim.cmd.colorscheme('kanagawa-wave')
+    end, { desc = 'Tunr on KanagawaDark theme' })
+
+    vim.api.nvim_create_user_command('KanagawaLight', function()
+      vim.cmd.colorscheme('kanagawa-lotus')
+    end, { desc = 'Tunr on KanagawaLight theme' })
   end,
 }
 
