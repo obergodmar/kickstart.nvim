@@ -11,6 +11,7 @@ local P = {
       topdelete = { text = '‾' },
       changedelete = { text = '~' },
     },
+    attach_to_untracked = true,
     signcolumn = true,
     numhl = true,
     current_line_blame = true,
