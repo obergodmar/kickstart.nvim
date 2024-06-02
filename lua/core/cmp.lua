@@ -11,6 +11,8 @@ local P = {
     'obergodmar/cmp-buffer',
     -- nvim-cmp source for filesystem paths.
     'obergodmar/cmp-path',
+    -- nvim-cmp source for commands.
+    'obergodmar/cmp-cmdline',
     -- luasnip completion source for nvim-cmp
     'obergodmar/cmp_luasnip',
     -- This tiny plugin adds vscode-like pictograms to neovim built-in lsp.
