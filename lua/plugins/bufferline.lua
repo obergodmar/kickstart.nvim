@@ -24,7 +24,7 @@ local P = {
     ---@diagnostic disable-next-line: missing-fields
     options = {
       mode = 'tabs',
-      numbers = 'both',
+      numbers = 'ordinal',
       indicator = { style = 'underline' },
       diagnostics = 'nvim_lsp',
       color_icons = true,
