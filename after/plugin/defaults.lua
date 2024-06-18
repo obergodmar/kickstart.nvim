@@ -11,6 +11,9 @@ opt.cursorline = true
 opt.expandtab = true -- Use spaces instead of tabs
 opt.pumblend = 10 -- Popup blend
 opt.mouse = 'a' -- Enable mouse mode
+opt.mousemoveevent = true
+vim.cmd([[aunmenu PopUp.How-to\ disable\ mouse]])
+vim.cmd([[aunmenu PopUp.-1-]])
 -- opt.clipboard = 'unnamedplus'
 opt.breakindent = true -- Enable break indent
 opt.shiftround = true -- Round indent
