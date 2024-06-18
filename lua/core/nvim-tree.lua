@@ -2,6 +2,10 @@
 local P = {
   'obergodmar/nvim-tree.lua',
   opts = {
+    view = {
+      centralize_selection = true,
+      width = 50,
+    },
     filters = {
       dotfiles = false,
       git_ignored = false,

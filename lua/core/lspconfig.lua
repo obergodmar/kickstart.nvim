@@ -53,7 +53,12 @@ local P = {
     }
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-    require('mason').setup({})
+    require('mason').setup({
+      ui = {
+        width = 1.0,
+        height = 1.0,
+      },
+    })
 
     local mason_lspconfig = require('mason-lspconfig')
     mason_lspconfig.setup({
