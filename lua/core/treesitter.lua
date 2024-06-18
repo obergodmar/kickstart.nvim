@@ -2,6 +2,9 @@
 local P = {
   -- Nvim Treesitter configurations and abstraction layer
   'obergodmar/nvim-treesitter',
+  dependencies = {
+    'obergodmar/nvim-treesitter-context',
+  },
   branch = 'master',
   config = function()
     pcall(require('nvim-treesitter.install').update({ with_sync = true }))
