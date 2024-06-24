@@ -3,7 +3,13 @@ local P = {
   -- Nvim Treesitter configurations and abstraction layer
   'obergodmar/nvim-treesitter',
   dependencies = {
-    'obergodmar/nvim-treesitter-context',
+    {
+      'obergodmar/nvim-treesitter-context',
+      opts = {
+        multiline_threshold = 1,
+        mode = 'topline',
+      },
+    },
     'obergodmar/nvim-treesitter-textobjects',
   },
   branch = 'master',
