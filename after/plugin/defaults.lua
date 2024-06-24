@@ -8,7 +8,7 @@ opt.backspace = { 'start', 'eol', 'indent' }
 opt.title = true
 opt.titlestring = '%F'
 opt.cursorline = true
-opt.expandtab = true -- Use spaces instead of tabs
+-- opt.expandtab = true -- Use spaces instead of tabs
 opt.pumblend = 10 -- Popup blend
 opt.mouse = 'a' -- Enable mouse mode
 opt.mousemoveevent = true
@@ -17,7 +17,7 @@ vim.cmd([[aunmenu PopUp.-1-]])
 -- opt.clipboard = 'unnamedplus'
 opt.breakindent = true -- Enable break indent
 opt.shiftround = true -- Round indent
-opt.shiftwidth = 2 -- Size of an indent
+-- opt.shiftwidth = 2 -- Size of an indent
 opt.undofile = true -- Save undo history
 opt.ignorecase = true
 opt.showmode = false -- Dont show mode since we have a statusline
@@ -38,6 +38,8 @@ opt.completeopt = 'menuone,noselect'
 opt.wildmode = 'longest:full,full' -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
+
+opt.shada = "!,'10000,<10000,s100,h,f1"
 
 opt.fileencodings = 'utf-8,cp1251'
 
