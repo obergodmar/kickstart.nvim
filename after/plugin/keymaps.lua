@@ -45,6 +45,9 @@ map('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit all' })
 --relative path
 map('n', '<leader>cp', '<cmd>let @+ = expand("%")<cr>', { desc = '[C]opy relative [P]ath' })
 
+--relatuve path with line number
+map('n', '<leader>cl', '<cmd>let @+ = expand("%") . ":" . line(".")<cr>', { desc = '[C]opy relative path with [L]ine number' })
+
 --full path
 map('n', '<leader>cf', '<cmd>let @+ = expand("%:p")<cr>', { desc = '[C]opy [F]ull path' })
 
