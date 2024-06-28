@@ -30,6 +30,10 @@ local create_fold_virt_text = function(virtText, lnum, endLnum, width, truncate)
   return newVirtText
 end
 
+local ftMap = {
+  css = { 'indent' },
+}
+
 ---@type LazyPluginSpec
 local P = {
   -- The goal of nvim-ufo is to make Neovim's fold look modern and keep high performance.
@@ -73,6 +77,9 @@ local P = {
     close_fold_kinds = {},
     enable_get_fold_virt_text = true,
     fold_virt_text_handler = create_fold_virt_text,
+    provider_selector = function(_, filetype)
+      return ftMap[filetype]
+    end,
   },
 }
 
