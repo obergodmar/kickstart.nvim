@@ -95,6 +95,17 @@ local P = {
             -- "typescript",
             -- "typescriptreact",
           }
+
+          root_dir = lspconfig.util.root_pattern('.stylelintrc', 'package.json', '.git')
+        end
+
+        if server_name == 'eslint' then
+          filetypes = {
+            'javascript',
+            'javascriptreact',
+            'typescript',
+            'typescriptreact',
+          }
         end
 
         if server_name == 'tsserver' then
