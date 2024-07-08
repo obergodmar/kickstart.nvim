@@ -42,6 +42,7 @@ local P = {
     -- The goal of promise-async is to port Promise & Async from JavaScript to Lua.
     'obergodmar/promise-async',
   },
+  event = 'VimEnter',
   keys = {
     {
       'zR',
