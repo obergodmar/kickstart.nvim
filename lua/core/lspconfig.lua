@@ -41,11 +41,17 @@ local P = {
     'obergodmar/mason.nvim',
     -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim.
     'obergodmar/mason-lspconfig.nvim',
-    'obergodmar/neodev.nvim',
+    {
+      'folke/lazydev.nvim',
+      ft = 'lua', -- only load on lua files
+      opts = {
+        library = {
+          'lazy.nvim',
+        },
+      },
+    },
   },
   config = function()
-    require('neodev').setup({})
-
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.foldingRange = {
       dynamicRegistration = false,

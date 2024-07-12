@@ -66,6 +66,10 @@ local P = {
         end, { 'c', 'i', 's' }),
       }),
       sources = cmp.config.sources({
+        {
+          name = 'lazydev',
+          group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+        },
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'buffer', keyword_length = 4 },
