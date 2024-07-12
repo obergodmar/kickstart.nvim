@@ -1,6 +1,6 @@
 ---@type LazyPluginSpec
 local P = {
-  'nvimdev/indentmini.nvim',
+  'obergodmar/indentmini.nvim',
   config = function()
     vim.cmd.highlight('IndentLine guifg=#2A2A37')
 
