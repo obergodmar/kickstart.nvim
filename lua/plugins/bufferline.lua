@@ -26,7 +26,7 @@ local P = {
       mode = 'tabs',
       numbers = 'ordinal',
       indicator = { style = 'underline' },
-      diagnostics = 'nvim_lsp',
+      diagnostics = 'coc',
       color_icons = true,
       always_show_bufferline = false,
       show_buffer_close_icons = false,

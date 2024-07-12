@@ -5,7 +5,6 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = {
     'PlenaryTestPopup',
     'help',
-    'lspinfo',
     'man',
     'qf',
     'spectre_panel',

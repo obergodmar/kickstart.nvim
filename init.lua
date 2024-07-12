@@ -1,32 +1,25 @@
+local vim_data_path = vim.fn.stdpath('data')
+local plug_dir = vim_data_path .. '/site/autoload/plug.vim'
+if not vim.loop.fs_stat(plug_dir) then
+  vim.fn.system({
+    'curl',
+    '-fLo',
+    plug_dir,
+    '--create-dirs',
+    'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim',
+  })
+end
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-local vim_data_path = vim.fn.stdpath('data')
-local lazypath = vim_data_path .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/obergodmar/lazy.nvim',
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
+local Plug = vim.fn['plug#']
 
-require('lazy').setup({
-  { import = 'core' },
-  { import = 'plugins' },
-}, {
-  root = vim_data_path .. '/plugins',
-  install = {
-    missing = true,
-    colorscheme = { 'kanagawa' },
-  },
-  ui = {
-    size = { width = 1.0, height = 1.0 },
-    backdrop = 0,
-  },
-})
+vim.call('plug#begin')
+
+Plug('neoclide/coc.nvim', { ['branch'] = 'release' })
+Plug('obergodmar/vim-fugitive')
+
+vim.call('plug#end')

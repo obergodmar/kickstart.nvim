@@ -61,6 +61,7 @@ opt.foldcolumn = '0'
 opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.foldenable = true
+opt.signcolumn = 'yes'
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0

@@ -1,6 +1,8 @@
 ---@type LazyPluginSpec
 local P = {
   'obergodmar/nvim-tree.lua',
+  event = 'VimEnter',
+  lazy = false,
   opts = {
     view = {
       centralize_selection = true,

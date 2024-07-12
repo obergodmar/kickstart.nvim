@@ -117,51 +117,6 @@ local keys = {
       mode = 'n',
     }
   end,
-  lsp_references = function(fn, name)
-    return {
-      'gr',
-      fn,
-      id = name .. '_refs',
-      desc = '[G]oto [R]eferences',
-      mode = 'n',
-    }
-  end,
-  lsp_definitions = function(fn, name)
-    return {
-      'gd',
-      fn,
-      id = name .. '_defs',
-      desc = '[G]oto [D]efinitions',
-      mode = 'n',
-    }
-  end,
-  lsp_implementations = function(fn, name)
-    return {
-      'gI',
-      fn,
-      id = name .. '_impls',
-      desc = '[G]oto [I]mplementations',
-      mode = 'n',
-    }
-  end,
-  file_diagnostics = function(fn, name)
-    return {
-      '<leader>sd',
-      fn,
-      id = name .. '_file_diagnostics',
-      desc = '[S]earch [D]iagnostics',
-      mode = 'n',
-    }
-  end,
-  project_diagnostics = function(fn, name)
-    return {
-      '<leader>sD',
-      fn,
-      id = name .. '_workspace_diagnostics',
-      desc = '[S]earch [D]iagnostics',
-      mode = 'n',
-    }
-  end,
   quicklist = function(fn, name)
     return {
       '<leader>sq',
