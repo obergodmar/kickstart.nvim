@@ -31,7 +31,8 @@ local create_fold_virt_text = function(virtText, lnum, endLnum, width, truncate)
 end
 
 local ftMap = {
-  css = { 'indent' },
+  css = { 'treesitter', 'indent' },
+  php = { 'treesitter', 'indent' },
 }
 
 ---@type LazyPluginSpec

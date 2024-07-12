@@ -14,6 +14,7 @@
   "fzf-lua": { "branch": "master", "commit": "975534f4861e2575396716225c1202572645583d" },
   "git-messenger.vim": { "branch": "master", "commit": "8a61bdfa351d4df9a9118ee1d3f45edbed617072" },
   "gitsigns.nvim": { "branch": "master", "commit": "220446c8c86a280180d852efac60991eaf1a21d4" },
+  "indentmini.nvim": { "branch": "main", "commit": "9bac70d4faa758d18d2cb699dda1cbf113e3d87a" },
   "kanagawa.nvim": { "branch": "master", "commit": "e5f7b8a804360f0a48e40d0083a97193ee4fcc87" },
   "lsp-timeout.nvim": { "branch": "master", "commit": "6325906730330105a9adc41d0ceb8499b3072e2b" },
   "lsp_signature.nvim": { "branch": "master", "commit": "e92b4e7073345b2a30a56b20db3d541a9aa2771e" },
