@@ -42,7 +42,7 @@ local P = {
     -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim.
     'obergodmar/mason-lspconfig.nvim',
     {
-      'folke/lazydev.nvim',
+      'obergodmar/lazydev.nvim',
       ft = 'lua', -- only load on lua files
       opts = {
         library = {
