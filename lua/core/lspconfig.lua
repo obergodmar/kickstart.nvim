@@ -1,3 +1,5 @@
+local on_attach = require('helpers.lsp.common').on_attach
+
 local servers = {
   marksman = {},
   html = {},
@@ -10,7 +12,6 @@ local servers = {
     },
   },
   eslint = {},
-  tsserver = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -47,6 +48,40 @@ local P = {
       opts = {
         library = {
           'lazy.nvim',
+        },
+      },
+    },
+    {
+      'pmizio/typescript-tools.nvim',
+      opts = {
+        settings = {
+          separate_diagnostic_server = true,
+          publish_diagnostic_on = 'insert_leave',
+          expose_as_code_action = {
+            'fix_all',
+            'add_missing_imports',
+            'remove_unused',
+          },
+          tsserver_path = nil,
+          tsserver_plugins = {},
+          tsserver_max_memory = 'auto',
+          tsserver_format_options = {},
+          complete_function_calls = true,
+          tsserver_file_preferences = function()
+            return {
+              includeCompletionsForImportStatements = true,
+              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayVariableTypeHints = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayEnumMemberValueHints = true,
+              importModuleSpecifierPreference = 'auto',
+              includeInlayParameterNameHints = 'all',
+              includeCompletionsForModuleExports = true,
+              quotePreference = 'auto',
+            }
+          end,
         },
       },
     },
@@ -114,11 +149,6 @@ local P = {
           }
         end
 
-        if server_name == 'tsserver' then
-          commands = require('helpers.lsp.typescript').commands
-          init_options = require('helpers.lsp.typescript').init_options
-        end
-
         if server_name == 'intelephense' or server_name == 'phpactor' then
           autostart = false
         end
@@ -126,7 +156,7 @@ local P = {
         lspconfig[server_name].setup({
           settings = servers[server_name],
           capabilities = capabilities,
-          on_attach = require('helpers.lsp.common').on_attach,
+          on_attach = on_attach,
           root_dir = root_dir,
           init_options = init_options,
           filetypes = filetypes,

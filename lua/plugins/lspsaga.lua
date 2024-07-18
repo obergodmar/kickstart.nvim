@@ -40,13 +40,13 @@ local P = {
       desc = '[R]e[n]ame Everywhere',
       mode = 'n',
     },
-    {
-      'K',
-      '<cmd>Lspsaga hover_doc<CR>',
-      id = 'lspsaga_hover_doc',
-      desc = 'Hover documentation',
-      mode = 'n',
-    },
+    -- {
+    --   'K',
+    --   '<cmd>Lspsaga hover_doc<CR>',
+    --   id = 'lspsaga_hover_doc',
+    --   desc = 'Hover documentation',
+    --   mode = 'n',
+    -- },
     {
       '<leader>e',
       '<cmd>Lspsaga show_line_diagnostics<CR>',

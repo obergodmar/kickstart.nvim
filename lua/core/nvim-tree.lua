@@ -2,15 +2,23 @@
 local P = {
   'obergodmar/nvim-tree.lua',
   opts = {
+    disable_netrw = true,
     view = {
+      preserve_window_proportions = true,
       centralize_selection = true,
-      width = 50,
     },
     filters = {
       dotfiles = false,
       git_ignored = false,
     },
     renderer = {
+      full_name = true,
+      add_trailing = true,
+      group_empty = true,
+      highlight_git = 'all',
+      highlight_diagnostics = 'all',
+      highlight_opened_files = 'all',
+      highlight_modified = 'all',
       icons = {
         web_devicons = {
           folder = {
@@ -30,6 +38,9 @@ local P = {
         },
       },
     },
+    update_focused_file = {
+      enable = true,
+    },
     diagnostics = {
       enable = true,
       show_on_dirs = true,
@@ -43,7 +54,7 @@ local P = {
         exclude = { 'node_modules', '.git' },
       },
       open_file = {
-        quit_on_open = true,
+        quit_on_open = false,
       },
     },
     trash = {
