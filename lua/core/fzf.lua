@@ -3,7 +3,6 @@ local keys = require('helpers.search.keys')
 ---@type LazyPluginSpec
 local P = {
   'obergodmar/fzf-lua',
-  branch = require('helpers.utils').is_win() and 'windows' or 'master',
   dependencies = {
     'obergodmar/nvim-web-devicons',
   },
