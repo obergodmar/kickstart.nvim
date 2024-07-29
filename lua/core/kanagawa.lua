@@ -18,7 +18,7 @@ local P = {
     end,
   },
   init = function()
-    vim.cmd.colorscheme('kanagawa')
+    vim.cmd.colorscheme(vim.o.background == 'dark' and 'kanagawa-wave' or 'kanagawa-lotus')
 
     vim.api.nvim_create_user_command('KanagawaDark', function()
       vim.cmd.colorscheme('kanagawa-wave')

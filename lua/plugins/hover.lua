@@ -1,6 +1,6 @@
 ---@type LazyPluginSpec
 local P = {
-  'lewis6991/hover.nvim',
+  'obergodmar/hover.nvim',
   opts = {
     init = function()
       -- Require providers

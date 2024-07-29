@@ -1,13 +1,14 @@
 ---@type LazyPluginSpec
 local P = {
-  'obergodmar/indentmini.nvim',
-  event = 'LspAttach',
+  'obergodmar/indent-blankline.nvim',
+  event = 'BufReadPost',
   config = function()
-    vim.cmd.highlight('IndentLine guifg=#2A2A37')
-
-    vim.cmd.highlight('IndentLineCurrent guifg=#54546D')
-
-    require('indentmini').setup()
+    vim.opt.list = true
+    require('indent_blankline').setup({
+      space_char_blankline = ' ',
+      show_current_context = true,
+      show_current_context_start = true,
+    })
   end,
 }
 

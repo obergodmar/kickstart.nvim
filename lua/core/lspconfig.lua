@@ -52,7 +52,7 @@ local P = {
       },
     },
     {
-      'pmizio/typescript-tools.nvim',
+      'obergodmar/typescript-tools.nvim',
       opts = {
         settings = {
           separate_diagnostic_server = true,
