@@ -7,6 +7,7 @@ local P = {
     'obergodmar/nvim-web-devicons',
   },
   opts = {
+    'fzf-native',
     files = {
       fzf_opts = {
         ['--history'] = vim.fn.stdpath('data') .. '/fzf-lua-files-history',
@@ -17,15 +18,6 @@ local P = {
         ['--history'] = vim.fn.stdpath('data') .. '/fzf-lua-grep-history',
       },
     },
-    winopts = {
-      preview = {
-        default = 'bat',
-      },
-    },
-    manpages = { previewer = 'man_native' },
-    helptags = { previewer = 'help_native' },
-    tags = { previewer = 'bat' },
-    btags = { previewer = 'bat' },
   },
   keys = {
     keys.oldfiles(function()
@@ -85,9 +77,9 @@ local P = {
       require('fzf-lua').lsp_references()
     end, 'fzf'),
 
-    keys.lsp_definitions(function()
-      require('fzf-lua').lsp_definitions()
-    end, 'fzf'),
+    -- keys.lsp_definitions(function()
+    --   require('fzf-lua').lsp_definitions()
+    -- end, 'fzf'),
 
     keys.lsp_implementations(function()
       require('fzf-lua').lsp_implementations()
@@ -108,6 +100,22 @@ local P = {
     keys.reglist(function()
       require('fzf-lua').registers()
     end, 'fzf'),
+
+    {
+      '<leader>ca',
+      function()
+        require('fzf-lua').lsp_code_actions({
+          winopts = {
+            width = 0.5,
+            height = 0.5,
+            preview = { horizontal = 'down:50%' },
+          },
+        })
+      end,
+      id = 'fzf_code_action',
+      desc = '[C]ode [A]ction',
+      mode = { 'n', 'v' },
+    },
   },
 }
 

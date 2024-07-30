@@ -2,7 +2,7 @@
 local P = {
   -- improve neovim lsp experience
   'obergodmar/lspsaga.nvim',
-  event = 'VeryLazy',
+  event = 'LspAttach',
   opts = {
     lightbulb = {
       enable = false,
@@ -19,13 +19,13 @@ local P = {
     },
   },
   keys = {
-    {
-      '<leader>ca',
-      '<cmd>Lspsaga code_action<CR>',
-      id = 'lspsaga_code_action',
-      desc = '[C]ode [A]ction',
-      mode = { 'n', 'v' },
-    },
+    -- {
+    --   '<leader>ca',
+    --   '<cmd>Lspsaga code_action<CR>',
+    --   id = 'lspsaga_code_action',
+    --   desc = '[C]ode [A]ction',
+    --   mode = { 'n', 'v' },
+    -- },
     {
       'cr',
       '<cmd>Lspsaga rename<CR>',
