@@ -57,6 +57,10 @@ local P = {
         quit_on_open = false,
       },
     },
+    git = {
+      -- for performance reasons
+      enable = false,
+    },
     trash = {
       cmd = 'trash-put',
     },

@@ -8,7 +8,7 @@ local P = {
       marks = false,
       registers = false,
       spelling = {
-        enabled = true,
+        enabled = false,
         suggestions = 20,
       },
     },

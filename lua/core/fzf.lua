@@ -116,6 +116,22 @@ local P = {
       desc = '[C]ode [A]ction',
       mode = { 'n', 'v' },
     },
+
+    {
+      'z=',
+      function()
+        require('fzf-lua').spell_suggest({
+          winopts = {
+            width = 0.5,
+            height = 0.5,
+            preview = { horizontal = 'down:50%' },
+          },
+        })
+      end,
+      id = 'fzf_spell_suggest',
+      desc = 'Spell suggestions',
+      mode = 'n',
+    },
   },
 }
 
