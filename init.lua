@@ -23,7 +23,7 @@ require('lazy').setup({
   root = vim_data_path .. '/plugins',
   install = {
     missing = true,
-    colorscheme = { 'kanagawa-wave' },
+    colorscheme = { 'dracula' },
   },
   ui = {
     size = { width = 1.0, height = 1.0 },
