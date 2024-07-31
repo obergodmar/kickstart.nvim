@@ -123,9 +123,6 @@ local P = {
         },
         navigation = {
           enable = true,
-          keymaps = {
-            goto_definition_lsp_fallback = 'gd',
-          },
         },
       },
     })

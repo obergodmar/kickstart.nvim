@@ -77,9 +77,9 @@ local P = {
       require('fzf-lua').lsp_references()
     end, 'fzf'),
 
-    -- keys.lsp_definitions(function()
-    --   require('fzf-lua').lsp_definitions()
-    -- end, 'fzf'),
+    keys.lsp_definitions(function()
+      require('nvim-treesitter-refactor.navigation').goto_definition(nil, require('fzf-lua').lsp_definitions)
+    end, 'fzf'),
 
     keys.lsp_implementations(function()
       require('fzf-lua').lsp_implementations()
