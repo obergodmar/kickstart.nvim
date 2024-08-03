@@ -43,7 +43,7 @@ local P = {
     },
     diagnostics = {
       enable = true,
-      show_on_dirs = true,
+      show_on_dirs = false,
     },
     modified = {
       enable = true,
