@@ -31,7 +31,7 @@ local P = {
     },
     sections = {
       lualine_a = { 'mode' },
-      lualine_b = { 'branch', 'diff', 'diagnostics' },
+      lualine_b = { 'branch', 'diff', 'diagnostics', 'aerial' },
       lualine_c = {
         relative_path_with_path,
         'filesize',
@@ -51,7 +51,7 @@ local P = {
     tabline = {},
     winbar = {},
     inactive_winbar = {},
-    extensions = { 'lazy', 'nvim-tree', 'fzf', 'mason', 'toggleterm' },
+    extensions = { 'lazy', 'nvim-tree', 'fzf', 'mason', 'toggleterm', 'aerial' },
   },
 }
 
