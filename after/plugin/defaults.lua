@@ -39,7 +39,7 @@ opt.wildmode = 'longest:full,full' -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 
-opt.shada = "!,'10000,<10000,s100,h,f1"
+-- opt.shada = "!,'10000,<10000,s100,h,f1"
 
 opt.fileencodings = 'utf-8,cp1251'
 

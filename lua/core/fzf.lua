@@ -21,7 +21,7 @@ local P = {
   },
   keys = {
     keys.oldfiles(function()
-      vim.cmd('rshada!')
+      -- vim.cmd('rshada!')
       require('fzf-lua').oldfiles({ cwd_only = true })
     end, 'fzf'),
 
