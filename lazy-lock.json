@@ -28,6 +28,7 @@
   "markview.nvim": { "branch": "master", "commit": "316cafc79490f8b79c288bbe6638838d6d68e227" },
   "mason-lspconfig.nvim": { "branch": "master", "commit": "37a336b653f8594df75c827ed589f1c91d91ff6c" },
   "mason.nvim": { "branch": "master", "commit": "e2f7f9044ec30067bc11800a9e266664b88cda22" },
+  "multiple-cursors.nvim": { "branch": "master", "commit": "2f5e786c43aa9c0fc34b295cfcc9bfbacef8e926" },
   "nvim-autopairs": { "branch": "master", "commit": "78a4507bb9ffc9b00f11ae0ac48243d00cb9194d" },
   "nvim-cmp": { "branch": "master", "commit": "d818fd0624205b34e14888358037fb6f5dc51234" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "a065833f35a3a7cc3ef137ac88b5381da2ba302e" },
