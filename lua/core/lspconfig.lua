@@ -55,7 +55,8 @@ local P = {
       'obergodmar/typescript-tools.nvim',
       opts = {
         settings = {
-          separate_diagnostic_server = true,
+          tsserver_logs = 'verbose',
+          separate_diagnostic_server = false,
           publish_diagnostic_on = 'insert_leave',
           expose_as_code_action = {
             'fix_all',
@@ -64,9 +65,13 @@ local P = {
           },
           tsserver_path = nil,
           tsserver_plugins = {},
-          tsserver_max_memory = 'auto',
+          tsserver_max_memory = 4096,
           tsserver_format_options = {},
           complete_function_calls = true,
+          jsx_close_tag = {
+            enable = true,
+            filetypes = { 'javascriptreact', 'typescriptreact' },
+          },
           tsserver_file_preferences = function()
             return {
               includeCompletionsForImportStatements = true,
