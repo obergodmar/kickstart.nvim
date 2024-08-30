@@ -13,6 +13,7 @@
   "formatter.nvim": { "branch": "master", "commit": "c2c7a9d774eb5aee6671f1b75493d05beaef39b5" },
   "friendly-snippets": { "branch": "master", "commit": "00ebcaa159e817150bd83bfe2d51fa3b3377d5c4" },
   "fzf-lua": { "branch": "master", "commit": "30fa904d5a614051c943a87aa15e14d69aa0138f" },
+  "git-conflict.nvim": { "branch": "master", "commit": "45cde6f0acf26d0e4b64acfa45349dd1da01e577" },
   "git-messenger.vim": { "branch": "master", "commit": "8a61bdfa351d4df9a9118ee1d3f45edbed617072" },
   "gitsigns.nvim": { "branch": "master", "commit": "f4928ba14eb6c667786ac7d69927f6aee6719f1e" },
   "hover.nvim": { "branch": "master", "commit": "4339cbbcb572b1934c53dcb66ad4bf6a0abb7918" },
