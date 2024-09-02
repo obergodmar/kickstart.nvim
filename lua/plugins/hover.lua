@@ -27,7 +27,7 @@ local P = {
       'man',
       'dictionary',
     },
-    mouse_delay = 300,
+    mouse_delay = 1000,
   },
   keys = {
     {

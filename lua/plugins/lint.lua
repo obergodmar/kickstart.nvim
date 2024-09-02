@@ -20,7 +20,7 @@ local P = {
   end,
   keys = {
     {
-      '<leader>l',
+      '<leader>ls',
       function()
         local lint = require('lint')
         lint.try_lint()

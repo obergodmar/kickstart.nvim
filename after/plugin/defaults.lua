@@ -74,3 +74,18 @@ g.markdown_recommended_style = 0
 
 opt.list = true
 opt.listchars:append('trail:⋅')
+
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = '●', -- Custom prefix for virtual text
+    spacing = 0, -- Spacing between virtual text and line content
+    format = function(diagnostic) -- Function to format the text
+      return ''
+      -- return string.sub(diagnostic.message, 1, 80) -- Truncate to 80 characters
+    end,
+  },
+  virtual_lines = {
+    only_current_line = true,
+    highlight_whole_line = true,
+  },
+})
