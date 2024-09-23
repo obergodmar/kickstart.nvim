@@ -8,6 +8,20 @@ local P = {
   },
   opts = {
     'fzf-native',
+    winopts = {
+      fullscreen = true,
+      border = 'single',
+      preview = {
+        default = 'builtin',
+        layout = 'vertical',
+        vertical = 'down:75%',
+        border = 'noborder',
+      },
+    },
+    buffers = {
+      ignore_current_buffer = true,
+      show_unloaded = true,
+    },
     files = {
       fzf_opts = {
         ['--history'] = vim.fn.stdpath('data') .. '/fzf-lua-files-history',
@@ -16,6 +30,20 @@ local P = {
     grep = {
       fzf_opts = {
         ['--history'] = vim.fn.stdpath('data') .. '/fzf-lua-grep-history',
+      },
+    },
+    keymap = {
+      builtin = {
+        false,
+        ['<M-Esc>'] = 'hide',
+        ['<M-F1>'] = 'toggle-help',
+        ['<M-F2>'] = 'toggle-fullscreen',
+        ['<M-F5>'] = 'toggle-preview-ccw',
+        ['<M-F6>'] = 'toggle-preview-cw',
+        ['<M-down>'] = 'preview-page-down',
+        ['<M-up>'] = 'preview-page-up',
+        ['<M-S-down>'] = 'preview-down',
+        ['<M-S-up>'] = 'preview-up',
       },
     },
   },

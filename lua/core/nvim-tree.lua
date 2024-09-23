@@ -4,8 +4,12 @@ local P = {
   opts = {
     disable_netrw = true,
     view = {
-      preserve_window_proportions = true,
+      -- preserve_window_proportions = true,
       centralize_selection = true,
+      width = {
+        min = 30,
+        max = -1,
+      },
     },
     filters = {
       dotfiles = false,
@@ -39,11 +43,10 @@ local P = {
       },
     },
     update_focused_file = {
-      enable = true,
+      enable = false,
     },
     diagnostics = {
-      enable = true,
-      show_on_dirs = false,
+      enable = false,
     },
     modified = {
       enable = true,

@@ -31,7 +31,40 @@ local P = {
     },
     sections = {
       lualine_a = { 'mode' },
-      lualine_b = { 'branch', 'diff', 'diagnostics', 'aerial' },
+      lualine_b = {
+        'branch',
+        {
+          'diff',
+          diff_color = {
+            added = 'GitSignsAdd',
+            modified = 'GitSignsChange',
+            removed = 'GitSignsDelete',
+          },
+          symbols = {
+            added = ' ',
+            modified = ' ',
+            removed = ' ',
+          },
+        },
+        {
+          'diagnostics',
+          sources = { 'nvim_diagnostic' },
+          sections = { 'error', 'warn', 'info', 'hint' },
+          diagnostics_color = {
+            error = 'LualineDiagnosticError',
+            warn = 'LualineDiagnosticWarn',
+            info = 'LualineDiagnosticInfo',
+            hint = 'LualineDiagnosticHint',
+          },
+          symbols = {
+            error = ' ',
+            warn = ' ',
+            info = ' ',
+            hint = ' ',
+          },
+        },
+        'aerial',
+      },
       lualine_c = {
         relative_path_with_path,
         'filesize',
