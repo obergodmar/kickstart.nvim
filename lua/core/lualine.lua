@@ -51,10 +51,10 @@ local P = {
           sources = { 'nvim_diagnostic' },
           sections = { 'error', 'warn', 'info', 'hint' },
           diagnostics_color = {
-            error = 'LualineDiagnosticError',
-            warn = 'LualineDiagnosticWarn',
-            info = 'LualineDiagnosticInfo',
-            hint = 'LualineDiagnosticHint',
+            error = 'DiagnosticError',
+            warn = 'DiagnosticWarn',
+            info = 'DiagnosticInfo',
+            hint = 'DiagnosticHint',
           },
           symbols = {
             error = ' ',
