@@ -9,6 +9,7 @@ local P = {
   build = 'make tiktoken', -- Only on MacOS or Linux
   event = 'VeryLazy',
   opts = {
+    -- proxy = 'http://127.0.0.1:12334',
     debug = false, -- Enable debugging
     mappings = {
       complete = {
@@ -55,6 +56,7 @@ local P = {
     })
 
     vim.g.copilot_no_tab_map = true
+    -- vim.g.copilot_proxy = '127.0.0.1:12334'
   end,
 }
 

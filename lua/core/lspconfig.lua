@@ -30,6 +30,15 @@ local servers = {
     },
   },
   intelephense = {},
+  java_language_server = {
+    settings = {
+      java = {
+        externalDependencies = {
+          -- 'junit:junit:4.12',
+        },
+      },
+    },
+  },
 }
 
 ---@type LazyPluginSpec
@@ -117,6 +126,7 @@ local P = {
         local init_options = nil
         local filetypes = nil
         local commands = nil
+        local handlers = nil
         local autostart = true
 
         if server_name == 'lua_ls' then
@@ -156,6 +166,17 @@ local P = {
           autostart = false
         end
 
+        if server_name == 'java_language_server' then
+          handlers = {
+            ['client/registerCapability'] = function(err, result, ctx, config)
+              local registration = {
+                registrations = { result },
+              }
+              return vim.lsp.handlers['client/registerCapability'](err, registration, ctx, config)
+            end,
+          }
+        end
+
         lspconfig[server_name].setup({
           settings = servers[server_name],
           capabilities = capabilities,
@@ -165,6 +186,7 @@ local P = {
           filetypes = filetypes,
           commands = commands,
           autostart = autostart,
+          handlers = handlers,
         })
       end,
     })
