@@ -26,7 +26,15 @@ local on_attach = function(client, bufnr)
   end, { desc = 'Toggle Inlay Hints' })
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true,
+}
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
 return {
   apply_action = apply_action,
   on_attach = on_attach,
+  capabilities = capabilities,
 }
