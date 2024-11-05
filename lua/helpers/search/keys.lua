@@ -180,6 +180,15 @@ local keys = {
       mode = 'n',
     }
   end,
+  changed_files = function(fn, name)
+    return {
+      '<leader>sx',
+      fn,
+      id = name .. '_changed_files',
+      desc = '[S]earch in [C]hanged [F]iles',
+      mode = 'n',
+    }
+  end,
 }
 
 return keys

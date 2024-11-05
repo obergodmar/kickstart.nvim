@@ -4,6 +4,7 @@ local servers = {
   marksman = {},
   html = {},
   cssls = {},
+  typos_lsp = {},
   -- cssmodules_ls = {},
   stylelint_lsp = {
     stylelintplus = {

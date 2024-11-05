@@ -124,12 +124,14 @@ local P = {
       require('fzf-lua').diagnostics_workspace()
     end, 'fzf'),
 
-    keys.quicklist(function()
-      require('fzf-lua').quicklist()
-    end, 'fzf'),
-
     keys.reglist(function()
       require('fzf-lua').registers()
+    end, 'fzf'),
+
+    keys.changed_files(function()
+      require('fzf-lua').grep({
+        raw_cmd = [[git status -su | rg "^\s*M" | cut -d ' ' -f3 | xargs rg --hidden --column --line-number --no-heading --color=always  --with-filename -e '']],
+      })
     end, 'fzf'),
 
     {
