@@ -24,7 +24,6 @@ local P = {
       function()
         local lint = require('lint')
         lint.try_lint()
-        lint.try_lint('cspell')
       end,
       id = 'lint_file',
       desc = '[L]int file',
