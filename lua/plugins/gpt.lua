@@ -9,27 +9,6 @@ local P = {
           disable = false,
           endpoint = 'https://api.openai.com/v1/chat/completions',
         },
-        agents = {
-          {
-            name = 'ChatGPT4o',
-            chat = true,
-            command = false,
-            -- string with model name or table with model name and parameters
-            model = { model = 'gpt-4o', temperature = 1.1, top_p = 1 },
-            -- system prompt (use this to specify the persona/role of the AI)
-            system_prompt = require('gp.defaults').chat_system_prompt,
-          },
-          {
-            provider = 'openai',
-            name = 'CodeGPT4o',
-            chat = false,
-            command = true,
-            -- string with model name or table with model name and parameters
-            model = { model = 'gpt-4o', temperature = 0.8, top_p = 1 },
-            -- system prompt (use this to specify the persona/role of the AI)
-            system_prompt = require('gp.defaults').code_system_prompt,
-          },
-        },
       },
     }
 

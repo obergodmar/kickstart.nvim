@@ -1,5 +1,7 @@
+local M = {}
+
 ---@return nil
-local function apply_action(action)
+M.apply_action = function(action)
   local params = vim.lsp.util.make_range_params()
   params.context = { only = { action } }
 
@@ -16,7 +18,7 @@ local function apply_action(action)
 end
 
 ---@return nil
-local on_attach = function(client, bufnr)
+M.on_attach = function(client, bufnr)
   vim.api.nvim_buf_create_user_command(bufnr, 'LspFormat', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
@@ -26,15 +28,16 @@ local on_attach = function(client, bufnr)
   end, { desc = 'Toggle Inlay Hints' })
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.foldingRange = {
-  dynamicRegistration = false,
-  lineFoldingOnly = true,
-}
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+M.get_capabilities = function()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true,
+  }
 
-return {
-  apply_action = apply_action,
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
+  capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+  return capabilities
+end
+
+return M
