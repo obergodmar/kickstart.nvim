@@ -31,15 +31,6 @@ local servers = {
     },
   },
   intelephense = {},
-  java_language_server = {
-    settings = {
-      java = {
-        externalDependencies = {
-          -- 'junit:junit:4.12',
-        },
-      },
-    },
-  },
 }
 
 ---@type LazyPluginSpec
