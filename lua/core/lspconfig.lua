@@ -149,15 +149,6 @@ local P = {
       -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim.
       'williamboman/mason-lspconfig.nvim',
       {
-        'folke/lazydev.nvim',
-        ft = 'lua', -- only load on lua files
-        opts = {
-          library = {
-            'lazy.nvim',
-          },
-        },
-      },
-      {
         'Zeioth/garbage-day.nvim',
         dependencies = 'neovim/nvim-lspconfig',
         event = 'VeryLazy',
@@ -410,15 +401,7 @@ local P = {
       end),
     },
     config = function()
-      local servers = {
-        lua_ls = {
-          Lua = {
-            workspace = { checkThirdParty = false },
-            telemetry = { enable = false },
-            hint = { enable = true },
-          },
-        },
-      }
+      local servers = {}
 
       require('mason').setup({
         ui = {
@@ -506,11 +489,6 @@ local P = {
         'coc-typos',
         'coc-pairs',
         'coc-json',
-
-        'coc-tsserver',
-        'coc-css',
-        'coc-html',
-        'coc-eslint',
       }
       vim.g.coc_list_preview_filetype = true
 
