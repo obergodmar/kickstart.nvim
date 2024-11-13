@@ -170,6 +170,12 @@ local P = {
           }
         end
 
+        if server_name == 'typos_lsp' then
+          init_options = {
+            diagnosticSeverity = 'Hint',
+          }
+        end
+
         lspconfig[server_name].setup({
           settings = servers[server_name],
           capabilities = capabilities,
