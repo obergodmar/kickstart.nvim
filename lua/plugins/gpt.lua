@@ -10,6 +10,7 @@ local P = {
           endpoint = 'https://api.openai.com/v1/chat/completions',
         },
       },
+      -- curl_params = { "--proxy", "http://127.0.0.1:12334" }
     }
 
     require('gp').setup(conf)
