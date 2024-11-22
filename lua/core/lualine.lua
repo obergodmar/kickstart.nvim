@@ -1,3 +1,14 @@
+local function diff_source()
+  local gitsigns = vim.b.gitsigns_status_dict
+  if gitsigns then
+    return {
+      added = gitsigns.added,
+      modified = gitsigns.changed,
+      removed = gitsigns.removed,
+    }
+  end
+end
+
 local function relative_path_with_path()
   local row = unpack(vim.api.nvim_win_get_cursor(0))
 
@@ -35,6 +46,7 @@ local P = {
         'branch',
         {
           'diff',
+          source = diff_source,
           diff_color = {
             added = 'GitSignsAdd',
             modified = 'GitSignsChange',
