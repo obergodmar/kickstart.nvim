@@ -124,5 +124,5 @@ map('n', 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev search result
 map('x', 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev search result' })
 map('o', 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev search result' })
 
-map({ 'n', 'i', 'v' }, '<ScrollWheelUp>', '<Nop>', { noremap = true, silent = true })
-map({ 'n', 'i', 'v' }, '<ScrollWheelDown>', '<Nop>', { noremap = true, silent = true })
+-- map({ 'n', 'i', 'v' }, '<ScrollWheelUp>', '<Nop>', { noremap = true, silent = true })
+-- map({ 'n', 'i', 'v' }, '<ScrollWheelDown>', '<Nop>', { noremap = true, silent = true })
