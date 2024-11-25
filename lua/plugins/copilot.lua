@@ -1,14 +1,28 @@
 ---@type LazyPluginSpec
 local P = {
-  'github/copilot.vim',
-  event = 'VeryLazy',
+  'zbirenbaum/copilot.lua',
+  cmd = 'Copilot',
+  event = 'InsertEnter',
   config = function()
-    vim.keymap.set('i', '<C-g>', 'copilot#Accept("\\<CR>")', {
-      expr = true,
-      replace_keycodes = false,
+    require('copilot').setup({
+      panel = {
+        enabled = false,
+      },
+      suggestion = {
+        enabled = true,
+        auto_trigger = false,
+        hide_during_completion = true,
+        debounce = 75,
+        keymap = {
+          accept = '<C-g>',
+          accept_word = false,
+          accept_line = false,
+          next = '<M-]>',
+          prev = '<M-[>',
+          dismiss = '<C-]>',
+        },
+      },
     })
-
-    vim.keymap.set('i', '<C-Z>', '<Plug>(copilot-suggest)')
 
     vim.g.copilot_no_tab_map = true
     -- vim.g.copilot_proxy = '127.0.0.1:12334'

@@ -46,7 +46,12 @@ map('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit all' })
 map('n', '<leader>cp', '<cmd>let @+ = expand("%")<cr>', { desc = '[C]opy relative [P]ath' })
 
 --relatuve path with line number
-map('n', '<leader>cl', '<cmd>let @+ = expand("%") . ":" . line(".")<cr>', { desc = '[C]opy relative path with [L]ine number' })
+map(
+  'n',
+  '<leader>cl',
+  '<cmd>let @+ = expand("%") . ":" . line(".")<cr>',
+  { desc = '[C]opy relative path with [L]ine number' }
+)
 
 --full path
 map('n', '<leader>cf', '<cmd>let @+ = expand("%:p")<cr>', { desc = '[C]opy [F]ull path' })
@@ -118,3 +123,6 @@ map('o', 'n', "'Nn'[v:searchforward]", { expr = true, desc = 'Next search result
 map('n', 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev search result' })
 map('x', 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev search result' })
 map('o', 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev search result' })
+
+map({ 'n', 'i', 'v' }, '<ScrollWheelUp>', '<Nop>', { noremap = true, silent = true })
+map({ 'n', 'i', 'v' }, '<ScrollWheelDown>', '<Nop>', { noremap = true, silent = true })

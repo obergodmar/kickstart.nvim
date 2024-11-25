@@ -5,10 +5,10 @@ local servers = {
   html = {},
   cssls = {},
   typos_lsp = {},
-  -- cssmodules_ls = {},
+  cssmodules_ls = {},
   stylelint_lsp = {
     stylelintplus = {
-      autoFixOnSave = true,
+      autoFixOnSave = false,
       autoFixOnFormat = true,
     },
   },
@@ -190,6 +190,22 @@ local P = {
       end,
     })
   end,
+  keys = {
+    {
+      '<leader>R',
+      ':LspStop<CR>',
+      mode = 'n',
+      desc = 'Stop LSP',
+      { noremap = true, silent = true },
+    },
+    {
+      '<leader>T',
+      ':LspStart<CR>',
+      mode = 'n',
+      desc = 'Start LSP',
+      { noremap = true, silent = true },
+    },
+  },
 }
 
 return P

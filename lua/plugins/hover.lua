@@ -30,15 +30,15 @@ local P = {
     mouse_delay = 300,
   },
   keys = {
-    {
-      '<MouseMove>',
-      function()
-        require('hover').hover_mouse()
-      end,
-      id = 'hover mouse',
-      desc = 'hover.nvim (mouse)',
-      mode = { 'n', 'v' },
-    },
+    -- {
+    --   '<MouseMove>',
+    --   function()
+    --     require('hover').hover_mouse()
+    --   end,
+    --   id = 'hover mouse',
+    --   desc = 'hover.nvim (mouse)',
+    --   mode = { 'n', 'v' },
+    -- },
     {
       'K',
       function()
