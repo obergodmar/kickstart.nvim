@@ -205,6 +205,41 @@ local P = {
       desc = 'Start LSP',
       { noremap = true, silent = true },
     },
+    {
+      '<leader>e',
+      function()
+        vim.diagnostic.open_float(nil, { focusable = true })
+      end,
+      mode = 'n',
+      desc = 'Open diagnostics',
+      { noremap = true, silent = true },
+    },
+    {
+      'cr',
+      function()
+        local cmdId
+        cmdId = vim.api.nvim_create_autocmd({ 'CmdlineEnter' }, {
+          callback = function()
+            local key = vim.api.nvim_replace_termcodes('<C-f>', true, false, true)
+            vim.api.nvim_feedkeys(key, 'c', false)
+            vim.api.nvim_feedkeys('0', 'n', false)
+            cmdId = nil
+            return true
+          end,
+        })
+        vim.lsp.buf.rename()
+        -- if LPS couldn't trigger rename on the symbol, clear the autocmd
+        vim.defer_fn(function()
+          -- the cmdId is not nil only if the LSP failed to rename
+          if cmdId then
+            vim.api.nvim_del_autocmd(cmdId)
+          end
+        end, 500)
+      end,
+      mode = 'n',
+      desc = 'Rename symbol',
+      { noremap = true, silent = true },
+    },
   },
 }
 

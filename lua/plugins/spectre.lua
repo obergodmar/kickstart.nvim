@@ -3,10 +3,6 @@ local P = {
   -- A search panel for neovim.
   'obergodmar/nvim-spectre',
   event = 'VeryLazy',
-  dependencies = {
-    -- All the lua functions I don't want to write twice.
-    'obergodmar/plenary.nvim',
-  },
   opts = {},
   keys = {
     {

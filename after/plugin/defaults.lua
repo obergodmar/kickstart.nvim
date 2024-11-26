@@ -74,3 +74,13 @@ g.markdown_recommended_style = 0
 
 opt.list = true
 opt.listchars:append('trail:⋅')
+opt.fillchars = {
+  foldopen = '',
+  foldclose = '',
+  fold = ' ',
+  foldsep = ' ',
+}
+opt.foldlevel = 99
+opt.foldexpr = "v:lua.require'helpers.utils'.foldexpr()"
+opt.foldmethod = 'expr'
+opt.foldtext = ''

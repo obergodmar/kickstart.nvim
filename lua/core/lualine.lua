@@ -96,7 +96,7 @@ local P = {
     tabline = {},
     winbar = {},
     inactive_winbar = {},
-    extensions = { 'lazy', 'nvim-tree', 'fzf', 'mason', 'toggleterm', 'aerial' },
+    extensions = { 'lazy', 'nvim-tree', 'fzf', 'mason', 'toggleterm' },
   },
 }
 
