@@ -3,7 +3,6 @@
 local P = {
   -- A completion engine plugin for neovim written in Lua. Completion sources are installed from external repositories and "sourced".
   'hrsh7th/nvim-cmp',
-  enabled = false,
   event = 'InsertEnter',
   dependencies = {
     -- nvim-cmp source for neovim's built-in language server client.
@@ -15,11 +14,34 @@ local P = {
     -- nvim-cmp source for commands.
     'hrsh7th/cmp-cmdline',
     -- luasnip completion source for nvim-cmp
-    'hrsh7th/cmp_luasnip',
+    {
+      'saadparwaiz1/cmp_luasnip',
+      dependencies = {
+        -- Snippet engine for neovim written in Lua.
+        {
+          'L3MON4D3/LuaSnip',
+          build = (not jit.os:find('Windows')) and 'make install_jsregexp' or nil,
+          dependencies = {
+            -- Snippets collection for a set of different programming languages.
+            'rafamadriz/friendly-snippets',
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load()
+            end,
+          },
+          opts = {
+            history = true,
+            delete_check_events = 'TextChanged',
+          },
+        },
+      },
+    },
+    -- This tiny plugin adds vscode-like pictograms to neovim built-in lsp.
+    'onsails/lspkind.nvim',
   },
   keys = {},
   config = function()
     vim.api.nvim_set_hl(0, 'CmpGhostText', { link = 'Comment', default = true })
+
     local cmp = require('cmp')
     local defaults = require('cmp.config.default')()
     local luasnip = require('luasnip')

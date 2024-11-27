@@ -53,7 +53,7 @@ local P = {
       },
     },
     {
-      'obergodmar/typescript-tools.nvim',
+      'pmizio/typescript-tools.nvim',
       opts = {
         settings = {
           tsserver_logs = 'verbose',
@@ -94,27 +94,6 @@ local P = {
     {
       'mfussenegger/nvim-jdtls',
       ft = 'java',
-    },
-    { -- optional blink completion source for require statements and module annotations
-      'saghen/blink.cmp',
-      dependencies = 'rafamadriz/friendly-snippets',
-      lazy = false,
-      build = 'cargo build --release',
-      opts = {
-        sources = {
-          completion = {
-            enabled_providers = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
-          },
-          providers = {
-            lsp = { fallback_for = { 'lazydev' } },
-            lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink' },
-          },
-        },
-      },
-      keymap = {
-        preset = 'default',
-        ['<C-space>'] = {},
-      },
     },
   },
   config = function()
@@ -208,6 +187,19 @@ local P = {
           autostart = autostart,
           handlers = handlers,
         })
+
+        vim.diagnostic.config({
+          virtual_text = {
+            format = function(diagnostic)
+              local lsp = diagnostic.source or 'Unknown'
+              return string.format('[%s] %s', lsp, diagnostic.message)
+            end,
+          },
+          signs = true,
+          underline = true,
+          update_in_insert = false,
+          severity_sort = true,
+        })
       end,
     })
   end,
@@ -229,7 +221,13 @@ local P = {
     {
       '<leader>e',
       function()
-        vim.diagnostic.open_float(nil, { focusable = true })
+        vim.diagnostic.open_float(nil, {
+          focusable = true,
+          format = function(diagnostic)
+            local lsp = diagnostic.source or 'Unknown'
+            return string.format('[%s] %s', lsp, diagnostic.message)
+          end,
+        })
       end,
       mode = 'n',
       desc = 'Open diagnostics',
