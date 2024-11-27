@@ -1,55 +1,18 @@
 ---@type LazyPluginSpec
 local P = {
   -- Nvim Treesitter configurations and abstraction layer
-  'obergodmar/nvim-treesitter',
+  'nvim-treesitter/nvim-treesitter',
   commit = '74dc34a7fa8e1ea4bcc4578f7a4b14e3ec8c189f',
   dependencies = {
     {
-      'obergodmar/nvim-treesitter-context',
+      'nvim-treesitter/nvim-treesitter-context',
       opts = {
         multiline_threshold = 1,
         mode = 'topline',
       },
     },
-    {
-      'obergodmar/treesitter-indent-object.nvim',
-      keys = {
-        {
-          'ai',
-          function()
-            require('treesitter_indent_object.textobj').select_indent_outer()
-          end,
-          mode = { 'x', 'o' },
-          desc = 'Select context-aware indent (outer)',
-        },
-        {
-          'aI',
-          function()
-            require('treesitter_indent_object.textobj').select_indent_outer(true)
-          end,
-          mode = { 'x', 'o' },
-          desc = 'Select context-aware indent (outer, line-wise)',
-        },
-        {
-          'ii',
-          function()
-            require('treesitter_indent_object.textobj').select_indent_inner()
-          end,
-          mode = { 'x', 'o' },
-          desc = 'Select context-aware indent (inner, partial range)',
-        },
-        {
-          'iI',
-          function()
-            require('treesitter_indent_object.textobj').select_indent_inner(true, 'V')
-          end,
-          mode = { 'x', 'o' },
-          desc = 'Select context-aware indent (inner, entire range) in line-wise visual mode',
-        },
-      },
-    },
-    'obergodmar/nvim-treesitter-textobjects',
-    'obergodmar/nvim-treesitter-refactor',
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    'nvim-treesitter/nvim-treesitter-refactor',
   },
   config = function()
     pcall(require('nvim-treesitter.install').update({ with_sync = true }))

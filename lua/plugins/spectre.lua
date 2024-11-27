@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 local P = {
   -- A search panel for neovim.
-  'obergodmar/nvim-spectre',
+  'nvim-pack/nvim-spectre',
   event = 'VeryLazy',
   opts = {},
   keys = {

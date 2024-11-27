@@ -2,21 +2,20 @@
 ---@type LazyPluginSpec
 local P = {
   -- A completion engine plugin for neovim written in Lua. Completion sources are installed from external repositories and "sourced".
-  'obergodmar/nvim-cmp',
+  'hrsh7th/nvim-cmp',
+  enabled = false,
   event = 'InsertEnter',
   dependencies = {
     -- nvim-cmp source for neovim's built-in language server client.
-    'obergodmar/cmp-nvim-lsp',
+    'hrsh7th/cmp-nvim-lsp',
     -- nvim-cmp source for buffer words.
-    'obergodmar/cmp-buffer',
+    'hrsh7th/cmp-buffer',
     -- nvim-cmp source for filesystem paths.
-    'obergodmar/cmp-path',
+    'hrsh7th/cmp-path',
     -- nvim-cmp source for commands.
-    'obergodmar/cmp-cmdline',
+    'hrsh7th/cmp-cmdline',
     -- luasnip completion source for nvim-cmp
-    'obergodmar/cmp_luasnip',
-    -- This tiny plugin adds vscode-like pictograms to neovim built-in lsp.
-    'obergodmar/lspkind.nvim',
+    'hrsh7th/cmp_luasnip',
   },
   keys = {},
   config = function()

@@ -36,15 +36,15 @@ local servers = {
 ---@type LazyPluginSpec
 local P = {
   -- Quickstart configs for Nvim LSP
-  'obergodmar/nvim-lspconfig',
+  'neovim/nvim-lspconfig',
   dependencies = {
     -- Portable package manager for Neovim that runs everywhere Neovim runs.
     -- Easily install and manage LSP servers, DAP servers, linters, and formatters.
-    'obergodmar/mason.nvim',
+    'williamboman/mason.nvim',
     -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim.
-    'obergodmar/mason-lspconfig.nvim',
+    'williamboman/mason-lspconfig.nvim',
     {
-      'obergodmar/lazydev.nvim',
+      'folke/lazydev.nvim',
       ft = 'lua', -- only load on lua files
       opts = {
         library = {
@@ -94,6 +94,27 @@ local P = {
     {
       'mfussenegger/nvim-jdtls',
       ft = 'java',
+    },
+    { -- optional blink completion source for require statements and module annotations
+      'saghen/blink.cmp',
+      dependencies = 'rafamadriz/friendly-snippets',
+      lazy = false,
+      build = 'cargo build --release',
+      opts = {
+        sources = {
+          completion = {
+            enabled_providers = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
+          },
+          providers = {
+            lsp = { fallback_for = { 'lazydev' } },
+            lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink' },
+          },
+        },
+      },
+      keymap = {
+        preset = 'default',
+        ['<C-space>'] = {},
+      },
     },
   },
   config = function()

@@ -2,7 +2,7 @@
 -- Either way, it's "so awesome, it should be illegal". That's why it's called Fugitive.
 ---@type LazyPluginSpec
 local P = {
-  'obergodmar/vim-fugitive',
+  'tpope/vim-fugitive',
 }
 
 return P

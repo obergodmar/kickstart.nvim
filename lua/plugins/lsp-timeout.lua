@@ -1,6 +1,6 @@
 ---@type LazyPluginSpec
 local P = {
-  'obergodmar/lsp-timeout.nvim',
+  'hinell/lsp-timeout.nvim',
   init = function()
     vim.g.lspTimeoutConfig = {
       stopTimeout = 1000 * 60 * 30, -- ms, timeout before stopping all LSPs

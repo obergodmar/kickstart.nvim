@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 local P = {
   -- Useful plugin to show you pending keybinds.
-  'obergodmar/which-key.nvim',
+  'folke/which-key.nvim',
   event = 'VeryLazy',
   opts = {
     plugins = {

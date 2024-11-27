@@ -1,6 +1,6 @@
 ---@type LazyPluginSpec
 local P = {
-  'obergodmar/nvim-tree.lua',
+  'nvim-tree/nvim-tree.lua',
   opts = {
     disable_netrw = true,
     view = {

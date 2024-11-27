@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 local P = {
   -- This plugin provides the same icons as well as colors for each icon.
-  'obergodmar/nvim-web-devicons',
+  'nvim-tree/nvim-web-devicons',
   lazy = true,
 }
 

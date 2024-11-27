@@ -1,6 +1,6 @@
 ---@type LazyPluginSpec
 local P = {
-  'obergodmar/vim-sandwich',
+  'machakann/vim-sandwich',
   config = function() end,
 }
 

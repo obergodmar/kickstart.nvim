@@ -1,6 +1,6 @@
 ---@type LazyPluginSpec
 local P = {
-  'obergodmar/plenary.nvim',
+  'nvim-lua/plenary.nvim',
 }
 
 return P

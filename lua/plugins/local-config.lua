@@ -1,7 +1,7 @@
 ---@type LazyPluginSpec
 local P = {
   -- Secure load local config files.
-  'obergodmar/nvim-config-local',
+  'klen/nvim-config-local',
   opts = {
     config_files = { '.nvim.lua' },
     -- Where the plugin keeps files data
