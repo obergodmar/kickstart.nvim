@@ -1,6 +1,9 @@
 ---@type LazyPluginSpec
 local P = {
   'nvim-tree/nvim-tree.lua',
+  dependencies = {
+    'nvim-tree/nvim-web-devicons',
+  },
   opts = {
     disable_netrw = true,
     view = {

@@ -2,6 +2,7 @@
 local P = {
   -- A search panel for neovim.
   'nvim-pack/nvim-spectre',
+  dependencies = { 'nvim-lua/plenary.nvim' },
   event = 'VeryLazy',
   opts = {},
   keys = {

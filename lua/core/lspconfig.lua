@@ -54,7 +54,9 @@ local P = {
     },
     {
       'pmizio/typescript-tools.nvim',
+      dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
       opts = {
+        on_attach = require('helpers.lsp.common').on_attach,
         settings = {
           tsserver_logs = 'verbose',
           separate_diagnostic_server = false,

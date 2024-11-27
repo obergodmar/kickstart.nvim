@@ -5,6 +5,7 @@ local cwd = vim.fn.systemlist('git rev-parse --show-toplevel 2> /dev/null || ech
 ---@type LazyPluginSpec
 local P = {
   'obergodmar/fzf-lua',
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
   opts = {
     'fzf-native',
     winopts = {
