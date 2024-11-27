@@ -40,8 +40,6 @@ local P = {
   },
   keys = {},
   config = function()
-    vim.api.nvim_set_hl(0, 'CmpGhostText', { link = 'Comment', default = true })
-
     local cmp = require('cmp')
     local defaults = require('cmp.config.default')()
     local luasnip = require('luasnip')

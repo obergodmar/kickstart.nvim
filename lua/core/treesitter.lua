@@ -12,7 +12,6 @@ local P = {
       },
     },
     'nvim-treesitter/nvim-treesitter-textobjects',
-    'nvim-treesitter/nvim-treesitter-refactor',
   },
   config = function()
     pcall(require('nvim-treesitter.install').update({ with_sync = true }))
@@ -68,24 +67,6 @@ local P = {
           goto_previous = {
             ['[e'] = '@conditional.outer',
           },
-        },
-      },
-      refactor = {
-        highlight_definitions = {
-          enable = true,
-          clear_on_cursor_move = true,
-        },
-        highlight_current_scope = {
-          enable = false,
-        },
-        smart_rename = {
-          enable = true,
-          keymaps = {
-            smart_rename = 'grr',
-          },
-        },
-        navigation = {
-          enable = true,
         },
       },
     })

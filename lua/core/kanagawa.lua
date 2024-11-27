@@ -27,6 +27,8 @@ local P = {
     vim.api.nvim_create_user_command('KanagawaLight', function()
       vim.cmd.colorscheme('kanagawa-lotus')
     end, { desc = 'Tunr on KanagawaLight theme' })
+
+    vim.api.nvim_set_hl(0, 'CmpGhostText', { link = 'Comment', default = true })
   end,
 }
 
