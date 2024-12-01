@@ -97,6 +97,14 @@ local P = {
       'mfussenegger/nvim-jdtls',
       ft = 'java',
     },
+    {
+      'Zeioth/garbage-day.nvim',
+      dependencies = 'neovim/nvim-lspconfig',
+      event = 'VeryLazy',
+      opts = {
+        aggressive_mode = true,
+      },
+    },
   },
   config = function()
     local capabilities = require('helpers.lsp.common').get_capabilities()
@@ -208,14 +216,18 @@ local P = {
   keys = {
     {
       '<leader>R',
-      ':LspStop<CR>',
+      function()
+        require("garbage-day.utils").stop_lsp()
+      end,
       mode = 'n',
       desc = 'Stop LSP',
       { noremap = true, silent = true },
     },
     {
       '<leader>T',
-      ':LspStart<CR>',
+      function()
+        require("garbage-day.utils").start_lsp()
+      end,
       mode = 'n',
       desc = 'Start LSP',
       { noremap = true, silent = true },
