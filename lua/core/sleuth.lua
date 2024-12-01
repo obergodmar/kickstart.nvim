@@ -1,8 +1,5 @@
----@type LazyPluginSpec
-local P = {
+return {
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
   event = 'VeryLazy',
 }
-
-return P

@@ -1,7 +1,4 @@
----@type LazyPluginSpec
-local P = {
+return {
   'machakann/vim-sandwich',
   config = function() end,
 }
-
-return P

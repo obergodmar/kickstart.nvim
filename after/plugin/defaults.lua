@@ -1,12 +1,6 @@
 local utils = require('helpers.utils')
 
 local opt = vim.opt
-local g = vim.g
-
-opt.mouse = 'a' -- Enable mouse mode
-opt.mousemoveevent = true
-vim.cmd([[aunmenu PopUp.How-to\ disable\ mouse]])
-vim.cmd([[aunmenu PopUp.-1-]])
 
 opt.inccommand = 'split'
 opt.smarttab = true
@@ -64,23 +58,5 @@ else
   opt.shell = 'zsh'
 end
 
-opt.foldcolumn = '0'
-opt.foldlevel = 99
-opt.foldlevelstart = 99
-opt.foldenable = true
-
--- Fix markdown indentation settings
-g.markdown_recommended_style = 0
-
 opt.list = true
 opt.listchars:append('trail:⋅')
-opt.fillchars = {
-  foldopen = '',
-  foldclose = '',
-  fold = ' ',
-  foldsep = ' ',
-}
-opt.foldlevel = 99
-opt.foldexpr = "v:lua.require'helpers.utils'.foldexpr()"
-opt.foldmethod = 'expr'
-opt.foldtext = ''
