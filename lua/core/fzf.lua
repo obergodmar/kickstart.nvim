@@ -133,22 +133,6 @@ local P = {
     end, 'fzf'),
 
     {
-      '<leader>ca',
-      function()
-        require('fzf-lua').lsp_code_actions({
-          winopts = {
-            width = 0.5,
-            height = 0.5,
-            preview = { horizontal = 'down:50%' },
-          },
-        })
-      end,
-      id = 'fzf_code_action',
-      desc = '[C]ode [A]ction',
-      mode = { 'n', 'v' },
-    },
-
-    {
       'z=',
       function()
         require('fzf-lua').spell_suggest({
