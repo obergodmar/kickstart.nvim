@@ -66,7 +66,7 @@ else
   opt.shell = 'zsh'
 end
 
-opt.foldcolumn = '0'
+opt.foldcolumn = '1'
 opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.foldenable = true
@@ -76,12 +76,7 @@ g.markdown_recommended_style = 0
 
 opt.list = true
 opt.listchars:append('trail:⋅')
-opt.fillchars = {
-  foldopen = '',
-  foldclose = '',
-  fold = ' ',
-  foldsep = ' ',
-}
+
 opt.foldlevel = 99
 opt.foldexpr = "v:lua.require'helpers.utils'.foldexpr()"
 opt.foldmethod = 'expr'
