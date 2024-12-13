@@ -25,6 +25,8 @@
   "typescript.inlayHints.variableTypes.suppressWhenTypeMatchesName": false,
   "typescript.inlayHints.parameterNames.enabled": "all",
 
+  "list.floatPreview": true,
+
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextCurrentLineOnly": false,
 

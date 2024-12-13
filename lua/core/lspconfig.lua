@@ -512,6 +512,7 @@ local P = {
         'coc-html',
         'coc-eslint',
       }
+      vim.g.coc_list_preview_filetype = true
 
       -- Function definitions
       function _G.check_back_space()
