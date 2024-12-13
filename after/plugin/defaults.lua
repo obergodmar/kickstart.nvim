@@ -41,6 +41,8 @@ opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 
 opt.hidden = true
+opt.backup = false
+opt.writebackup = false
 
 opt.scrolloff = 8
 opt.smoothscroll = true

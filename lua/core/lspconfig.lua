@@ -1,18 +1,4 @@
-local on_attach = require('helpers.lsp.common').on_attach
-
 local servers = {
-  marksman = {},
-  html = {},
-  cssls = {},
-  typos_lsp = {},
-  cssmodules_ls = {},
-  stylelint_lsp = {
-    stylelintplus = {
-      autoFixOnSave = false,
-      autoFixOnFormat = true,
-    },
-  },
-  eslint = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -20,23 +6,13 @@ local servers = {
       hint = { enable = true },
     },
   },
-  bashls = {},
-  gopls = {
-    gopls = {
-      ['ui.inlayhint.hints'] = {
-        compositeLiteralFields = true,
-        constantValues = true,
-        parameterNames = true,
-      },
-    },
-  },
-  intelephense = {},
 }
 
 ---@type LazyPluginSpec
 local P = {
   -- Quickstart configs for Nvim LSP
   'neovim/nvim-lspconfig',
+  enabled = false,
   dependencies = {
     -- Portable package manager for Neovim that runs everywhere Neovim runs.
     -- Easily install and manage LSP servers, DAP servers, linters, and formatters.
@@ -51,51 +27,6 @@ local P = {
           'lazy.nvim',
         },
       },
-    },
-    {
-      'pmizio/typescript-tools.nvim',
-      dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-      opts = {
-        on_attach = require('helpers.lsp.common').on_attach,
-        settings = {
-          tsserver_logs = 'verbose',
-          separate_diagnostic_server = false,
-          publish_diagnostic_on = 'insert_leave',
-          expose_as_code_action = {
-            'fix_all',
-            'add_missing_imports',
-            'remove_unused',
-          },
-          tsserver_path = nil,
-          tsserver_plugins = {},
-          tsserver_max_memory = 4096,
-          tsserver_format_options = {},
-          complete_function_calls = true,
-          jsx_close_tag = {
-            enable = true,
-            filetypes = { 'javascriptreact', 'typescriptreact' },
-          },
-          tsserver_file_preferences = function()
-            return {
-              includeCompletionsForImportStatements = true,
-              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-              includeInlayFunctionParameterTypeHints = true,
-              includeInlayVariableTypeHints = true,
-              includeInlayPropertyDeclarationTypeHints = true,
-              includeInlayFunctionLikeReturnTypeHints = true,
-              includeInlayEnumMemberValueHints = true,
-              importModuleSpecifierPreference = 'auto',
-              includeInlayParameterNameHints = 'all',
-              includeCompletionsForModuleExports = true,
-              quotePreference = 'auto',
-            }
-          end,
-        },
-      },
-    },
-    {
-      'mfussenegger/nvim-jdtls',
-      ft = 'java',
     },
     {
       'Zeioth/garbage-day.nvim',
@@ -140,14 +71,14 @@ local P = {
           mode = { 'n', 'v' },
         },
         {
-          'cr',
+          '<leader>cr',
           '<cmd>Lspsaga rename<CR>',
           id = 'lspsaga_rename',
           desc = '[R]e[n]ame',
           mode = 'n',
         },
         {
-          'cR',
+          '<leader>cR',
           '<cmd>Lspsaga rename ++project<CR>',
           id = 'lspsaga_rename_all',
           desc = '[R]e[n]ame Everywhere',
@@ -190,6 +121,162 @@ local P = {
         },
       },
     },
+    {
+      'windwp/nvim-autopairs',
+      event = 'InsertEnter',
+    },
+    {
+      -- A completion engine plugin for neovim written in Lua. Completion sources are installed from external repositories and "sourced".
+      'hrsh7th/nvim-cmp',
+      event = 'InsertEnter',
+      enabled = false,
+      dependencies = {
+        -- nvim-cmp source for neovim's built-in language server client.
+        'hrsh7th/cmp-nvim-lsp',
+        -- nvim-cmp source for buffer words.
+        'hrsh7th/cmp-buffer',
+        -- nvim-cmp source for filesystem paths.
+        'hrsh7th/cmp-path',
+        -- nvim-cmp source for commands.
+        'hrsh7th/cmp-cmdline',
+        -- luasnip completion source for nvim-cmp
+        {
+          'saadparwaiz1/cmp_luasnip',
+          dependencies = {
+            -- Snippet engine for neovim written in Lua.
+            {
+              'L3MON4D3/LuaSnip',
+              build = (not jit.os:find('Windows')) and 'make install_jsregexp' or nil,
+              dependencies = {
+                -- Snippets collection for a set of different programming languages.
+                'rafamadriz/friendly-snippets',
+                config = function()
+                  require('luasnip.loaders.from_vscode').lazy_load()
+                end,
+              },
+              opts = {
+                history = true,
+                delete_check_events = 'TextChanged',
+              },
+            },
+          },
+        },
+        -- This tiny plugin adds vscode-like pictograms to neovim built-in lsp.
+        'onsails/lspkind.nvim',
+      },
+      keys = {},
+      config = function()
+        local cmp = require('cmp')
+        local defaults = require('cmp.config.default')()
+        local luasnip = require('luasnip')
+        local lspkind = require('lspkind')
+
+        cmp.setup({
+          completion = {
+            keyword_length = 1,
+            completeopt = 'menu,menuone,noinsert',
+          },
+          snippet = {
+            expand = function(args)
+              luasnip.lsp_expand(args.body)
+            end,
+          },
+          mapping = cmp.mapping.preset.insert({
+            ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+            ['<C-d>'] = cmp.mapping.scroll_docs(4),
+            ['<C-z>'] = cmp.mapping.complete(),
+            ['<C-e>'] = cmp.mapping.abort(),
+            ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+            -- ['<S-CR>'] = cmp.mapping.confirm({
+            --   behavior = cmp.ConfirmBehavior.Replace,
+            --   select = true,
+            -- }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+            ['<Tab>'] = cmp.mapping(function(fallback)
+              if cmp.visible() then
+                cmp.select_next_item()
+              elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+              else
+                fallback()
+              end
+            end, { 'c', 'i', 's' }),
+            ['<S-Tab>'] = cmp.mapping(function(fallback)
+              if cmp.visible() then
+                cmp.select_prev_item()
+              elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+              else
+                fallback()
+              end
+            end, { 'c', 'i', 's' }),
+          }),
+          sources = cmp.config.sources({
+            {
+              name = 'lazydev',
+              group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+            },
+            { name = 'nvim_lsp' },
+            { name = 'luasnip' },
+            { name = 'buffer', keyword_length = 4 },
+            { name = 'path' },
+          }),
+          formatting = {
+            format = lspkind.cmp_format({
+              mode = 'symbol_text',
+              menu = {
+                nvim_lsp = '[LSP]',
+                nvim_lua = '[Lua]',
+                path = '[Path]',
+                buffer = '[Buffer]',
+              },
+            }),
+          },
+          experimental = {
+            ghost_text = {
+              hl_group = 'CmpGhostText',
+            },
+          },
+          sorting = defaults.sorting,
+          performance = {
+            debounce = 0,
+            throttle = 0,
+            fetching_timeout = 200,
+            max_view_entries = 50,
+          },
+        })
+
+        cmp.setup.cmdline({ '/', '?' }, {
+          mapping = cmp.mapping.preset.cmdline(),
+          sources = {
+            { name = 'buffer' },
+          },
+        })
+
+        cmp.setup.cmdline(':', {
+          mapping = cmp.mapping.preset.cmdline(),
+          sources = cmp.config.sources({
+            { name = 'path' },
+          }, {
+            { name = 'cmdline' },
+          }),
+          matching = { disallow_symbol_nonprefix_matching = false },
+        })
+      end,
+    },
+    {
+      -- Extensible UI for Neovim notifications and LSP progress messages.
+      'j-hui/fidget.nvim',
+      opts = {
+        notification = {
+          override_vim_notify = true,
+        },
+        progress = {
+          suppress_on_insert = true,
+          ignore_done_already = true,
+          ignore_empty_message = true,
+        },
+      },
+    },
   },
   config = function()
     local capabilities = require('helpers.lsp.common').get_capabilities()
@@ -206,6 +293,8 @@ local P = {
       ensure_installed = vim.tbl_keys(servers),
     })
 
+    local on_attach = require('helpers.lsp.common').on_attach
+
     mason_lspconfig.setup_handlers({
       function(server_name)
         local lspconfig = require('lspconfig')
@@ -219,56 +308,6 @@ local P = {
 
         if server_name == 'lua_ls' then
           root_dir = lspconfig.util.root_pattern('.git', '*.rockspec')
-        end
-
-        if server_name == 'gopls' then
-          root_dir = lspconfig.util.root_pattern('go.work', 'go.mod', '.git')
-        end
-
-        if server_name == 'stylelint_lsp' then
-          filetypes = {
-            'css',
-            'less',
-            'scss',
-            'sugarss',
-            'wxss',
-            -- "javascript",
-            -- "javascriptreact",
-            -- "typescript",
-            -- "typescriptreact",
-          }
-
-          root_dir = lspconfig.util.root_pattern('.stylelintrc', 'package.json', '.git')
-        end
-
-        if server_name == 'eslint' then
-          filetypes = {
-            'javascript',
-            'javascriptreact',
-            'typescript',
-            'typescriptreact',
-          }
-        end
-
-        if server_name == 'intelephense' or server_name == 'phpactor' then
-          autostart = false
-        end
-
-        if server_name == 'java_language_server' then
-          handlers = {
-            ['client/registerCapability'] = function(err, result, ctx, config)
-              local registration = {
-                registrations = { result },
-              }
-              return vim.lsp.handlers['client/registerCapability'](err, registration, ctx, config)
-            end,
-          }
-        end
-
-        if server_name == 'typos_lsp' then
-          init_options = {
-            diagnosticSeverity = 'Hint',
-          }
         end
 
         lspconfig[server_name].setup({

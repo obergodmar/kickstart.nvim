@@ -1,0 +1,96 @@
+{
+  "tsserver.useLocalTsdk": true,
+  "semanticTokens.enable": true,
+
+  "codeLens.enable": true,
+  "codeLens.position": "eol",
+
+  "suggest.virtualText": true,
+  "suggest.insertMode": "replace",
+
+  "javascript.referencesCodeLens.enabled": true,
+  "javascript.inlayHints.variableTypes.enabled": true,
+  "javascript.referencesCodeLens.showOnAllFunctions": false,
+  "javascript.implementationsCodeLens.enabled": false,
+
+  "typescript.referencesCodeLens.enabled": true,
+  "typescript.referencesCodeLens.showOnAllFunctions": false,
+  "typescript.implementationsCodeLens.enabled": false,
+
+  "typescript.inlayHints.parameterTypes.enabled": false,
+  "typescript.inlayHints.variableTypes.enabled": false,
+  "typescript.inlayHints.enumMemberValues.enabled": false,
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": false,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": false,
+  "typescript.inlayHints.variableTypes.suppressWhenTypeMatchesName": false,
+  "typescript.inlayHints.parameterNames.enabled": "all",
+
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
+
+  "eslint.experimental.useFlatConfig": true,
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+
+  "colors.enable": true,
+  "suggest.floatConfig": {
+    "border": true,
+    "rounded": true,
+    "winblend": 1,
+    "highlight": "Normal"
+  },
+  "suggest.pumFloatConfig": {
+    "border": true,
+    "rounded": true,
+    "winblend": 1,
+    "highlight": "Normal"
+  },
+  "floatFactory.floatConfig": {
+    "border": true,
+    "rounded": true,
+    "winblend": 1,
+    "highlight": "Normal"
+  },
+  "hover.floatConfig": {
+    "border": true,
+    "rounded": true,
+    "winblend": 1,
+    "highlight": "Normal"
+  },
+  "diagnostic.floatConfig": {
+    "border": true,
+    "rounded": true,
+    "winblend": 1,
+    "highlight": "Normal"
+  },
+  "suggest.completionItemKindLabels": {
+    "method": "󰆧",
+    "function": "󰊕",
+    "variable": "󰀫",
+    "field": "󰜢",
+    "typeParameter": "",
+    "constant": "󰏿",
+    "class": "󰠱",
+    "interface": "",
+    "struct": "󰙅",
+    "event": "",
+    "operator": "󰆕",
+    "module": "",
+    "property": "󰜢",
+    "enum": "",
+    "reference": "󰈇",
+    "keyword": "󰌋",
+    "file": "󰈙",
+    "folder": "󰉋",
+    "color": "󰏘",
+    "unit": "󰑭",
+    "snippet": "",
+    "text": "󰉿",
+    "constructor": "",
+    "value": "󰎠",
+    "enumMember": ""
+  },
+  "suggest.languageSourcePriority": 99,
+  "coc.source.file.priority": 2,
+  "coc.source.around.priority": 3,
+  "coc.source.buffer.priority": 4
+}

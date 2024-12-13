@@ -1,7 +1,6 @@
 ---@type LazyPluginSpec
 local P = {
-  'machakann/vim-sandwich',
-  config = function() end,
+  'tpope/vim-surround',
 }
 
 return P

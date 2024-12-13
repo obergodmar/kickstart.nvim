@@ -61,7 +61,7 @@ local P = {
         },
         {
           'diagnostics',
-          sources = { 'nvim_diagnostic' },
+          sources = { 'nvim_diagnostic', 'coc' },
           sections = { 'error', 'warn', 'info', 'hint' },
           diagnostics_color = {
             error = 'DiagnosticError',
@@ -76,13 +76,12 @@ local P = {
             hint = ' ',
           },
         },
-        'aerial',
       },
       lualine_c = {
         relative_path_with_path,
         'filesize',
       },
-      lualine_x = { 'encoding', 'fileformat', 'filetype' },
+      lualine_x = { 'g:coc_status', "require'lsp-status'.status()", 'encoding', 'fileformat', 'filetype' },
       lualine_y = { 'selectioncount', 'searchcount', 'progress' },
       lualine_z = { 'location' },
     },

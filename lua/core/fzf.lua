@@ -9,8 +9,8 @@ local P = {
   opts = {
     'fzf-native',
     winopts = {
-      fullscreen = true,
-      border = 'single',
+      fullscreen = false,
+      border = 'rounded',
       preview = {
         default = 'builtin',
         layout = 'vertical',
@@ -100,26 +100,6 @@ local P = {
 
     keys.git_stash(function()
       require('fzf-lua').git_stash()
-    end, 'fzf'),
-
-    keys.lsp_references(function()
-      require('fzf-lua').lsp_references()
-    end, 'fzf'),
-
-    keys.lsp_definitions(function()
-      require('fzf-lua').lsp_definitions()
-    end, 'fzf'),
-
-    keys.lsp_implementations(function()
-      require('fzf-lua').lsp_implementations()
-    end, 'fzf'),
-
-    keys.file_diagnostics(function()
-      require('fzf-lua').diagnostics_document()
-    end, 'fzf'),
-
-    keys.project_diagnostics(function()
-      require('fzf-lua').diagnostics_workspace()
     end, 'fzf'),
 
     keys.reglist(function()
