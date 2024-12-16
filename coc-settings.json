@@ -33,6 +33,8 @@
   "eslint.experimental.useFlatConfig": true,
   "eslint.workingDirectories": [{ "mode": "auto" }],
 
+  "css.validate": false,
+
   "colors.enable": true,
   "suggest.floatConfig": {
     "border": true,
