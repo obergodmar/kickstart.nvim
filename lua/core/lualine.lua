@@ -29,6 +29,10 @@ local function git_head()
   return ''
 end
 
+local function session()
+  return require('auto-session.lib').current_session_name(true)
+end
+
 ---@type LazyPluginSpec
 local P = {
   -- A blazing fast and easy to configure neovim statusline plugin written in pure lua.
@@ -81,7 +85,14 @@ local P = {
         relative_path_with_path,
         'filesize',
       },
-      lualine_x = { 'g:coc_status', "require'lsp-status'.status()", 'encoding', 'fileformat', 'filetype' },
+      lualine_x = {
+        'g:coc_status',
+        "require'lsp-status'.status()",
+        session,
+        'encoding',
+        'fileformat',
+        'filetype',
+      },
       lualine_y = { 'selectioncount', 'searchcount', 'progress' },
       lualine_z = { 'location' },
     },

@@ -2,7 +2,7 @@ local utils = require('helpers.utils')
 
 if utils.is_neovide() then
   if utils.is_mac() then
-    vim.o.guifont = 'Iosevka Nerd Font:b:h15'
+    vim.o.guifont = 'Iosevka Nerd Font:b:h16'
   else
     vim.o.guifont = 'Iosevka Nerd Font:b:h12'
   end
@@ -14,6 +14,14 @@ if utils.is_neovide() then
   vim.g.neovide_underline_automatic_scaling = true
   vim.g.neovide_confirm_quit = true
   vim.g.neovide_remember_window_size = true
+
+  vim.api.nvim_set_keymap('v', '<sc-c>', '"+y', { noremap = true })
+  vim.api.nvim_set_keymap("n", "<sc-v>", '"+p', { noremap = true }) -- Paste in normal mode (CTRL+Shift+C)
+  vim.api.nvim_set_keymap('v', '<sc-v>', '"+P', { noremap = true })
+  vim.api.nvim_set_keymap('c', '<sc-v>', '<C-o>l<C-o>"+<C-o>P<C-o>l', { noremap = true })
+  vim.api.nvim_set_keymap("i", "<sc-v>", '<ESC>"+p', { noremap = true }) -- Paste in insert mode (CTRL+Shift+C)
+  vim.api.nvim_set_keymap('t', '<sc-v>', '<C-\\><C-n>"+Pi', { noremap = true })
+
 
   vim.keymap.set('n', '<D-s>', ':w<CR>') -- Save
   vim.keymap.set('v', '<D-c>', '"+y') -- Copy
@@ -38,5 +46,8 @@ if utils.is_neovide() then
   end)
   vim.keymap.set('n', '<C-->', function()
     change_scale_factor(1 / 1.25)
+  end)
+  vim.keymap.set('n', '<C-0>', function()
+    vim.g.neovide_scale_factor = 1.0
   end)
 end

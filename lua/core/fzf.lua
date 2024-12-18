@@ -1,6 +1,10 @@
 local keys = require('helpers.search.keys')
 
-local cwd = vim.fn.systemlist('git rev-parse --show-toplevel 2> /dev/null || echo "$PWD"')[1]
+local get_cwd = function()
+  local cwd = vim.fn.systemlist('git rev-parse --show-toplevel 2> /dev/null || echo "$PWD"')[1]
+
+  return cwd
+end
 
 ---@type LazyPluginSpec
 local P = {
@@ -23,7 +27,6 @@ local P = {
       show_unloaded = true,
     },
     files = {
-      cmd = 'fd --absolute-path . ' .. cwd .. ' --color=never --type f --hidden --follow --exclude .git',
       fzf_opts = {
         ['--history'] = vim.fn.stdpath('data') .. '/fzf-lua-files-history',
       },
@@ -79,7 +82,9 @@ local P = {
     end, 'fzf'),
 
     keys.git_files(function()
-      require('fzf-lua').git_files()
+      require('fzf-lua').git_files({
+        cmd = 'fd --absolute-path . ' .. get_cwd() .. ' --color=never --type f --hidden --follow --exclude .git',
+      })
     end, 'fzf'),
 
     keys.git_commits(function()

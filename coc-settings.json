@@ -1,4 +1,6 @@
 {
+  "java.compile.nullAnalysis.mode": "automatic",
+
   "tsserver.useLocalTsdk": true,
   "semanticTokens.enable": true,
 

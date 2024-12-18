@@ -2,7 +2,6 @@
 local P = {
   -- Nvim Treesitter configurations and abstraction layer
   'nvim-treesitter/nvim-treesitter',
-  commit = '74dc34a7fa8e1ea4bcc4578f7a4b14e3ec8c189f',
   dependencies = {
     {
       'nvim-treesitter/nvim-treesitter-context',

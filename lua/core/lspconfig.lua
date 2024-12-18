@@ -555,7 +555,7 @@ local P = {
           { '<leader>cs', '<Plug>(coc-codeaction-source)', desc = 'Source code actions' },
           { '<leader>ac', '<Plug>(coc-codeaction)', desc = 'Apply code actions' },
           { '<leader>cq', '<Plug>(coc-fix-current)', desc = 'Fix current issue' },
-          { '<leader>cl', '<Plug>(coc-codelens-action)', desc = 'CodeLens action' },
+          -- { '<leader>cl', '<Plug>(coc-codelens-action)', desc = 'CodeLens action' },
           -- CocList mappings
           { '<space>sd', ':CocList diagnostics<cr>', desc = 'Show diagnostics' },
           { '<space>E', ':CocList extensions<cr>', desc = 'Manage extensions' },
