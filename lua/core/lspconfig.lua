@@ -1,6 +1,4 @@
 ---@diagnostic disable: missing-fields
-local is_coc_instead_of_lspconfig = true
-
 local add_ufo_folding = function(hoverFn)
   local create_fold_virt_text = function(virtText, lnum, endLnum, width, truncate)
     local newVirtText = {}
@@ -141,7 +139,7 @@ local P = {
   {
     -- Quickstart configs for Nvim LSP
     'neovim/nvim-lspconfig',
-    enabled = not is_coc_instead_of_lspconfig,
+    enabled = not require('helpers.utils').is_coc_instead_of_lspconfig(),
     dependencies = {
       -- Portable package manager for Neovim that runs everywhere Neovim runs.
       -- Easily install and manage LSP servers, DAP servers, linters, and formatters.
@@ -492,7 +490,7 @@ local P = {
   {
     'neoclide/coc.nvim',
     branch = 'master',
-    enabled = is_coc_instead_of_lspconfig,
+    enabled = require('helpers.utils').is_coc_instead_of_lspconfig(),
     build = 'npm ci & npm run build',
     dependencies = {
       add_ufo_folding(function()

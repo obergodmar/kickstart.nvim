@@ -17,7 +17,7 @@ end
 local P = {
   -- Tabs replacer
   'akinsho/bufferline.nvim',
-  version = "*",
+  version = '*',
   event = 'BufEnter',
   dependencies = 'nvim-tree/nvim-web-devicons',
   opts = {
@@ -27,13 +27,21 @@ local P = {
       mode = 'tabs',
       numbers = 'ordinal',
       indicator = { style = 'underline' },
-      diagnostics = 'nvim_lsp',
+      diagnostics = require('helpers.utils').is_coc_instead_of_lspconfig() and 'coc' or 'nvim_lsp',
       color_icons = true,
       always_show_bufferline = false,
       show_buffer_close_icons = false,
       show_duplicate_prefix = false,
       show_close_icon = false,
       separator_style = 'thin',
+      modified_icon = '[+]',
+      offsets = {
+        {
+          filetype = 'NvimTree',
+          text_align = 'center',
+          separator = true,
+        },
+      },
     },
   },
   keys = keys,

@@ -40,4 +40,8 @@ function M.foldexpr()
   return vim.b[buf].ts_folds and vim.treesitter.foldexpr() or '0'
 end
 
+function M.is_coc_instead_of_lspconfig()
+  return true
+end
+
 return M
