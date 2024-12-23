@@ -21,6 +21,7 @@ require('lazy').setup({
   { import = 'plugins' },
 }, {
   root = vim_data_path .. '/plugins',
+  change_detection = { enabled = false },
   install = {
     missing = true,
     colorscheme = { 'kanagawa-wave' },
