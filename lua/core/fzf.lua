@@ -66,7 +66,10 @@ local P = {
     end, 'fzf'),
 
     keys.find_files(function()
-      require('fzf-lua').files({ use_absolute_paths = true })
+      require('fzf-lua').files({
+        use_absolute_paths = true,
+        cmd = 'fd --absolute-path . ' .. get_cwd() .. ' --color=never --type f --hidden --follow --exclude .git',
+      })
     end, 'fzf'),
 
     keys.grep_string(function()
