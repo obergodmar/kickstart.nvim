@@ -25,13 +25,7 @@ local P = {
     })
 
     vim.g.copilot_no_tab_map = true
-    vim.api.nvim_create_user_command('CopilotProxyToggle', function(_)
-      if vim.g.copilot_proxy then
-        vim.g.copilot_proxy = nil
-      else
-        vim.g.copilot_proxy = '127.0.0.1:12334'
-      end
-    end, { desc = 'Toggle proxy for Copilot' })
+    -- vim.g.copilot_proxy = '127.0.0.1:12334'
   end,
 }
 
