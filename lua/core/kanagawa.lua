@@ -4,8 +4,14 @@ local P = {
   'rebelot/kanagawa.nvim',
   opts = {
     theme = 'wave',
+    undercurl = true,
     keywordStyle = { italic = true },
     commentStyle = { italic = true },
+    statementStyle = { bold = true },
+    background = {
+      dark = 'wave',
+      light = 'lotus',
+    },
     overrides = function(colors)
       local theme = colors.theme
 

@@ -32,7 +32,6 @@
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextCurrentLineOnly": false,
 
-  // "eslint.experimental.useFlatConfig": true,
   "eslint.workingDirectories": [{ "mode": "auto" }],
 
   "css.validate": false,

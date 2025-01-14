@@ -135,6 +135,9 @@ M.coc = {
         { '<C-s>', '<Plug>(coc-range-select)', desc = 'Select range' },
       },
     })
+
+    vim.cmd [[hi link CocSemTypeModVariableReadonly @lsp.type.const]]
+    vim.cmd [[hi link CocSemTypeModVariableDeclaration @lsp.type.const]]
   end,
 }
 
