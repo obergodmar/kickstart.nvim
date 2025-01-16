@@ -70,7 +70,8 @@ M.coc = {
         { '<leader>cq', '<Plug>(coc-fix-current)', desc = 'Fix current issue' },
         -- { '<leader>cl', '<Plug>(coc-codelens-action)', desc = 'CodeLens action' },
         -- CocList mappings
-        { '<space>sd', ':CocList diagnostics<cr>', desc = 'Show diagnostics' },
+        { '<space>sd', ':CocList diagnostics --buffer<cr>', desc = 'Show diagnostics for current buffer' },
+        { '<space>sD', ':CocList diagnostics<cr>', desc = 'Show diagnostics' },
         { '<space>E', ':CocList extensions<cr>', desc = 'Manage extensions' },
         { '<space>sq', ':CocList commands<cr>', desc = 'Show commands' },
         { '<space>so', ':CocList outline<cr>', desc = 'Document outline' },
