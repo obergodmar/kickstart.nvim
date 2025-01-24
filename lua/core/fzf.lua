@@ -114,6 +114,10 @@ local P = {
       require('fzf-lua').registers()
     end, 'fzf'),
 
+    keys.bookmarks(function()
+      require('fzf-lua').marks({ marks = '%a' })
+    end, 'fzf'),
+
     keys.changed_files(function()
       require('fzf-lua').grep({
         raw_cmd = [[git status -su | rg "^\s*M" | cut -d ' ' -f3 | xargs rg --hidden --column --line-number --no-heading --color=always  --with-filename -e '']],

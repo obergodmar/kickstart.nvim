@@ -1,6 +1,9 @@
 {
   "java.compile.nullAnalysis.mode": "automatic",
 
+  "sumneko-lua.enableNvimLuaDev": true,
+  "Lua.codeLens.enable": true,
+
   "tsserver.useLocalTsdk": true,
   "semanticTokens.enable": true,
 

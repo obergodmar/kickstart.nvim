@@ -24,6 +24,7 @@ M.coc = {
       'coc-css',
       'coc-html',
       'coc-eslint',
+      'coc-sumneko-lua',
     }
     vim.g.coc_list_preview_filetype = true
 
@@ -137,8 +138,8 @@ M.coc = {
       },
     })
 
-    vim.cmd [[hi link CocSemTypeModVariableReadonly @lsp.type.const]]
-    vim.cmd [[hi link CocSemTypeModVariableDeclaration @lsp.type.const]]
+    vim.cmd([[hi link CocSemTypeModVariableReadonly @lsp.type.const]])
+    vim.cmd([[hi link CocSemTypeModVariableDeclaration @lsp.type.const]])
   end,
 }
 

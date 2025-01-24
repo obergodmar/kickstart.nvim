@@ -189,6 +189,15 @@ local keys = {
       mode = 'n',
     }
   end,
+  bookmarks = function(fn, name)
+    return {
+      '<leader>sm',
+      fn,
+      id = name .. '_bookmarks',
+      desc = '[S]earch [M]arks',
+      mode = 'n',
+    }
+  end,
 }
 
 return keys
