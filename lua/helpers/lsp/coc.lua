@@ -1,9 +1,50 @@
 local M = {}
 
+local telescope_dropdown_opts = {
+  layout_config = {
+    width = function()
+      return math.floor(vim.o.columns * 0.8)
+    end,
+  },
+}
+
 local dependencies = {
-  require('helpers.lsp.fold').add_ufo_folding(function()
-    vim.fn.CocActionAsync('definitionHover')
-  end),
+  {
+    require('helpers.lsp.fold').add_ufo_folding(function()
+      vim.fn.CocActionAsync('definitionHover')
+    end),
+    {
+      'nvim-telescope/telescope.nvim',
+      dependencies = {
+        'fannheyward/telescope-coc.nvim',
+      },
+      config = function()
+        require('telescope').setup({
+          defaults = {
+            preview = {
+              treesitter = true,
+            },
+            mappings = {
+              i = {
+                ['<esc>'] = require('telescope.actions').close,
+              },
+              n = {
+                ['q'] = require('telescope.actions').close,
+              },
+            },
+          },
+          extensions = {
+            coc = {
+              theme = 'dropdown',
+              prefer_locations = false, -- always use Telescope locations to preview definitions/declarations/implementations etc
+              push_cursor_on_edit = true, -- save the cursor position to jump back in the future
+              timeout = 3000, -- timeout for coc commands
+            },
+          },
+        })
+      end,
+    },
+  },
 }
 
 M.coc = {
@@ -19,6 +60,7 @@ M.coc = {
       'coc-typos',
       'coc-pairs',
       'coc-json',
+      'coc-highlight',
 
       'coc-tsserver',
       'coc-css',
@@ -57,10 +99,38 @@ M.coc = {
         { ']d', '<Plug>(coc-diagnostic-next)', desc = 'Next diagnostic' },
         { '<space>e', '<Plug>(coc-diagnostic-info)', desc = 'Manage extensions' },
         -- GoTo commands
-        { 'gd', '<Plug>(coc-definition)', desc = 'Go to definition' },
-        { 'gy', '<Plug>(coc-type-definition)', desc = 'Go to type definition' },
-        { 'gi', '<Plug>(coc-implementation)', desc = 'Go to implementation' },
-        { 'gr', '<Plug>(coc-references)', desc = 'Go to references' },
+        -- { 'gd', '<Plug>(coc-definition)', desc = 'Go to definition' },
+        {
+          'gd',
+          function()
+            require('telescope').extensions.coc.definitions(telescope_dropdown_opts)
+          end,
+          desc = 'Go to definition',
+        },
+        -- { 'gy', '<Plug>(coc-type-definition)', desc = 'Go to type definition' },
+        {
+          'gy',
+          function()
+            require('telescope').extensions.coc.type_definitions(telescope_dropdown_opts)
+          end,
+          desc = 'Go to type definition',
+        },
+        -- { 'gi', '<Plug>(coc-implementation)', desc = 'Go to implementation' },
+        {
+          'gi',
+          function()
+            require('telescope').extensions.coc.implementations(telescope_dropdown_opts)
+          end,
+          desc = 'Go to implementation',
+        },
+        -- { 'gr', '<Plug>(coc-references)', desc = 'Go to references' },
+        {
+          'gr',
+          function()
+            require('telescope').extensions.coc.references(telescope_dropdown_opts)
+          end,
+          desc = 'Go to references',
+        },
         -- Documentation
         { 'K', '<CMD>lua _G.show_docs()<CR>', desc = 'Show documentation' },
         -- Coc actions
@@ -71,8 +141,15 @@ M.coc = {
         { '<leader>cq', '<Plug>(coc-fix-current)', desc = 'Fix current issue' },
         -- { '<leader>cl', '<Plug>(coc-codelens-action)', desc = 'CodeLens action' },
         -- CocList mappings
-        { '<space>sd', ':CocList diagnostics --buffer<cr>', desc = 'Show diagnostics for current buffer' },
-        { '<space>sD', ':CocList diagnostics<cr>', desc = 'Show diagnostics' },
+        -- { '<space>sd', ':CocList diagnostics --buffer<cr>', desc = 'Show diagnostics for current buffer' },
+        {
+          '<space>sd',
+          function()
+            require('telescope').extensions.coc.diagnostics(telescope_dropdown_opts)
+          end,
+          desc = 'Show diagnostics for current buffer',
+        },
+        -- { '<space>sD', ':CocList diagnostics<cr>', desc = 'Show diagnostics' },
         { '<space>E', ':CocList extensions<cr>', desc = 'Manage extensions' },
         { '<space>sq', ':CocList commands<cr>', desc = 'Show commands' },
         { '<space>so', ':CocList outline<cr>', desc = 'Document outline' },

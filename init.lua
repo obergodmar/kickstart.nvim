@@ -24,7 +24,6 @@ require('lazy').setup({
   change_detection = { enabled = false },
   install = {
     missing = true,
-    colorscheme = { 'kanagawa-wave' },
   },
   ui = {
     size = { width = 1.0, height = 1.0 },

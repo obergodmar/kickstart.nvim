@@ -40,95 +40,93 @@ M.add_ufo_folding = function(hoverFn)
   }
 
   return {
-    {
-      -- The goal of nvim-ufo is to make Neovim's fold look modern and keep high performance.
-      'kevinhwang91/nvim-ufo',
-      dependencies = {
-        -- The goal of promise-async is to port Promise & Async from JavaScript to Lua.
-        'kevinhwang91/promise-async',
+    -- The goal of nvim-ufo is to make Neovim's fold look modern and keep high performance.
+    'kevinhwang91/nvim-ufo',
+    dependencies = {
+      -- The goal of promise-async is to port Promise & Async from JavaScript to Lua.
+      'kevinhwang91/promise-async',
 
-        {
-          'luukvbaal/statuscol.nvim',
-          config = function()
-            local builtin = require('statuscol.builtin')
-            require('statuscol').setup({
-              segments = {
-                {
-                  text = { '%s', builtin.lnumfunc, ' ' },
+      {
+        'luukvbaal/statuscol.nvim',
+        config = function()
+          local builtin = require('statuscol.builtin')
+          require('statuscol').setup({
+            segments = {
+              {
+                text = { '%s', builtin.lnumfunc, ' ' },
+              },
+              {
+                text = {
+                  '%{foldlevel(v:lnum) > 0 ? (foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "" : "") : " ") : " " }',
+                  ' ',
                 },
-                {
-                  text = {
-                    '%{foldlevel(v:lnum) > 0 ? (foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "" : "") : " ") : " " }',
-                    ' ',
-                  },
-                  hl = 'FoldColumn',
-                  sign = {
-                    name = { '.*' },
-                    fillchar = ' ',
-                    fillcharhl = nil,
-                  },
+                hl = 'FoldColumn',
+                sign = {
+                  name = { '.*' },
+                  fillchar = ' ',
+                  fillcharhl = nil,
                 },
               },
-            })
-          end,
-        },
-      },
-      keys = {
-        {
-          'K',
-          hoverFn,
-          id = 'ufo_hover_doc',
-          desc = 'Hover fold',
-          mode = 'n',
-        },
-        {
-          'zR',
-          function()
-            require('ufo').openAllFolds()
-          end,
-          id = 'ufo_open_all_folds',
-          desc = 'Open All Folds',
-          mode = 'n',
-        },
-        {
-          'zM',
-          function()
-            require('ufo').closeAllFolds()
-          end,
-          id = 'ufo_close_all_folds',
-          desc = 'Close All Folds',
-          mode = 'n',
-        },
-        {
-          'zU',
-          function()
-            require('ufo').enableFold()
-          end,
-          id = 'ufo_enable_fold',
-          desc = 'Enable Fold for buffer',
-          mode = 'n',
-        },
-      },
-      opts = {
-        open_fold_hl_timeout = 400,
-        close_fold_kinds = {},
-        enable_get_fold_virt_text = true,
-        fold_virt_text_handler = create_fold_virt_text,
-        provider_selector = function(_, filetype)
-          return ftMap[filetype]
+            },
+          })
         end,
-        preview = {
-          win_config = {
-            border = { '', '─', '', '', '', '─', '', '' },
-            winhighlight = 'Normal:Folded',
-            winblend = 0,
-          },
-          mappings = {
-            scrollU = '<C-u>',
-            scrollD = '<C-d>',
-            jumpTop = '[',
-            jumpBot = ']',
-          },
+      },
+    },
+    keys = {
+      {
+        'K',
+        hoverFn,
+        id = 'ufo_hover_doc',
+        desc = 'Hover fold',
+        mode = 'n',
+      },
+      {
+        'zR',
+        function()
+          require('ufo').openAllFolds()
+        end,
+        id = 'ufo_open_all_folds',
+        desc = 'Open All Folds',
+        mode = 'n',
+      },
+      {
+        'zM',
+        function()
+          require('ufo').closeAllFolds()
+        end,
+        id = 'ufo_close_all_folds',
+        desc = 'Close All Folds',
+        mode = 'n',
+      },
+      {
+        'zU',
+        function()
+          require('ufo').enableFold()
+        end,
+        id = 'ufo_enable_fold',
+        desc = 'Enable Fold for buffer',
+        mode = 'n',
+      },
+    },
+    opts = {
+      open_fold_hl_timeout = 400,
+      close_fold_kinds = {},
+      enable_get_fold_virt_text = true,
+      fold_virt_text_handler = create_fold_virt_text,
+      provider_selector = function(_, filetype)
+        return ftMap[filetype]
+      end,
+      preview = {
+        win_config = {
+          border = { '', '─', '', '', '', '─', '', '' },
+          winhighlight = 'Normal:Folded',
+          winblend = 0,
+        },
+        mappings = {
+          scrollU = '<C-u>',
+          scrollD = '<C-d>',
+          jumpTop = '[',
+          jumpBot = ']',
         },
       },
     },

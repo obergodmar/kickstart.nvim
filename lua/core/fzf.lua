@@ -120,7 +120,7 @@ local P = {
 
     keys.changed_files(function()
       require('fzf-lua').grep({
-        raw_cmd = [[git status -su | rg "^\s*M" | cut -d ' ' -f3 | xargs rg --hidden --column --line-number --no-heading --color=always  --with-filename -e '']],
+        raw_cmd = [[git status -su | rg "^\s*M" | cut -d ' ' -f3 | xargs rg --hidden --column --line-number --no-heading --color=never --with-filename -e '']],
       })
     end, 'fzf'),
 
