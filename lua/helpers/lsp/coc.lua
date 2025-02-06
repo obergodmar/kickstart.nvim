@@ -16,7 +16,7 @@ local dependencies = {
     {
       'nvim-telescope/telescope.nvim',
       dependencies = {
-        'fannheyward/telescope-coc.nvim',
+        'obergodmar/telescope-coc.nvim',
       },
       config = function()
         require('telescope').setup({
