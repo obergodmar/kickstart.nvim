@@ -1,8 +1,15 @@
 local keys = require('helpers.search.keys')
 
 local get_cwd = function()
-  local cwd = vim.fn.systemlist('git rev-parse --show-toplevel 2> /dev/null || echo "$PWD"')[1]
+  local cmd
 
+  if require('helpers.utils').is_win() then
+    cmd = 'git rev-parse --show-toplevel 2> nul || echo %CD%'
+  else
+    cmd = vim.fn.systemlist('git rev-parse --show-toplevel 2> /dev/null || echo "$PWD"')[1]
+  end
+
+  local cwd = vim.fn.systemlist(cmd)[1]
   return cwd
 end
 
