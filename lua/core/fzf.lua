@@ -13,6 +13,20 @@ local get_cwd = function()
   return cwd
 end
 
+local get_fd_cmd = function()
+  local cmd
+
+  if require('helpers.utils').is_win() then
+    cmd = 'fd --absolute-path . ' .. get_cwd() .. ' --color=never --type f --hidden --follow --exclude .git 2> nul'
+  else
+    cmd = 'fd --absolute-path . '
+      .. get_cwd()
+      .. ' --color=never --type f --hidden --follow --exclude .git 2> /dev/null'
+  end
+
+  return cmd
+end
+
 ---@type LazyPluginSpec
 local P = {
   'obergodmar/fzf-lua',
@@ -75,7 +89,7 @@ local P = {
     keys.find_files(function()
       require('fzf-lua').files({
         use_absolute_paths = true,
-        cmd = 'fd --absolute-path . ' .. get_cwd() .. ' --color=never --type f --hidden --follow --exclude .git',
+        cmd = get_fd_cmd(),
       })
     end, 'fzf'),
 
@@ -93,7 +107,7 @@ local P = {
 
     keys.git_files(function()
       require('fzf-lua').git_files({
-        cmd = 'fd --absolute-path . ' .. get_cwd() .. ' --color=never --type f --hidden --follow --exclude .git',
+        cmd = get_fd_cmd(),
       })
     end, 'fzf'),
 
